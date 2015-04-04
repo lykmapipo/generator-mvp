@@ -17,14 +17,13 @@ module.exports = yeoman.generators.Base.extend({
         ));
 
         var prompts = [{
-            type: 'confirm',
-            name: 'someOption',
-            message: 'Would you like to enable this option?',
-            default: true
+            name: 'applicationName',
+            message: 'What Would you like to call your application?',
+            default: 'mvp'
         }];
 
         this.prompt(prompts, function(props) {
-            this.someOption = props.someOption;
+            this.applicationName = props.applicationName;
 
             done();
         }.bind(this));
@@ -32,14 +31,8 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: {
         app: function() {
-            this.fs.copy(
-                this.templatePath('_package.json'),
-                this.destinationPath('package.json')
-            );
-            this.fs.copy(
-                this.templatePath('_bower.json'),
-                this.destinationPath('bower.json')
-            );
+            this.template('_package.json', 'package.json');
+            this.template('_bower.json', 'bower.json');
         },
 
         projectfiles: function() {

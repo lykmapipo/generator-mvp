@@ -17,7 +17,7 @@ describe('mvp:app', function() {
                 'skip-install': true
             })
             .withPrompt({
-                someOption: true
+                applicationName: 'mvp'
             })
             .on('ready', function(generator) {
                 //reference destination dir 
@@ -46,7 +46,7 @@ describe('mvp:app', function() {
         ]);
     });
 
-    //lets clean os tmp dir
+    // lets clean os tmp dir
     after(function(done) {
         rm(destDir, done);
     });
