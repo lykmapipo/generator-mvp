@@ -12,7 +12,7 @@ var destDir;
 describe('mvp:app', function() {
     before(function(done) {
         helpers.run(appPath)
-            // .inDir(tmpPath)
+            // .inDir(tmpPath) //I have been getting some errors lets us os.tmpdir
             .withOptions({
                 'skip-install': true
             })
@@ -20,15 +20,27 @@ describe('mvp:app', function() {
                 someOption: true
             })
             .on('ready', function(generator) {
+                //reference destination dir 
+                //for later clean ups
                 destDir = path.join(os.tmpdir(), generator.appname);
             })
             .on('end', done);
     });
 
-    it('creates files', function() {
+    it('it should be able to generate package.json', function() {
         assert.file([
-            'bower.json',
-            'package.json',
+            'package.json'
+        ]);
+    });
+
+    it('it should be able to generate bower.json', function() {
+        assert.file([
+            'bower.json'
+        ]);
+    });
+
+    it('it should be able to generate .editorconfig and .jshintrc', function() {
+        assert.file([
             '.editorconfig',
             '.jshintrc'
         ]);
