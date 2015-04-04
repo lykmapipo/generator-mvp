@@ -1,0 +1,35 @@
+{
+    "name": "generator-mvp",
+    "version": "0.1.0",
+    "description": "Set of generators to kick start an application",
+    "license": "MIT",
+    "main": "app/index.js",
+    "repository": "lykmapipo/generator-mvp",
+    "author": {
+        "name": "lally elias",
+        "email": "lallyelias87@gmail.com",
+        "url": "https://github.com/lykmapipo"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "files": [
+        "app"
+    ],
+    "keywords": [
+        "yeoman-generator",
+        "mvp",
+        "scaffold",
+    ],
+    "dependencies": {
+        "yeoman-generator": "^0.18.9",
+        "chalk": "^1.0.0",
+        "yosay": "^1.0.2"
+    },
+    "devDependencies": {
+        "mocha": "*"
+    }
+}
