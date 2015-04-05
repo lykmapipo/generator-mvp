@@ -46,7 +46,7 @@ describe('mvp:app', function() {
             '.jshintrc',
             '.gitignore',
             '.gitattributes',
-            '.travic.yml',
+            '.travis.yml',
             'README.md'
         ]);
     });

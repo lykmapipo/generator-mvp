@@ -68,8 +68,8 @@ module.exports = yeoman.generators.Base.extend({
                 this.destinationPath('.gitattributes')
             );
             this.fs.copy(
-                this.templatePath('travic.yml'),
-                this.destinationPath('.travic.yml')
+                this.templatePath('travis.yml'),
+                this.destinationPath('.travis.yml')
             );
 
             this.template('_README.md', 'README.md');
