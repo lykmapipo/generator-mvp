@@ -17,7 +17,8 @@ describe('mvp:app', function() {
             })
             .withPrompt({
                 applicationName: 'mvp',
-                applicationVersion: '0.1.0'
+                applicationVersion: '0.1.0',
+                applicationDescription: 'A best application ever'
             })
             .on('ready', function(generator) {
                 //reference destination dir 
@@ -39,15 +40,17 @@ describe('mvp:app', function() {
         ]);
     });
 
-    it('it should be able to generate .editorconfig and .jshintrc', function() {
+    it('it should be able to generate .editorconfig, .jshintrc, .gitignore and .gitattributes', function() {
         assert.file([
             '.editorconfig',
-            '.jshintrc'
+            '.jshintrc',
+            '.gitignore',
+            '.gitattributes'
         ]);
     });
 
     //lets clean os tmp dir
-    after(function(done) {
-        rm(destDir, done);
-    });
+    // after(function(done) {
+    //     rm(destDir, done);
+    // });
 });

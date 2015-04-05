@@ -24,12 +24,17 @@ module.exports = yeoman.generators.Base.extend({
             name: 'applicationVersion',
             message: 'What is a version of your application?',
             default: '0.1.0'
+        }, {
+            name: 'applicationDescription',
+            message: 'How do you describe your application?',
+            default: 'A best application ever'
         }];
 
         this.prompt(prompts, function(props) {
 
             this.applicationName = props.applicationName;
             this.applicationVersion = props.applicationVersion;
+            this.applicationDescription = props.applicationDescription;
 
             done();
         }.bind(this));
@@ -49,6 +54,18 @@ module.exports = yeoman.generators.Base.extend({
             this.fs.copy(
                 this.templatePath('jshintrc'),
                 this.destinationPath('.jshintrc')
+            );
+            this.fs.copy(
+                this.templatePath('editorconfig'),
+                this.destinationPath('.editorconfig')
+            );
+            this.fs.copy(
+                this.templatePath('gitignore'),
+                this.destinationPath('.gitignore')
+            );
+            this.fs.copy(
+                this.templatePath('gitattributes'),
+                this.destinationPath('.gitattributes')
             );
         }
     },
