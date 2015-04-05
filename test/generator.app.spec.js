@@ -40,12 +40,13 @@ describe('mvp:app', function() {
         ]);
     });
 
-    it('it should be able to generate .editorconfig, .jshintrc, .gitignore and .gitattributes', function() {
+    it('it should be able to generate .editorconfig, .jshintrc, .gitignore, .travic.yml and .gitattributes', function() {
         assert.file([
             '.editorconfig',
             '.jshintrc',
             '.gitignore',
-            '.gitattributes'
+            '.gitattributes',
+            '.travic.yml'
         ]);
     });
 
