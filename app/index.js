@@ -71,6 +71,8 @@ module.exports = yeoman.generators.Base.extend({
                 this.templatePath('travic.yml'),
                 this.destinationPath('.travic.yml')
             );
+
+            this.template('_README.md', 'README.md');
         }
     },
 
