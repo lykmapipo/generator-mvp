@@ -1,5 +1,5 @@
 {
     "name": "<%= _.slugify(applicationName) %>",
-    "version": "0.0.0",
+    "version": "<%= applicationVersion %>",
     "dependencies": {}
 }

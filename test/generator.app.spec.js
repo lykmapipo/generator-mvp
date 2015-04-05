@@ -5,7 +5,6 @@ var yg = require('yeoman-generator');
 var assert = yg.assert;
 var helpers = yg.test;
 var appPath = path.resolve(path.join(__dirname, '../app'));
-var tmpPath = path.resolve(path.join(__dirname, '../tmp'));
 var os = require('os');
 var destDir;
 
@@ -17,7 +16,8 @@ describe('mvp:app', function() {
                 'skip-install': true
             })
             .withPrompt({
-                applicationName: 'mvp'
+                applicationName: 'mvp',
+                applicationVersion: '0.1.0'
             })
             .on('ready', function(generator) {
                 //reference destination dir 
@@ -46,7 +46,7 @@ describe('mvp:app', function() {
         ]);
     });
 
-    // lets clean os tmp dir
+    //lets clean os tmp dir
     after(function(done) {
         rm(destDir, done);
     });

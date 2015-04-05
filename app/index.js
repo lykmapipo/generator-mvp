@@ -18,12 +18,18 @@ module.exports = yeoman.generators.Base.extend({
 
         var prompts = [{
             name: 'applicationName',
-            message: 'What Would you like to call your application?',
+            message: 'What would you like to call your application?',
             default: 'mvp'
+        }, {
+            name: 'applicationVersion',
+            message: 'What is a version of your application?',
+            default: '0.1.0'
         }];
 
         this.prompt(prompts, function(props) {
+
             this.applicationName = props.applicationName;
+            this.applicationVersion = props.applicationVersion;
 
             done();
         }.bind(this));
