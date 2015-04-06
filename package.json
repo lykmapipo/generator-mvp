@@ -30,6 +30,7 @@
     "yosay": "^1.0.3"
   },
   "devDependencies": {
+    "inflection": "^1.7.0",
     "mocha": "^2.2.1",
     "rimraf": "^2.3.2"
   }
