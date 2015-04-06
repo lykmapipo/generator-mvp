@@ -52,8 +52,15 @@ describe('mvp:app', function() {
             'config/mongoose.js',
             'app/locals',
             'app/models',
-            'app/routers',
-            'app/views'
+            'app/routers'
+        ]);
+    });
+
+    it('it should be able to generate application view files', function() {
+        assert.file([
+            'app/views',
+            'app/views/errors.html',
+            'app/views/site.html'
         ]);
     });
 
@@ -64,7 +71,14 @@ describe('mvp:app', function() {
         ]);
     });
 
-    it('it should be able to generate application files', function() {
+    it('it should be able to generate application site files', function() {
+        assert.file([
+            'app/routers/site_router.js',
+            'app/views/site/index.html'
+        ]);
+    });
+
+    it('it should be able to generate application test files', function() {
         assert.file([
             'test/locals',
             'test/models',
@@ -74,7 +88,7 @@ describe('mvp:app', function() {
     });
 
     //lets clean os tmp dir
-    // after(function(done) {
-    //     rm(destDir, done);
-    // });
+    after(function(done) {
+        rm(destDir, done);
+    });
 });

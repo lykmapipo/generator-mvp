@@ -90,12 +90,12 @@ module.exports = yeoman.generators.Base.extend({
 
             this.fs.copy(
                 this.templatePath('views/site.html'),
-                this.destinationPath('views/site.html')
+                this.destinationPath('app/views/site.html')
             );
 
             this.fs.copy(
                 this.templatePath('views/errors.html'),
-                this.destinationPath('views/errors.html')
+                this.destinationPath('app/views/errors.html')
             );
         },
 
@@ -148,7 +148,12 @@ module.exports = yeoman.generators.Base.extend({
         },
 
         site: function() {
+            this.template('site/site_router.js', 'app/routers/site_router.js');
 
+            this.fs.copy(
+                this.templatePath('site/index.html'),
+                this.destinationPath('app/views/site/index.html')
+            );
         }
     },
 

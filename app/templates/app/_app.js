@@ -4,7 +4,6 @@
 var path = require('path');
 var _ = require('lodash');
 var express = require('express');
-var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
@@ -26,13 +25,12 @@ require('require-all')({
 var app = express();
 
 // view engine setup
-// use ejs-mate for all ejs templates:
 app.engine('html', ejsEngine);
-app.set('views', path.join(__dirname, 'app', 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// apllication favicon
+// app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 //request logger
 app.use(logger('dev'));
