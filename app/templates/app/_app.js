@@ -17,7 +17,7 @@ var mongoose = require(path.join(__dirname, '..', 'mongoose'));
 
 // load all models recursively
 require('require-all')({
-    dirname: __dirname + '/app/models',
+    dirname: __dirname + '/models',
     filter: /(.+_model)\.js$/,
     excludeDirs: /^\.(git|svn|md)$/
 });
@@ -53,29 +53,22 @@ app.use(require('express-paginate').middleware(10, 50));
 
 //load application locals
 require('require-all')({
-    dirname: __dirname + '/app/locals',
-    filter: /(.+_local)\.js$/,
+    dirname: __dirname + '/locals',
+    filter: /(.+_locals)\.js$/,
     excludeDirs: /^\.(git|svn|md)$/,
-    resolve: function(helper) {
-        if (_.isPlainObject(helper)) {
-            _.keys(helper)
-                .forEach(function(helperKey) {
-                    app.locals[helperKey] = helper[helperKey];
+    resolve: function(local) {
+        if (_.isPlainObject(local)) {
+            _.keys(local)
+                .forEach(function(localKey) {
+                    app.locals[localKey] = local[helperKey];
                 });
         }
     }
 });
 
-//insert application name in locals to be
-//available in views
-app.use(function(request, response, next) {
-    response.locals.title = '<%= applicationName %>';
-    next();
-});
-
 // load all routers recursively
 require('require-all')({
-    dirname: __dirname + '/app/routers',
+    dirname: __dirname + '/routers',
     filter: /(.+_router)\.js$/,
     excludeDirs: /^\.(git|svn|md)$/,
     resolve: function(router) {

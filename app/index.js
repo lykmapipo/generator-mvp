@@ -72,7 +72,6 @@ module.exports = yeoman.generators.Base.extend({
         app: function() {
             this.mkdir('app');
             this.mkdir('app/models');
-            this.mkdir('app/locals');
             this.mkdir('app/routers');
             this.mkdir('app/views');
 
@@ -84,6 +83,11 @@ module.exports = yeoman.generators.Base.extend({
                 this.templatePath('_server.js'),
                 this.destinationPath('server.js')
             );
+        },
+
+        locals: function() {
+            this.mkdir('app/locals');
+            this.template('locals/_application_locals.js', 'app/locals/application_locals.js');
         },
 
         test: function() {

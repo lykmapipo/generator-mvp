@@ -57,6 +57,13 @@ describe('mvp:app', function() {
         ]);
     });
 
+    it('it should be able to generate application locals files', function() {
+        assert.file([
+            'app/locals',
+            'app/locals/application_locals.js',
+        ]);
+    });
+
     it('it should be able to generate application files', function() {
         assert.file([
             'test/locals',
