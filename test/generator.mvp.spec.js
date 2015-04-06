@@ -34,8 +34,9 @@ describe('mvp', function() {
     });
 
 
+    //spec for app generator
     describe('mvp:app', function() {
-        it('it should be able to generate projectfiles', function() {
+        it('it should be able to generate application projectfiles', function() {
             assert.file([
                 'package.json',
                 'bower.json',
