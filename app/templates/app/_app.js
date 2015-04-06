@@ -27,9 +27,9 @@ var app = express();
 
 // view engine setup
 // use ejs-mate for all ejs templates:
-app.engine('ejs', ejsEngine);
+app.engine('html', ejsEngine);
 app.set('views', path.join(__dirname, 'app', 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -90,7 +90,7 @@ app.use(function(request, response, next) {
 if (app.get('env') === 'development') {
     app.use(function(error, request, response, next) {
         response.status(error.status || 500);
-        response.render('_errors/error', {
+        response.render('errors', {
             title: 'Error',
             message: error.message,
             error: error
@@ -102,7 +102,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(error, request, response, next) {
     response.status(error.status || 500);
-    response.render('_errors/error', {
+    response.render('errors', {
         title: 'Error',
         message: error.message,
         error: {}

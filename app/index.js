@@ -73,7 +73,7 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('app');
             this.mkdir('app/models');
             this.mkdir('app/routers');
-            this.mkdir('app/views');
+
 
             this.template('_package.json', 'package.json');
             this.template('_bower.json', 'bower.json');
@@ -82,6 +82,20 @@ module.exports = yeoman.generators.Base.extend({
             this.fs.copy(
                 this.templatePath('_server.js'),
                 this.destinationPath('server.js')
+            );
+        },
+
+        views: function() {
+            this.mkdir('app/views');
+
+            this.fs.copy(
+                this.templatePath('views/site.html'),
+                this.destinationPath('views/site.html')
+            );
+
+            this.fs.copy(
+                this.templatePath('views/errors.html'),
+                this.destinationPath('views/errors.html')
             );
         },
 
@@ -131,6 +145,10 @@ module.exports = yeoman.generators.Base.extend({
             );
 
             this.template('_README.md', 'README.md');
+        },
+
+        site: function() {
+
         }
     },
 
