@@ -73,6 +73,7 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('app');
             this.mkdir('app/models');
             this.mkdir('app/routers');
+            this.mkdir('app/controllers');
 
 
             this.template('_package.json', 'package.json');
@@ -108,6 +109,7 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('test');
             this.mkdir('test/models');
             this.mkdir('test/routers');
+            this.mkdir('test/controllers');
             this.mkdir('test/locals');
             this.mkdir('test/intergration');
         },
@@ -149,6 +151,7 @@ module.exports = yeoman.generators.Base.extend({
 
         site: function() {
             this.template('site/site_router.js', 'app/routers/site_router.js');
+            this.template('site/site_controller.js', 'app/controllers/site_controller.js');
 
             this.fs.copy(
                 this.templatePath('site/index.html'),

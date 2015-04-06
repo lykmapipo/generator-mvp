@@ -50,9 +50,16 @@ describe('mvp:app', function() {
         assert.file([
             'app/application.js',
             'config/mongoose.js',
-            'app/locals',
             'app/models',
-            'app/routers'
+            'app/routers',
+            'app/controllers'
+        ]);
+    });
+
+    it('it should be able to generate application configuration files', function() {
+        assert.file([
+            'config',
+            'config/mongoose.js',
         ]);
     });
 
@@ -73,6 +80,7 @@ describe('mvp:app', function() {
 
     it('it should be able to generate application site files', function() {
         assert.file([
+            'app/controllers/site_controller.js',
             'app/routers/site_router.js',
             'app/views/site/index.html'
         ]);
@@ -82,6 +90,7 @@ describe('mvp:app', function() {
         assert.file([
             'test/locals',
             'test/models',
+            'test/controllers',
             'test/routers',
             'test/intergration'
         ]);

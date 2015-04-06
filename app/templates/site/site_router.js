@@ -1,12 +1,14 @@
 /**
  * Site Router
  *
- * @description server-side router for managing Site.
+ * @description :: Server-side router for managing Site.
  */
 
 //dependencies
+var path = require('path');
 var express = require('express');
 var router = express.Router();
+var controller = require(path.join(__dirname, '..', 'controllers', 'site_controller'));
 
 /**
  * Handle Http GET on /
@@ -15,24 +17,8 @@ var router = express.Router();
  * @param  {HttpResponse} response a http response
  */
 router.get('/', function(request, response) {
-    response.format({
-        'text/html': function() {
-            response.render('site/index');
-        },
-
-        'application/json': function() {
-            response.json({
-                title: '<%= applicationName %>'
-            });
-        },
-
-        'default': function() {
-            // log the request and respond with 406
-            response.status(406).send('Not Acceptable');
-        }
-    });
+    controller.index(request, response);
 });
 
-
-//export site router
+//exports site router
 module.exports = router;
