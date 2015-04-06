@@ -18,7 +18,12 @@ describe('mvp:app', function() {
             .withPrompt({
                 applicationName: 'mvp',
                 applicationVersion: '0.1.0',
-                applicationDescription: 'A best application ever'
+                applicationDescription: 'A best application ever',
+                databaseName: 'mvp',
+                databaseHost: 'localhost',
+                databaseUser: '',
+                databasePassword: '',
+                databasePort: 27017
             })
             .on('ready', function(generator) {
                 //reference destination dir 
@@ -28,20 +33,10 @@ describe('mvp:app', function() {
             .on('end', done);
     });
 
-    it('it should be able to generate package.json', function() {
-        assert.file([
-            'package.json'
-        ]);
-    });
-
-    it('it should be able to generate bower.json', function() {
-        assert.file([
-            'bower.json'
-        ]);
-    });
-
     it('it should be able to generate projectfiles', function() {
         assert.file([
+            'package.json',
+            'bower.json',
             '.editorconfig',
             '.jshintrc',
             '.gitignore',
@@ -51,8 +46,28 @@ describe('mvp:app', function() {
         ]);
     });
 
-    //lets clean os tmp dir
-    after(function(done) {
-        rm(destDir, done);
+    it('it should be able to generate application files', function() {
+        assert.file([
+            'app/application.js',
+            'config/mongoose.js',
+            'app/locals',
+            'app/models',
+            'app/routers',
+            'app/views'
+        ]);
     });
+
+    it('it should be able to generate application files', function() {
+        assert.file([
+            'test/locals',
+            'test/models',
+            'test/routers',
+            'test/intergration'
+        ]);
+    });
+
+    //lets clean os tmp dir
+    // after(function(done) {
+    //     rm(destDir, done);
+    // });
 });

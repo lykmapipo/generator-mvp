@@ -28,13 +28,41 @@ module.exports = yeoman.generators.Base.extend({
             name: 'applicationDescription',
             message: 'How do you describe your application?',
             default: 'A best application ever'
+        }, {
+            name: 'databaseName',
+            message: 'What is your application database name?',
+            default: 'mvp'
+        }, {
+            name: 'databaseHost',
+            message: 'What is your application database host?',
+            default: 'localhost'
+        }, {
+            name: 'databaseUser',
+            message: 'What is your application database username?',
+            default: ''
+        }, {
+            type: 'password',
+            name: 'databasePassword',
+            message: 'What is your application database user password?',
+            default: ''
+        }, {
+            name: 'databasePort',
+            message: 'What is your application database port?',
+            default: 27017
         }];
 
         this.prompt(prompts, function(props) {
-
+            //application options
             this.applicationName = props.applicationName;
             this.applicationVersion = props.applicationVersion;
             this.applicationDescription = props.applicationDescription;
+
+            //database options
+            this.databaseName = props.databaseName;
+            this.databaseHost = props.databaseHost;
+            this.databaseUser = props.databaseUser;
+            this.databasePassword = props.databasePassword;
+            this.databasePort = props.databasePort;
 
             done();
         }.bind(this));
@@ -42,8 +70,34 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: {
         app: function() {
+            this.mkdir('app');
+            this.mkdir('app/models');
+            this.mkdir('app/locals');
+            this.mkdir('app/routers');
+            this.mkdir('app/views');
+
             this.template('_package.json', 'package.json');
             this.template('_bower.json', 'bower.json');
+            this.template('app/_app.js', 'app/application.js');
+
+            this.fs.copy(
+                this.templatePath('_server.js'),
+                this.destinationPath('server.js')
+            );
+        },
+
+        test: function() {
+            this.mkdir('test');
+            this.mkdir('test/models');
+            this.mkdir('test/routers');
+            this.mkdir('test/locals');
+            this.mkdir('test/intergration');
+        },
+
+        config: function() {
+            this.mkdir('config');
+
+            this.template('config/_mongoose.js', 'config/mongoose.js');
         },
 
         projectfiles: function() {
