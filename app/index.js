@@ -90,12 +90,12 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('app/views');
 
             this.fs.copy(
-                this.templatePath('views/site.html'),
+                this.templatePath('views/_site.html'),
                 this.destinationPath('app/views/site.html')
             );
 
             this.fs.copy(
-                this.templatePath('views/errors.html'),
+                this.templatePath('views/_errors.html'),
                 this.destinationPath('app/views/errors.html')
             );
         },
@@ -150,11 +150,11 @@ module.exports = yeoman.generators.Base.extend({
         },
 
         site: function() {
-            this.template('site/site_router.js', 'app/routers/site_router.js');
-            this.template('site/site_controller.js', 'app/controllers/site_controller.js');
+            this.template('site/_site_router.js', 'app/routers/site_router.js');
+            this.template('site/_site_controller.js', 'app/controllers/site_controller.js');
 
             this.fs.copy(
-                this.templatePath('site/index.html'),
+                this.templatePath('site/_index.html'),
                 this.destinationPath('app/views/site/index.html')
             );
         }
