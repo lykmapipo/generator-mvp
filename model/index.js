@@ -9,8 +9,8 @@ module.exports = yeoman.generators.Base.extend({
 
         //prepare model name and fields
         var splits = this.modelDefinition.split(' ');
-        this.modelName = splits[0];
-        this.modelFields = splits[1] || 'name:String';
+        this.modelName = splits.shift();
+        this.modelFields = splits || 'name:String';
 
         //preapare common class names for model generation
         this.className = inflection.camelize(this.modelName);
@@ -19,13 +19,45 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     prepareFields: function() {
-        var fields = this.modelFields;
+        var fields = {};
+        var attributes = this.modelFields;
+
+        //prepare model fields
+        attributes.forEach(function(attribute) {
+
+            var attributeMeta = attribute.split(':');
+
+            var attributeName = attributeMeta.shift();
+            var attributeType =
+                inflection.classify(attributeMeta.shift());
+
+
+            if (attributeType === 'Array') {
+                fields[attributeName] = {
+                    type: JSON.stringify([attributeMeta.shift() || {}])
+                };
+            } else if (attributeType === 'ObjectId') {
+                fields[attributeName] = {
+                    type: attributeType,
+                    ref: "'" + attributeMeta.shift() + "'"
+                };
+
+            } else {
+                fields[attributeName] = {
+                    type: attributeType
+                }
+            }
+        });
+
+        this.fields = fields;
     },
 
     writing: {
         model: function() {
             this.template('_model.js', 'app/models/' + this.modelName + '_model.js');
         },
-        test: function() {}
+        test: function() {
+            this.template('_spec.js', 'test/models/' + this.modelName + '.spec.js');
+        }
     }
 });

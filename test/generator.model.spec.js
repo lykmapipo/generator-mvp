@@ -13,7 +13,7 @@ describe('vp:model generator', function() {
     before(function(done) {
         helpers.run(modelGenerator)
             // .inDir(tmpPath) //I have been getting some errors lets us os.tmpdir
-            .withArguments(['todo complete:Boolean created:Date task:String'])
+            .withArguments(['todo complete:Boolean created:Date task:String task:Array:String comments:Mixed author:ObjectId:User'])
             .on('ready', function(generator) {
                 //reference destination dir 
                 //for later clean ups
@@ -22,14 +22,16 @@ describe('vp:model generator', function() {
             .on('end', done);
     });
 
-    it('should run', function() {
-        console.log('model generator runned');
+    it('it should be able to generate application model', function() {
+        assert.file([
+            'app/models/todo_model.js',
+            'test/models/todo.spec.js'
+        ]);
     });
 
 
-
     //lets clean os tmp dir
-    // after(function(done) {
-    //     rm(destDir, done);
-    // });
+    after(function(done) {
+        rm(destDir, done);
+    });
 });

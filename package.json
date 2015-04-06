@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "inflection": "^1.7.0",
+    "lodash": "^3.6.0",
     "mocha": "^2.2.1",
     "rimraf": "^2.3.2"
   }
