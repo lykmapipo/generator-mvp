@@ -39,9 +39,11 @@ describe('mvp:app generator', function() {
             'bower.json',
             '.editorconfig',
             '.jshintrc',
+            '.bowerrc',
             '.gitignore',
             '.gitattributes',
             '.travis.yml',
+            'Gruntfile.js',
             'README.md'
         ]);
     });
