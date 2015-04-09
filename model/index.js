@@ -68,7 +68,7 @@ module.exports = yeoman.generators.Base.extend({
             this.template('_model.js', 'app/models/' + this.modelName + '_model.js');
         },
         test: function() {
-            this.template('_spec.js', 'test/models/' + this.modelName + '_spec.js');
+            this.template('_spec.js', 'test/models/' + this.modelName + '_model_spec.js');
         }
     }
 });

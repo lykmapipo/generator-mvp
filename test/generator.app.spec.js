@@ -67,7 +67,8 @@ describe('mvp:app generator', function() {
         assert.file([
             'app/views',
             'app/views/errors.html',
-            'app/views/site.html'
+            'app/views/site.html',
+            'app/views/layout.html'
         ]);
     });
 
