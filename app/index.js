@@ -160,6 +160,11 @@ module.exports = yeoman.generators.Base.extend({
                 this.destinationPath('Gruntfile.js')
             );
 
+            this.fs.copy(
+                this.templatePath('yo-rc.json'),
+                this.destinationPath('.yo-rc.json')
+            );
+
             this.template('_README.md', 'README.md');
         },
 
@@ -175,6 +180,31 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
+        //npm install app dependencies
+        this.npmInstall(
+            [
+                'async', 'lodash', 'require-all', 'ejs',
+                'ejs-mate', 'mongoose', 'mongoose-paginate',
+                'mongoose-timestamp', 'express', 'express-paginate',
+                'serve-favicon', 'morgan', 'body-parser', 'method-ovveride'
+            ], {
+                save: true
+            });
+
+        //install dev dependencies
+        this.npmInstall(
+            [
+                'mocha', 'chai', 'faker', 'grunt',
+                'supertest', 'jshint-stylish', 'time-grunt',
+                'load-grunt-tasks', 'grunt-newer', 'grunt-mocha-test',
+                'grunt-concurrent','grunt-contrib-clean',
+                'grunt-contrib-copy','grunt-contrib-jshint',
+                'grunt-contrib-watch',''
+            ], {
+                saveDev: true
+            });
+
+        //install bower and npm dependencies
         this.installDependencies({
             skipInstall: this.options['skip-install']
         });

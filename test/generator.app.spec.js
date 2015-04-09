@@ -43,6 +43,7 @@ describe('mvp:app generator', function() {
             '.gitignore',
             '.gitattributes',
             '.travis.yml',
+            '.yo-rc.json',
             'Gruntfile.js',
             'README.md'
         ]);
