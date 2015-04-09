@@ -9,7 +9,7 @@ module.exports = yeoman.generators.Base.extend({
 
         //prepare model name and fields
         var splits = this.modelDefinition.split(' ');
-        this.modelName = splits.shift();
+        this.modelName = splits.shift().toLowerCase();
         this.modelFields = splits || 'name:String';
 
         //preapare common class names for model generation
@@ -57,7 +57,7 @@ module.exports = yeoman.generators.Base.extend({
             this.template('_model.js', 'app/models/' + this.modelName + '_model.js');
         },
         test: function() {
-            this.template('_spec.js', 'test/models/' + this.modelName + '.spec.js');
+            this.template('_spec.js', 'test/models/' + this.modelName + '_spec.js');
         }
     }
 });
