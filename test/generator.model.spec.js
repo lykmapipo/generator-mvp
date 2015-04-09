@@ -31,7 +31,7 @@ describe('vp:model generator', function() {
 
 
     //lets clean os tmp dir
-    // after(function(done) {
-    //     rm(destDir, done);
-    // });
+    after(function(done) {
+        rm(destDir, done);
+    });
 });
