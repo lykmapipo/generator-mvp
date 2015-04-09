@@ -156,7 +156,7 @@ module.exports = yeoman.generators.Base.extend({
             );
 
             this.fs.copy(
-                this.templatePath('_Gruntfile'),
+                this.templatePath('_Gruntfile.js'),
                 this.destinationPath('Gruntfile.js')
             );
 
@@ -186,7 +186,7 @@ module.exports = yeoman.generators.Base.extend({
                 'async', 'lodash', 'require-all', 'ejs',
                 'ejs-mate', 'mongoose', 'mongoose-paginate',
                 'mongoose-timestamp', 'express', 'express-paginate',
-                'serve-favicon', 'morgan', 'body-parser', 'method-ovveride'
+                'serve-favicon', 'morgan', 'body-parser', 'method-override'
             ], {
                 save: true
             });
@@ -194,12 +194,12 @@ module.exports = yeoman.generators.Base.extend({
         //install dev dependencies
         this.npmInstall(
             [
-                'mocha', 'chai', 'faker', 'grunt',
+                'mocha', 'chai', 'faker', 'grunt', 'grunt-express-server',
                 'supertest', 'jshint-stylish', 'time-grunt',
                 'load-grunt-tasks', 'grunt-newer', 'grunt-mocha-test',
-                'grunt-concurrent','grunt-contrib-clean',
-                'grunt-contrib-copy','grunt-contrib-jshint',
-                'grunt-contrib-watch',''
+                'grunt-concurrent', 'grunt-contrib-clean',
+                'grunt-contrib-copy', 'grunt-contrib-jshint',
+                'grunt-contrib-watch'
             ], {
                 saveDev: true
             });
