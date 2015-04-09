@@ -25,13 +25,13 @@ describe('vp:model generator', function() {
     it('it should be able to generate application model', function() {
         assert.file([
             'app/models/todo_model.js',
-            'test/models/todo.spec.js'
+            'test/models/todo_spec.js'
         ]);
     });
 
 
     //lets clean os tmp dir
-    after(function(done) {
-        rm(destDir, done);
-    });
+    // after(function(done) {
+    //     rm(destDir, done);
+    // });
 });

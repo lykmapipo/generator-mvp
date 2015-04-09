@@ -1,16 +1,25 @@
 'use strict';
 var yeoman = require('yeoman-generator');
+var _ = require('lodash');
 var inflection = require('inflection');
 
 module.exports = yeoman.generators.Base.extend({
     initializing: function() {
-        //grab commandline argumrnts
+
+        //grab commandline arguments
         this.modelDefinition = this.arguments[0];
 
         //prepare model name and fields
         var splits = this.modelDefinition.split(' ');
+
+        //handle console & test adapters
+        if (splits.length <= 1) {
+            splits = _.union(splits, this.arguments);
+        }
+
         this.modelName = splits.shift().toLowerCase();
         this.modelFields = splits || 'name:String';
+
 
         //preapare common class names for model generation
         this.className = inflection.camelize(this.modelName);
@@ -19,6 +28,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     prepareFields: function() {
+
         var fields = {};
         var attributes = this.modelFields;
 
@@ -50,6 +60,7 @@ module.exports = yeoman.generators.Base.extend({
         });
 
         this.fields = fields;
+
     },
 
     writing: {
