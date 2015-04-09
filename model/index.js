@@ -18,7 +18,7 @@ module.exports = yeoman.generators.Base.extend({
         }
 
         this.modelName = splits.shift().toLowerCase();
-        this.modelFields = splits || 'name:String';
+        this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
 
         //preapare common class names for model generation
