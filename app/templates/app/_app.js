@@ -12,7 +12,7 @@ var ejsEngine = require('ejs-mate');
 var methodOverride = require('method-override');
 
 //setup mongoose
-var mongoose = require(path.join(__dirname, '..', 'mongoose'));
+var mongoose = require(path.join(__dirname, '..', 'config', 'mongoose'));
 
 // load all models recursively
 require('require-all')({
@@ -40,7 +40,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(cookieParser());
 app.use(methodOverride('_method'));
 
 //setup public directory
@@ -58,7 +57,7 @@ require('require-all')({
         if (_.isPlainObject(local)) {
             _.keys(local)
                 .forEach(function(localKey) {
-                    app.locals[localKey] = local[helperKey];
+                    app.locals[localKey] = local[localKey];
                 });
         }
     }

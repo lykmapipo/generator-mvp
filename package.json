@@ -1,38 +1,37 @@
 {
-  "name": "generator-mvp",
-  "version": "0.1.0",
-  "description": "Set of generators to kick start an application",
-  "license": "MIT",
-  "main": "app/index.js",
-  "repository": "lykmapipo/generator-mvp",
-  "author": {
-    "name": "lally elias",
-    "email": "lallyelias87@gmail.com",
-    "url": "https://github.com/lykmapipo"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive"
-  },
-  "files": [
-    "app"
-  ],
-  "keywords": [
-    "yeoman-generator",
-    "mvp",
-    "scaffold"
-  ],
-  "dependencies": {
-    "chalk": "^1.0.0",
-    "yeoman-generator": "^0.18.10",
-    "yosay": "^1.0.3"
-  },
-  "devDependencies": {
-    "inflection": "^1.7.0",
-    "lodash": "^3.6.0",
-    "mocha": "^2.2.1",
-    "rimraf": "^2.3.2"
-  }
+    "name": "generator-mvp",
+    "version": "0.1.0",
+    "description": "Set of generators to kick start an application",
+    "license": "MIT",
+    "main": "app/index.js",
+    "repository": "lykmapipo/generator-mvp",
+    "author": {
+        "name": "lally elias",
+        "email": "lallyelias87@gmail.com",
+        "url": "https://github.com/lykmapipo"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "preferGlobal": true,
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --recursive"
+    },
+    "files": ["app"],
+    "keywords": [
+        "yeoman-generator",
+        "mvp",
+        "scaffold"
+    ],
+    "dependencies": {
+        "chalk": "^1.0.0",
+        "yeoman-generator": "^0.18.10",
+        "yosay": "^1.0.3"
+    },
+    "devDependencies": {
+        "inflection": "^1.7.0",
+        "lodash": "^3.6.0",
+        "mocha": "^2.2.1",
+        "rimraf": "^2.3.2"
+    }
 }
