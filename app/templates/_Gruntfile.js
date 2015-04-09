@@ -29,12 +29,20 @@ module.exports = function(grunt) {
             },
             express: {
                 files: [
+                    'server.js',
                     '<%= project.app %>/**/*.*',
                     '<%= project.appConfig %>/**/*.*'
                 ],
-                tasks: ['express:dev'],
+                tasks: ['newer:jshint:all', 'express:dev'],
                 options: {
                     spawn: false
+                }
+            },
+            gruntfile: {
+                files: ['Gruntfile.js'],
+                tasks: ['jshint:gruntfile'],
+                options: {
+                    livereload: false
                 }
             }
         },
@@ -46,35 +54,66 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     script: 'server.js',
+                    /* jshint ignore:start */
                     node_env: 'development'
+                        /* jshint ignore:end */
                 }
             },
             prod: {
                 options: {
                     script: 'server.js',
+                    /* jshint ignore:start */
                     node_env: 'production'
+                        /* jshint ignore:end */
                 }
             },
             test: {
                 options: {
                     script: 'server.js',
+                    /* jshint ignore:start */
                     node_env: 'test'
+                        /* jshint ignore:end */
                 }
             }
         },
 
         //---------------------------
-        //jshint task configuration
+        //js hint task configuration
         //---------------------------
+        // Make sure code styles are up to par and 
+        // there are no obvious mistakes
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
+            },
+            gruntfile: {
+                src: ['Gruntfile.js']
+            },
+            all: {
+                src: [
+                    'server.js',
+                    '<%= project.app %>/**/*.js',
+                    '<%= project.appConfig %>/**/*.js'
+                ]
+            },
+            test: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                src: ['<%= project.test %>/**/*.js']
+            }
+        },
     });
 
     //run in development environment
-    grunt.registerTask('dev', ['express:dev', 'watch']);
+    grunt.registerTask('dev', ['newer:jshint', 'express:dev', 'watch']);
 
     //run in production environment
-    grunt.registerTask('prod', ['express:prod', 'watch']);
+    grunt.registerTask('prod', ['newer:jshint', 'express:prod', 'watch']);
 
     //runt in test environment
-    grunt.registerTask('test', ['express:test', 'watch']);
+    grunt.registerTask('test', ['newer:jshint', 'express:test', 'watch']);
+
 
 };

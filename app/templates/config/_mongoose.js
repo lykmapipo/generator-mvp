@@ -35,7 +35,7 @@ var mongoOptions = {
 };
 
 //establish database connection
-mongoose.connect(uristring, mongoOptions, function(error, response) {
+mongoose.connect(uristring, mongoOptions, function(error /*, response*/ ) {
     if (error) {
         console.log('ERROR connecting to: ' + uristring + '. ' + error);
     } else {

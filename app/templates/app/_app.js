@@ -4,15 +4,15 @@
 var path = require('path');
 var _ = require('lodash');
 var express = require('express');
-var favicon = require('serve-favicon');
+// un comment after adding application favicon in public directory
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var requireAll = require('require-all');
 var ejsEngine = require('ejs-mate');
 var methodOverride = require('method-override');
 
 //setup mongoose
-var mongoose = require(path.join(__dirname, '..', 'config', 'mongoose'));
+require(path.join(__dirname, '..', 'config', 'mongoose'));
 
 // load all models recursively
 require('require-all')({
@@ -30,6 +30,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
 // apllication favicon
+// un comment after adding application favicon in public directory
 // app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 //request logger
@@ -85,7 +86,7 @@ app.use(function(request, response, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(error, request, response, next) {
+    app.use(function(error, request, response/*, next*/) {
         response.status(error.status || 500);
         response.render('errors', {
             title: 'Error',
@@ -97,7 +98,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(error, request, response, next) {
+app.use(function(error, request, response/*, next*/) {
     response.status(error.status || 500);
     response.render('errors', {
         title: 'Error',
