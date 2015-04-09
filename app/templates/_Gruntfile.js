@@ -20,9 +20,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         project: appConfig,
 
-        //--------------------------
+        //------------------------------------------------------------
         //watch task configuration
-        //--------------------------
+        //------------------------------------------------------------
         watch: {
             options: {
                 livereload: true
@@ -44,12 +44,19 @@ module.exports = function(grunt) {
                 options: {
                     livereload: false
                 }
+            },
+            test: {
+                files: ['<%= project.test %>/**/*.js'],
+                tasks: ['newer:jshint:test'],
+                options: {
+                    livereload: false
+                }
             }
         },
 
-        //----------------------------------
+        //------------------------------------------------------------
         //express server task configuration
-        //----------------------------------
+        //------------------------------------------------------------
         express: {
             dev: {
                 options: {
@@ -77,9 +84,9 @@ module.exports = function(grunt) {
             }
         },
 
-        //---------------------------
+        //------------------------------------------------------------
         //js hint task configuration
-        //---------------------------
+        //------------------------------------------------------------
         // Make sure code styles are up to par and 
         // there are no obvious mistakes
         jshint: {
@@ -104,6 +111,19 @@ module.exports = function(grunt) {
                 src: ['<%= project.test %>/**/*.js']
             }
         },
+
+        //------------------------------------------------------------
+        // mocha test task configuration
+        //------------------------------------------------------------
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                },
+                src: ['<%= project.test %>/**/*.js']
+            }
+        }
+
     });
 
     //run in development environment
@@ -112,8 +132,14 @@ module.exports = function(grunt) {
     //run in production environment
     grunt.registerTask('prod', ['newer:jshint', 'express:prod', 'watch']);
 
-    //runt in test environment
+    //run in test environment
     grunt.registerTask('test', ['newer:jshint', 'express:test', 'watch']);
+
+    //run specifications
+    grunt.registerTask('spec', ['mochaTest']);
+
+    //default run jshint and test
+    grunt.registerTask('default', ['newer:jshint', 'mochaTest']);
 
 
 };
