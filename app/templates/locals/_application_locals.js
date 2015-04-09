@@ -5,5 +5,5 @@
  * @type {Object}
  */
 module.exports = {
-    title: '<%= applicationName %>'
+    applicationName: 'mvp'
 }

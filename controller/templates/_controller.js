@@ -20,13 +20,13 @@ module.exports = {
         response.format({
             'text/html': function() {
                 response.render('<%= controllerName %>/<%= action %>', {
-                    title: '<%= controllerName %>'
+                    title: '<%= controllerName %> <%= controllerName %>'
                 });
             },
 
             'application/json': function() {
                 response.json({
-                    title: '<%= controllerName %>'
+                    title: '<%= controllerName %> <%= controllerName %>'
                 });
             },
 
@@ -46,13 +46,13 @@ module.exports = {
         response.format({
             'text/html': function() {
                 response.render('<%= controllerName %>/<%= action %>', {
-                    title: '<%= controllerName %>'
+                    title: '<%= controllerName %> <%= controllerName %>'
                 });
             },
 
             'application/json': function() {
                 response.json({
-                    title: '<%= controllerName %>'
+                    title: '<%= controllerName %> <%= controllerName %>'
                 });
             },
 

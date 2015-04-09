@@ -17,7 +17,7 @@ var controller = require(path.join(__dirname, '..', 'controllers', '<%= controll
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.get('<%= classPlural.toLowerCase()%>/<%= action %>', function(request, response) {
+router.get('/<%= classPlural.toLowerCase()%>/<%= action %>', function(request, response) {
     controller.<%= action %>(request, response);
 });
 <%});%>
