@@ -44,7 +44,13 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride('_method'));
 
 //setup public directory
-app.use(express.static(path.join(__dirname, '..', 'public')));
+if (app.get('env') === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'public')));
+}
+
+if (app.get('env') === 'development') {
+    app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
+}
 
 //setup mongoose pagination middleware
 app.use(require('express-paginate').middleware(10, 50));
@@ -86,7 +92,7 @@ app.use(function(request, response, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(error, request, response/*, next*/) {
+    app.use(function(error, request, response /*, next*/ ) {
         response.status(error.status || 500);
         response.render('errors', {
             title: 'Error',
@@ -98,7 +104,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(error, request, response/*, next*/) {
+app.use(function(error, request, response /*, next*/ ) {
     response.status(error.status || 500);
     response.render('errors', {
         title: 'Error',

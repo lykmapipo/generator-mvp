@@ -204,6 +204,14 @@ module.exports = yeoman.generators.Base.extend({
                 saveDev: true
             });
 
+        //install bower components
+        this.bowerInstall(
+            [
+                'jquery', 'bootstrap', 'fontawesome'
+            ], {
+                save: true
+            });
+
         //install bower and npm dependencies
         this.installDependencies({
             skipInstall: this.options['skip-install']
