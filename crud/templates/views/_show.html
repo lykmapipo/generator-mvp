@@ -1,0 +1,22 @@
+<%- layout('site.html') %>
+
+<div class="page-header">
+  <h1>{{= classSingular}}</h1>
+</div>
+
+<dl class="dl-horizontal">
+  {{attributes.forEach(function (attribute) { }}
+      <dt><strong>{{= inflection.classify(attribute.name) }}</strong></dt>
+      <dd><%= {{=singular}}.{{=attribute.name}} %></dd>
+  {{ }); }}
+</dl>
+
+<div class="pull-right">
+	<a href="/{{=plural}}/<%={{=singular}}._id%>/edit" title="Edit {{=singular}}" class="btn btn-primary">
+        Edit
+    </a>
+	<form method="POST" action="/{{=plural}}/<%={{=singular}}._id%>?_method=DELETE" role="form">
+        <button type="submit" class="btn btn-danger" title="Delete {{=singular}}">Delete</button>
+    </form>
+	<a href="/{{=plural}}" class="btn btn-default" title="View all {{=plural}}">Back</a>
+</div>
