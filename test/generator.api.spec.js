@@ -21,9 +21,7 @@ describe('mvp:api generator', function() {
                 //for later clean ups
                 destDir = path.join(os.tmpdir(), generator.appname);
             })
-            .withGenerators(
-                [modelGenerator]
-            )
+            .withGenerators([modelGenerator])
             .on('end', done);
     });
 

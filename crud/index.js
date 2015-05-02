@@ -38,7 +38,8 @@ module.exports = yeoman.generators.Base.extend({
             this.template('_router.js', 'app/routers/' + this.controllerName + '_router.js');
         },
         test: function() {
-            this.template('_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
+            this.template('_controller_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
+            this.template('_router_spec.js', 'test/routers/' + this.controllerName + '_router_spec.js');
         },
         model: function() {
             this.composeWith('mvp:model', {
