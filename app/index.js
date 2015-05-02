@@ -6,6 +6,9 @@ var yosay = require('yosay');
 module.exports = yeoman.generators.Base.extend({
     initializing: function() {
         this.pkg = require('../package.json');
+
+        //we expect this options
+        this.option('skip-frontend');
     },
 
     prompting: function() {
@@ -64,6 +67,10 @@ module.exports = yeoman.generators.Base.extend({
             this.databasePassword = props.databasePassword;
             this.databasePort = props.databasePort;
 
+            //generator options
+            this.frontend = !(this.options['skip-frontend'] || false);
+            this.install = !(this.options['skip-install'] || false);
+
             done();
         }.bind(this));
     },
@@ -77,7 +84,11 @@ module.exports = yeoman.generators.Base.extend({
 
 
             this.template('_package.json', 'package.json');
-            this.template('_bower.json', 'bower.json');
+
+            if (this.frontend) {
+                this.template('_bower.json', 'bower.json');
+            }
+
             this.template('app/_app.js', 'app/application.js');
 
             this.fs.copy(
@@ -87,22 +98,25 @@ module.exports = yeoman.generators.Base.extend({
         },
 
         views: function() {
-            this.mkdir('app/views');
+            if (this.frontend) {
 
-            this.fs.copy(
-                this.templatePath('views/_site.html'),
-                this.destinationPath('app/views/site.html')
-            );
+                this.mkdir('app/views');
 
-            this.fs.copy(
-                this.templatePath('views/_site.html'),
-                this.destinationPath('app/views/layout.html')
-            );
+                this.fs.copy(
+                    this.templatePath('views/_site.html'),
+                    this.destinationPath('app/views/site.html')
+                );
 
-            this.fs.copy(
-                this.templatePath('views/_errors.html'),
-                this.destinationPath('app/views/errors.html')
-            );
+                this.fs.copy(
+                    this.templatePath('views/_site.html'),
+                    this.destinationPath('app/views/layout.html')
+                );
+
+                this.fs.copy(
+                    this.templatePath('views/_errors.html'),
+                    this.destinationPath('app/views/errors.html')
+                );
+            }
         },
 
         locals: function() {
@@ -134,10 +148,15 @@ module.exports = yeoman.generators.Base.extend({
                 this.templatePath('jshintrc'),
                 this.destinationPath('.jshintrc')
             );
-            this.fs.copy(
-                this.templatePath('bowerrc'),
-                this.destinationPath('.bowerrc')
-            );
+
+            if (this.frontend) {
+
+                this.fs.copy(
+                    this.templatePath('bowerrc'),
+                    this.destinationPath('.bowerrc')
+                );
+            }
+
             this.fs.copy(
                 this.templatePath('editorconfig'),
                 this.destinationPath('.editorconfig')
@@ -169,52 +188,62 @@ module.exports = yeoman.generators.Base.extend({
         },
 
         site: function() {
-            this.template('site/_site_router.js', 'app/routers/site_router.js');
-            this.template('site/_site_controller.js', 'app/controllers/site_controller.js');
+            if (this.frontend) {
 
-            this.fs.copy(
-                this.templatePath('site/_index.html'),
-                this.destinationPath('app/views/site/index.html')
-            );
+                this.template('site/_site_router.js', 'app/routers/site_router.js');
+                this.template('site/_site_controller.js', 'app/controllers/site_controller.js');
+
+                this.fs.copy(
+                    this.templatePath('site/_index.html'),
+                    this.destinationPath('app/views/site/index.html')
+                );
+            } else {
+                this.composeWith('mvp:controller', {
+                    args: ['site', 'index'],
+                    options: {
+                        'skip-frontend': !this.frontend
+                    }
+                });
+            }
         }
     },
 
     install: function() {
-        //npm install app dependencies
-        this.npmInstall(
-            [
-                'async', 'lodash', 'require-all', 'ejs',
-                'ejs-mate', 'mongoose', 'mongoose-paginate',
-                'mongoose-timestamp', 'express', 'express-paginate',
-                'serve-favicon', 'morgan', 'body-parser', 'method-override'
-            ], {
-                save: true
-            });
+        if (this.install) {
+            //npm install app dependencies
+            this.npmInstall(
+                [
+                    'async', 'lodash', 'require-all', 'ejs',
+                    'ejs-mate', 'mongoose', 'mongoose-paginate',
+                    'mongoose-timestamp', 'express', 'express-paginate',
+                    'serve-favicon', 'morgan', 'body-parser', 'method-override'
+                ], {
+                    save: true
+                });
 
-        //install dev dependencies
-        this.npmInstall(
-            [
-                'mocha', 'chai', 'faker', 'grunt', 'grunt-express-server',
-                'supertest', 'jshint-stylish', 'time-grunt',
-                'load-grunt-tasks', 'grunt-newer', 'grunt-mocha-test',
-                'grunt-concurrent', 'grunt-contrib-clean',
-                'grunt-contrib-copy', 'grunt-contrib-jshint',
-                'grunt-contrib-watch'
-            ], {
-                saveDev: true
-            });
+            //install dev dependencies
+            this.npmInstall(
+                [
+                    'mocha', 'chai', 'faker', 'grunt', 'grunt-express-server',
+                    'supertest', 'jshint-stylish', 'time-grunt',
+                    'load-grunt-tasks', 'grunt-newer', 'grunt-mocha-test',
+                    'grunt-concurrent', 'grunt-contrib-clean',
+                    'grunt-contrib-copy', 'grunt-contrib-jshint',
+                    'grunt-contrib-watch'
+                ], {
+                    saveDev: true
+                });
 
-        //install bower components
-        this.bowerInstall(
-            [
-                'jquery', 'bootstrap', 'fontawesome'
-            ], {
-                save: true
-            });
+            //install bower components
+            this.bowerInstall(
+                [
+                    'jquery', 'bootstrap', 'fontawesome'
+                ], {
+                    save: true
+                });
 
-        //install bower and npm dependencies
-        this.installDependencies({
-            skipInstall: this.options['skip-install']
-        });
+            //install bower and npm dependencies
+            this.installDependencies();
+        }
     }
 });

@@ -25,6 +25,9 @@ module.exports = yeoman.generators.Base.extend({
         this.className = inflection.camelize(this.controllerName);
         this.classPlural = inflection.pluralize(this.className);
 
+        //generator options
+        this.frontend = !(this.options['skip-frontend'] || false);
+
     },
 
 
@@ -36,14 +39,16 @@ module.exports = yeoman.generators.Base.extend({
             this.template('_router.js', 'app/routers/' + this.controllerName + '_router.js');
         },
         views: function() {
-            var me = this;
-            //write view for each controller action
-            this.actions.forEach(function(controllerAction) {
-                me.fs.copy(
-                    me.templatePath('_view.js'),
-                    me.destinationPath('app/views/' + me.controllerName + '/' + controllerAction + '.html')
-                );
-            });
+            if (this.frontend) {
+                var me = this;
+                //write view for each controller action
+                this.actions.forEach(function(controllerAction) {
+                    me.fs.copy(
+                        me.templatePath('_view.js'),
+                        me.destinationPath('app/views/' + me.controllerName + '/' + controllerAction + '.html')
+                    );
+                });
+            }
         },
         test: function() {
             this.template('_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
