@@ -4,11 +4,13 @@
 var path = require('path');
 var _ = require('lodash');
 var express = require('express');
-// un comment after adding application favicon in public directory
-// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+<%if(frontend){%>
+// un comment after adding application favicon in public directory
+// var favicon = require('serve-favicon');
 var ejsEngine = require('ejs-mate');
+<%}%>
 var methodOverride = require('method-override');
 
 //setup mongoose
@@ -23,7 +25,7 @@ require('require-all')({
 
 //create an express application
 var app = express();
-
+<%if(frontend){%>
 // view engine setup
 app.engine('html', ejsEngine);
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +35,7 @@ app.set('view engine', 'html');
 // un comment after adding application favicon in public directory
 // app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
+<%}%>
 //request logger
 app.use(logger('dev'));
 
@@ -43,7 +46,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(methodOverride('_method'));
 
-//setup public directory
+<%if(frontend){%>
+//setup public directories
 if (app.get('env') === 'production') {
     app.use(express.static(path.join(__dirname, '..', 'public')));
 }
@@ -51,8 +55,9 @@ if (app.get('env') === 'production') {
 if (app.get('env') === 'development') {
     app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
 }
+<%}%>
 
-//setup mongoose pagination middleware
+//setup mongoose express pagination middleware
 app.use(require('express-paginate').middleware(10, 50));
 
 //load application locals

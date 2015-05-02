@@ -27,7 +27,8 @@ describe('mvp:controller generator', function() {
             'app/controllers/todo_controller.js',
             'app/views/todo/index.html',
             'app/views/todo/edit.html',
-            'test/controllers/todo_controller_spec.js'
+            'test/controllers/todo_controller_spec.js',
+            'test/routers/todo_router_spec.js'
         ]);
     });
 
