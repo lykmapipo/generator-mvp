@@ -1,7 +1,11 @@
 'use strict';
+
+//dependencies
+var path = require('path');
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
 var inflection = require('inflection');
+var Utils = require(path.join(__dirname, '..', 'utils'));
 
 module.exports = yeoman.generators.Base.extend({
     initializing: function() {
@@ -28,39 +32,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     prepareFields: function() {
-
-        var fields = {};
-        var attributes = this.modelFields;
-
-        //prepare model fields
-        attributes.forEach(function(attribute) {
-
-            var attributeMeta = attribute.split(':');
-
-            var attributeName = attributeMeta.shift();
-            var attributeType =
-                inflection.classify(attributeMeta.shift());
-
-
-            if (attributeType === 'Array') {
-                fields[attributeName] = {
-                    type: JSON.stringify([attributeMeta.shift() || {}])
-                };
-            } else if (attributeType === 'ObjectId') {
-                fields[attributeName] = {
-                    type: attributeType,
-                    ref: "'" + attributeMeta.shift() + "'"
-                };
-
-            } else {
-                fields[attributeName] = {
-                    type: attributeType
-                }
-            }
-        });
-
-        this.fields = fields;
-
+        Utils.prepareSchemaFields.call(this);
     },
 
     writing: {
