@@ -23,6 +23,11 @@ describe('<%= className %> Controller', function() {
         done()
     });
 
+    it('should be able to return new <%=singular %> creation form on <%= className%>Controller#new', function(done) {
+        //TODO write spec
+        done()
+    });
+
     it('should be able to create new <%=singular %> on <%= className%>Controller#create', function(done) {
         //TODO write spec
         done()
@@ -33,6 +38,10 @@ describe('<%= className %> Controller', function() {
         done()
     });
     
+    it('should be able to return existing <%= singular %> update form on <%= className%>Controller#edit', function(done) {
+        //TODO write spec
+        done()
+    });
 
     it('should be able to update existing <%= singular %> on <%= className%>Controller#update', function(done) {
         //TODO write spec

@@ -11,7 +11,9 @@ var <%= className %> = mongoose.model('<%= className %>');
  */
 module.exports = {
     /**
-     * <%= classPlural.toLowerCase() %>.index()
+     * @function
+     * @name <%= classPlural.toLowerCase() %>.index()
+     * @description display a list of all <%= classPlural.toLowerCase() %>
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
@@ -56,7 +58,9 @@ module.exports = {
 
     
     /**
-     * <%= classPlural.toLowerCase() %>.create()
+     * @function
+     * @name <%= classPlural.toLowerCase() %>.create()
+     * @description create a new <%= className.toLowerCase() %>
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
@@ -90,7 +94,9 @@ module.exports = {
 
 
     /**
-     * <%= classPlural.toLowerCase() %>.show()
+     * @function
+     * @name <%= classPlural.toLowerCase() %>.show()
+     * @description display a specific <%= className.toLowerCase() %>
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
@@ -125,7 +131,9 @@ module.exports = {
 
 
     /**
-     * <%= classPlural.toLowerCase() %>.update()
+     * @function
+     * @name <%= classPlural.toLowerCase() %>.update()
+     * @description update a specific <%= className.toLowerCase() %>
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
@@ -163,7 +171,9 @@ module.exports = {
 
 
     /**
-     * <%= classPlural.toLowerCase() %>.destroy()
+     * @function
+     * @name <%= classPlural.toLowerCase() %>.destroy()
+     * @description delete a specific <%= className.toLowerCase() %>
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */

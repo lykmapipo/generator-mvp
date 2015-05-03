@@ -24,12 +24,23 @@ describe('<%= className %> Router', function() {
         done()
     });
 
+    it('should be able to return new <%= singular%> creation form when http get on /<%=plural%>/new', function(done) {
+        //TODO write spec
+        done()
+    });
+
     it('should be able to create new <%= singular%> when http post on /<%=plural%>', function(done) {
         //TODO write spec
         done()
     });
 
     it('should be able to find <%= singular %> when http get on /<%=plural%>/:id', function(done) {
+        //TODO write spec
+        done()
+    });
+
+
+    it('should be able to return existing <%= singular %> update form when http get on /<%=plural%>/:id/edit', function(done) {
         //TODO write spec
         done()
     });

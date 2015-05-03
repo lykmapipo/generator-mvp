@@ -98,6 +98,12 @@ describe('mvp:app generator', function() {
         ]);
     });
 
+    it('should be able to generate test bootstrap file', function() {
+        assert.file([
+            'test/bootstrap.spec.js'
+        ]);
+    });
+
     //lets clean os tmp dir
     after(function(done) {
         rm(destDir, done);
