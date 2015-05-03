@@ -56,17 +56,6 @@ router.get('/<%= classPlural.toLowerCase() %>/:id', function(request, response) 
 
 
 /**
- * Handle Http GET on /<%= classPlural.toLowerCase() %>/:id/show
- * @description display a specific <%= className.toLowerCase() %>
- * @param  {HttpRequest} request  a http request
- * @param  {HttpResponse} response a http response
- */
-router.get('/<%= classPlural.toLowerCase() %>/:id/show', function(request, response) {
-    controller.show(request, response);
-});
-
-
-/**
  * Handle Http GET on /<%= classPlural.toLowerCase() %>/:id/edit
  * @description return an HTML form for editing a specific <%= className.toLowerCase() %>
  * @param  {HttpRequest} request  a http request

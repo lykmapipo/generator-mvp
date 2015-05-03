@@ -42,7 +42,7 @@ module.exports = yeoman.generators.Base.extend({
     prepareLinks: function() {
         this.createLink = '/' + this.plural + '/new';
         this.editLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>/edit';
-        this.viewLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>/show';
+        this.viewLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>';
         this.deleteLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>?_method=DELETE';
         this.createAction = '<%= ' + this.singular + '._id' + ' ? ' + '\'' + '/' + this.plural + '/\'' + '+ ' + this.singular + '._id' + ' +' + '\'?_method=PUT' + '\'' + ' : ' + '\'/' + this.plural + '\'' + ' %>';
         this.tableDataLoopStart = '<% ' + this.plural + '.forEach(function (' + this.singular + ') {%>';
