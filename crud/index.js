@@ -44,8 +44,9 @@ module.exports = yeoman.generators.Base.extend({
         this.editLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>/edit';
         this.viewLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>/show';
         this.deleteLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>?_method=DELETE';
+        this.createAction = '<%= ' + this.singular + '._id' + ' ? ' + '\'' + '/' + this.plural + '/\'' + '+ ' + this.singular + '._id' + ' +' + '\'?_method=PUT' + '\'' + ' : ' + '\'/' + this.plural + '\'' + ' %>';
         this.tableDataLoopStart = '<% ' + this.plural + '.forEach(function (' + this.singular + ') {%>';
-        this.tableDataCheck = '<% if(' + this.plural + '){ %>';
+        this.tableDataCheck = '<% if(' + this.plural + ' && ' + this.plural + '.length > 0) { %> ';
     },
 
     writing: {
@@ -68,6 +69,7 @@ module.exports = yeoman.generators.Base.extend({
         views: function() {
 
             //writes templates
+            this.template('views/_form.html', 'app/views/' + this.plural + '/_form.html');
             this.template('views/_new.html', 'app/views/' + this.plural + '/new.html');
             this.template('views/_edit.html', 'app/views/' + this.plural + '/edit.html');
             this.template('views/_show.html', 'app/views/' + this.plural + '/show.html');

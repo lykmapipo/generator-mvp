@@ -118,6 +118,11 @@ module.exports = yeoman.generators.Base.extend({
                     this.templatePath('views/_errors.html'),
                     this.destinationPath('app/views/errors.html')
                 );
+
+                this.fs.copy(
+                    this.templatePath('views/_partials/_errors.html'),
+                    this.destinationPath('app/views/_partials/_errors.html')
+                );
             }
         },
 

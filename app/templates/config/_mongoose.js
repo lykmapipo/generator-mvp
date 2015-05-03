@@ -13,7 +13,7 @@ var config = {
 };
 
 //generate mongoose connection uri string
-var port = (config.port.length > 0) ? ':' + config.port : '';
+var port = config.port ? ':' + config.port : '';
 var login = (config.user.length > 0) ? config.user + ':' + config.password + '@' : '';
 var uristring = 'mongodb://' + login + config.host + port + '/' + config.database;
 
@@ -35,13 +35,10 @@ var mongoOptions = {
 };
 
 //establish database connection
-mongoose.connect(uristring, mongoOptions, function(error /*, response*/ ) {
-    if (error) {
-        console.log('ERROR connecting to: ' + uristring + '. ' + error);
-    } else {
-        console.log('Successfully connected to: ' + uristring);
-    }
-});
+mongoose.connect(uristring, mongoOptions);
 
-//export mongoose
+/**
+ * @description export mongoose
+ * @type {Mongoose}
+ */
 module.exports = mongoose;

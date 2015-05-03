@@ -52,12 +52,14 @@ module.exports = {
         attributeNames.forEach(function(attributeName) {
 
             var attributeType = attributes[attributeName].type;
+            var accessor = className + '.' + attributeName;
 
             if (attributeType === 'Number') {
                 formFields.push({
                     name: attributeName,
                     label: inflection.classify(attributeName),
-                    accessor: '<%= ' + className + '.' + attributeName + ' %>',
+                    accessor: '<%= ' + accessor + ' %>',
+                    value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>',
                     type: 'number'
                 });
             } else {
@@ -65,6 +67,7 @@ module.exports = {
                     name: attributeName,
                     label: inflection.classify(attributeName),
                     accessor: '<%= ' + className + '.' + attributeName + ' %>',
+                    value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>',
                     type: 'text'
                 });
             }

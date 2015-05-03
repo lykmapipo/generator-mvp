@@ -6,6 +6,7 @@
  */
 
 //dependencies
+var path = require('path');
 var express = require('express');
 var router = express.Router();
 var controller = require(path.join(__dirname, '..', 'controllers', '<%= controllerName %>_controller'));
@@ -50,6 +51,17 @@ router.post('/<%= classPlural.toLowerCase() %>', function(request, response) {
  * @param  {HttpResponse} response a http response
  */
 router.get('/<%= classPlural.toLowerCase() %>/:id', function(request, response) {
+    controller.show(request, response);
+});
+
+
+/**
+ * Handle Http GET on /<%= classPlural.toLowerCase() %>/:id/show
+ * @description display a specific <%= className.toLowerCase() %>
+ * @param  {HttpRequest} request  a http request
+ * @param  {HttpResponse} response a http response
+ */
+router.get('/<%= classPlural.toLowerCase() %>/:id/show', function(request, response) {
     controller.show(request, response);
 });
 
