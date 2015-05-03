@@ -9,9 +9,10 @@
 //dependencies
 var mongoose = require('mongoose');
 var faker = require('faker');
+var expect = require('chai').expect;
 var <%= className %> = mongoose.model('<%= className %>');
 
-describe('<%= className %>', function() {
+describe('<%= className %> Model', function() {
     before(function(done) {
         //TODO write spec setup
         done()

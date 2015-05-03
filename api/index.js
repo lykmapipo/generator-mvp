@@ -26,20 +26,22 @@ module.exports = yeoman.generators.Base.extend({
 
         //preapare common class names for endpoints generation
         this.className = inflection.camelize(this.controllerName);
+        this.singular = this.className.toLowerCase();
+
         this.classPlural = inflection.pluralize(this.className);
+        this.plural = this.classPlural.toLowerCase();
 
     },
 
     writing: {
         controller: function() {
             this.template('_controller.js', 'app/controllers/' + this.controllerName + '_controller.js');
+            this.template('_controller_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
         },
         router: function() {
             this.template('_router.js', 'app/routers/' + this.controllerName + '_router.js');
-        },
-        test: function() {
-            this.template('_controller_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
             this.template('_router_spec.js', 'test/routers/' + this.controllerName + '_router_spec.js');
+
         },
         model: function() {
             this.composeWith('mvp:model', {
