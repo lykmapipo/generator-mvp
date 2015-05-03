@@ -1,7 +1,7 @@
 {
     "name": "generator-mvp",
     "version": "0.1.0",
-    "description": "Set of generators to kick start an application",
+    "description": "Set of generators to kick start nodejs application",
     "license": "MIT",
     "main": "app/index.js",
     "repository": "lykmapipo/generator-mvp",
