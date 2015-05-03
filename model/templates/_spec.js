@@ -38,4 +38,9 @@ describe('<%= className %> Model', function() {
         done()
     });
 
+     after(function(done) {
+        //TODO write spec cleanup
+        done();
+    });
+
 });
