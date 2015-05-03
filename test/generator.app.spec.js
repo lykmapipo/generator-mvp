@@ -1,4 +1,6 @@
 'use strict';
+
+//dependencies
 var path = require('path');
 var rm = require('rimraf');
 var yg = require('yeoman-generator');
@@ -49,15 +51,22 @@ describe('mvp:app generator', function() {
         ]);
     });
 
-    it('it should be able to generate application files', function() {
+    it('it should be able to generate application directory structure', function() {
         assert.file([
-            'app/application.js',
-            'config/mongoose.js',
+            'config',
             'app/models',
+            'app/locals',
             'app/routers',
-            'app/controllers'
+            'app/controllers',
+            'app/views',
+            'test/models',
+            'test/locals',
+            'test/routers',
+            'test/controllers',
+            'test/intergration',
         ]);
     });
+
 
     it('it should be able to generate application configuration files', function() {
         assert.file([
@@ -68,17 +77,16 @@ describe('mvp:app generator', function() {
 
     it('it should be able to generate application view files', function() {
         assert.file([
-            'app/views',
             'app/views/errors.html',
             'app/views/site.html',
-            'app/views/layout.html'
+            'app/views/layout.html',
+            'app/views/_partials/_errors.html'
         ]);
     });
 
     it('it should be able to generate application locals files', function() {
         assert.file([
-            'app/locals',
-            'app/locals/application_locals.js',
+            'app/locals/application_locals.js'
         ]);
     });
 
@@ -89,17 +97,6 @@ describe('mvp:app generator', function() {
             'app/views/site/index.html'
         ]);
     });
-
-    it('it should be able to generate application test files', function() {
-        assert.file([
-            'test/locals',
-            'test/models',
-            'test/controllers',
-            'test/routers',
-            'test/intergration'
-        ]);
-    });
-
 
     //lets clean os tmp dir
     after(function(done) {

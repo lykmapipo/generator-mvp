@@ -1,5 +1,6 @@
 'use strict';
 
+//dependencies
 var path = require('path');
 var rm = require('rimraf');
 var yg = require('yeoman-generator');
