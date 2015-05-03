@@ -31,8 +31,8 @@ Available generators:
 
 * [mvp](#app) (aka [mvp:app](#app))
 * [mvp:controller](#controller)
-* [mvp:api](#api)
 * [mvp:model](#model)
+* [mvp:api](#api)
 * [mvp:scaffold](#scaffold)
 
 And more to come based on what we daily need in our `expressjs` an `mongoose` development workflows.
@@ -42,12 +42,55 @@ Sets up a new  `expressjs` and `mongoose` app, generating all the boilerplate yo
 
 Example of generating an application including frontend: 
 ```bash
-yo mvp
+$ yo mvp
 ```
 
 If you only want to develop API first application you may opt to disable frontend by:
 ```bash
-yo mvp --skip-frontend
+$ yo mvp --skip-frontend
+```
+
+### Controller
+Set up new `controller`, its `actions` and an express router. To generate a new controller invoke `yo mvp:controller` giving its name and actions separated by space.
+
+Example of generating controller including frontend
+```bash
+$ yo mvp:controller index create edit
+``` 
+
+Example of generating controller without frontend
+```bash
+$ yo mvp:controller index create edit --skip-frontend
+``` 
+
+### Model
+Set up new mongoose `Schema` with its `spec/test` boilerplate and register it to mongoose. To generate new model invoke `yo mvp:model` with model name and its attributes separated by space.
+
+Example of generating simple model
+```bash
+$ yo mvp:model User name:String dob:Date
+```
+
+Example of generating model including `refs` to other model
+```bash
+$ yo mvp:model Post content:String author:ObjectId:User 
+```
+Most of mongoose type are supported.
+
+### Api
+Set up new mongoose `model`, `controller`, `router` and their `spec/test` boilerplates. To generate a new api invoke `yo mvp:api` followed with model definition
+
+Example of generating simple api
+```bash
+$ yo mvp:api User name:String dob:Date
+```
+
+### Scaffold
+Set up new mongoose `model`, `controller`, `router`, their `spec/test` boilerplates and bootstrap `crud views`.
+
+Example of scaffolding a simple model
+```bash
+$ yo mvp:scaffold User name:String dob:Date
 ```
 
 ## Contributing
