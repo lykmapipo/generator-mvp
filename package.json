@@ -21,7 +21,17 @@
     "keywords": [
         "yeoman-generator",
         "mvp",
-        "scaffold"
+        "scaffold",
+        "controller",
+        "model",
+        "view",
+        "generator",
+        "startup",
+        "kickstart",
+        "mongoose",
+        "express",
+        "bootstrap",
+        "connect"
     ],
     "dependencies": {
         "chalk": "^1.0.0",
