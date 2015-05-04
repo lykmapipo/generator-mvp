@@ -44,6 +44,7 @@ module.exports = {
     },
 
     schemaFieldsToFormFields: function() {
+        var generator = this;
         var formFields = [];
         var className = this.singular;
         var attributes = this.fields || {};
@@ -54,22 +55,59 @@ module.exports = {
             var attributeType = attributes[attributeName].type;
             var accessor = className + '.' + attributeName;
 
+            var input = {
+                name: attributeName,
+                label: inflection.classify(attributeName),
+                accessor: '<%= ' + className + '.' + attributeName + ' %>',
+                value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>'
+            };
+
+            //prepare number input type
             if (attributeType === 'Number') {
-                formFields.push({
-                    name: attributeName,
-                    label: inflection.classify(attributeName),
-                    accessor: '<%= ' + accessor + ' %>',
-                    value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>',
-                    type: 'number'
-                });
-            } else {
-                formFields.push({
-                    name: attributeName,
-                    label: inflection.classify(attributeName),
-                    accessor: '<%= ' + className + '.' + attributeName + ' %>',
-                    value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>',
-                    type: 'text'
-                });
+                //prepare input template
+                var template = generator.read('inputs/_number.html');
+                template = generator.engine(template, input);
+
+                formFields.push(_.extend(input, {
+                    type: 'number',
+                    template: template
+                }));
+            }
+
+            //prepare date input type
+            else if (attributeType == 'Date') {
+                //prepare input template
+                var template = generator.read('inputs/_date.html');
+                template = generator.engine(template, input);
+
+                formFields.push(_.extend(input, {
+                    type: 'date',
+                    template: template
+                }));
+            }
+
+            //prepare boolean input type
+            else if (attributeType == 'Boolean') {
+                //prepare input template
+                var template = generator.read('inputs/_checkbox.html');
+                template = generator.engine(template, input);
+
+                formFields.push(_.extend(input, {
+                    type: 'checkbox',
+                    template: template
+                }));
+            }
+
+            //prepare text input type
+            else {
+                //prepare input template
+                var template = generator.read('inputs/_text.html');
+                template = generator.engine(template, input);
+
+                formFields.push(_.extend(input, {
+                    type: 'text',
+                    template: template
+                }));
             }
         });
 

@@ -2,12 +2,7 @@
 
 <form action="<%= createAction %>" method="POST" class="form-horizontal" role="form">
     <% attributes.forEach(function (attribute) { %>
-    <div class="form-group">
-        <label for="<%= attribute.name%>" class="col-sm-2 control-label"><%= attribute.label %></label>
-        <div class="col-sm-10">
-            <input type="<%= attribute.type %>" name="<%= attribute.name %>" id="<%= attribute.name %>" class="form-control" value="<%= attribute.value %>" required="required" title="<%= attribute.label %>" placeholder="<%= attribute.label %>">
-        </div>
-    </div>
+    <%= attribute.template %>
     <%});%>
 
     <div class="form-group">
