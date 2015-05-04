@@ -51,7 +51,7 @@ $ yo mvp --skip-frontend
 ```
 
 ### Controller
-Set up new `controller`, its `actions` and an express router. To generate a new controller invoke `yo mvp:controller` giving its name and actions separated by space.
+Set up new `controller`, its `actions` and an `express router`. To generate a new controller invoke `yo mvp:controller` giving its name and actions separated by space.
 
 Example of generating controller including frontend
 ```bash
