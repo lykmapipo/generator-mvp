@@ -24,7 +24,7 @@ describe('mvp:controller generator', function() {
             .on('end', done);
     });
 
-    it('it should be able to generate controller', function() {
+    it('should be able to generate controller', function() {
         assert.file([
             'app/controllers/todo_controller.js',
             'test/controllers/todo_controller_spec.js',
@@ -33,7 +33,7 @@ describe('mvp:controller generator', function() {
         ]);
     });
 
-    it('it should be able to generate controller views', function() {
+    it('should be able to generate controller views', function() {
         assert.file([
             'app/views/todo/index.html',
             'app/views/todo/edit.html'

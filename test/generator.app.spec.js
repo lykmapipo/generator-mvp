@@ -35,7 +35,7 @@ describe('mvp:app generator', function() {
             .on('end', done);
     });
 
-    it('it should be able to generate application projectfiles', function() {
+    it('should be able to generate application projectfiles', function() {
         assert.file([
             'package.json',
             'bower.json',
@@ -51,7 +51,7 @@ describe('mvp:app generator', function() {
         ]);
     });
 
-    it('it should be able to generate application directory structure', function() {
+    it('should be able to generate application directory structure', function() {
         assert.file([
             'config',
             'app/models',
@@ -68,14 +68,14 @@ describe('mvp:app generator', function() {
     });
 
 
-    it('it should be able to generate application configuration files', function() {
+    it('should be able to generate application configuration files', function() {
         assert.file([
             'config',
             'config/mongoose.js',
         ]);
     });
 
-    it('it should be able to generate application view files', function() {
+    it('should be able to generate application view files', function() {
         assert.file([
             'app/views/errors.html',
             'app/views/site.html',
@@ -84,13 +84,13 @@ describe('mvp:app generator', function() {
         ]);
     });
 
-    it('it should be able to generate application locals files', function() {
+    it('should be able to generate application locals files', function() {
         assert.file([
             'app/locals/application_locals.js'
         ]);
     });
 
-    it('it should be able to generate application site files', function() {
+    it('should be able to generate application site files', function() {
         assert.file([
             'app/controllers/site_controller.js',
             'app/routers/site_router.js',
@@ -100,7 +100,7 @@ describe('mvp:app generator', function() {
 
     it('should be able to generate test bootstrap file', function() {
         assert.file([
-            'test/bootstrap.spec.js'
+            'test/bootstrap_spec.js'
         ]);
     });
 

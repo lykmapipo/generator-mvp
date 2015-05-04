@@ -26,21 +26,21 @@ describe('mvp:api generator', function() {
             .on('end', done);
     });
 
-    it('it should be able to generate model', function() {
+    it('should be able to generate model', function() {
         assert.file([
             'app/models/todo_model.js',
             'test/models/todo_model_spec.js'
         ]);
     });
 
-    it('it should be able to generate controller', function() {
+    it('should be able to generate controller', function() {
         assert.file([
             'app/controllers/todo_controller.js',
             'test/controllers/todo_controller_spec.js'
         ]);
     });
 
-    it('it should be able to generate router', function() {
+    it('should be able to generate router', function() {
         assert.file([
             'app/routers/todo_router.js',
             'test/routers/todo_router_spec.js'

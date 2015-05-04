@@ -24,7 +24,7 @@ describe('mvp:model generator', function() {
             .on('end', done);
     });
 
-    it('it should be able to generate model', function() {
+    it('should be able to generate model', function() {
         assert.file([
             'app/models/todo_model.js',
             'test/models/todo_model_spec.js'

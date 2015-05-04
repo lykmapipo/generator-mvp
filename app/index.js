@@ -133,8 +133,8 @@ module.exports = yeoman.generators.Base.extend({
 
         test: function() {
             this.mkdir('test');
-            this.template('test/_bootstrap.js', 'test/bootstrap.spec.js');
-            
+            this.template('test/_bootstrap.js', 'test/bootstrap_spec.js');
+
             this.mkdir('test/models');
             this.mkdir('test/routers');
             this.mkdir('test/controllers');

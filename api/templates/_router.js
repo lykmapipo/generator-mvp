@@ -6,6 +6,7 @@
  */
 
 //dependencies
+var path = require('path');
 var express = require('express');
 var router = express.Router();
 var controller = require(path.join(__dirname, '..', 'controllers', '<%= controllerName %>_controller'));
