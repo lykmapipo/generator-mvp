@@ -1,7 +1,7 @@
 {
     "name": "generator-mvp",
     "version": "0.1.0",
-    "description": "Set of generators to kick start nodejs application",
+    "description": "Set of generators to kick start nodejs application with mongoose, expressjs and others",
     "license": "MIT",
     "main": "app/index.js",
     "repository": "lykmapipo/generator-mvp",
@@ -17,7 +17,6 @@
     "scripts": {
         "test": "./node_modules/.bin/mocha --recursive"
     },
-    "files": ["app"],
     "keywords": [
         "yeoman-generator",
         "mvp",
