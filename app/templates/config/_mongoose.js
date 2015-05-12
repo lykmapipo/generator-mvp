@@ -34,6 +34,10 @@ var mongoOptions = {
     }
 };
 
+//TODO
+//apply mongoose schema wise plugins
+
+
 //establish database connection
 mongoose.connect(uristring, mongoOptions);
 

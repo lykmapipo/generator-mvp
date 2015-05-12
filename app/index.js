@@ -223,8 +223,8 @@ module.exports = yeoman.generators.Base.extend({
             this.npmInstall(
                 [
                     'async', 'lodash', 'require-all', 'ejs',
-                    'ejs-mate', 'mongoose', 'mongoose-paginate',
-                    'mongoose-timestamp', 'express', 'express-paginate',
+                    'ejs-mate', 'mongoose', 'mongoose-paginate', 'mongoose-hidden',
+                    'mongoose-timestamp', 'mongoose-autopopulate', 'express', 'express-paginate',
                     'serve-favicon', 'morgan', 'body-parser', 'method-override'
                 ], {
                     save: true
