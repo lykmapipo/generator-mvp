@@ -5,5 +5,5 @@
  * @type {Object}
  */
 module.exports = {
-    applicationName: 'mvp'
-}
+    applicationName: '<%= _.slugify(applicationName) %>'
+};
