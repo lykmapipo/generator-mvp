@@ -35,6 +35,12 @@ module.exports = yeoman.generators.Base.extend({
         Utils.prepareSchemaFields.call(this);
     },
 
+    prepareFakerSeed: function() {
+        //prepare faker model seed
+        var template = this.read('_seed.js');
+        this.seed = this.engine(template, this);
+    },
+
     writing: {
         model: function() {
             this.template('_model.js', 'app/models/' + this.modelName + '_model.js');

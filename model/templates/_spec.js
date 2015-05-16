@@ -14,31 +14,55 @@ var <%= className %> = mongoose.model('<%= className %>');
 
 describe('<%= className %> Model', function() {
     before(function(done) {
-        //TODO write spec setup
-        done()
+        var <%= modelName %> = <%= seed %>;
+        done();
     });
 
     it('should be able to create new <%= modelName %>', function(done) {
-        //TODO write spec
-        done()
+        <%= className %>.create({}, function(error, <%= modelName %>) {
+            
+            expect(error).to.be.null;
+            expect(<%= modelName %>).to.not.be.undefined;
+            expect(<%= modelName %>).to.not.be.null;
+
+            done(error, <%= modelName %>);
+        });
     });
 
     it('should be able to find existing <%= modelName %>', function(done) {
-        //TODO write spec
-        done()
+        <%= className %>.findOne({}, function(error, <%= modelName %>) {
+
+            expect(error).to.be.null;
+            expect(<%= modelName %>).to.not.be.undefined;
+            expect(<%= modelName %>).to.not.be.null;
+            
+            done(error, <%= modelName %>);
+        });
     });
 
     it('should be able to update existing <%= modelName %>', function(done) {
-        //TODO write spec
-        done()
+        <%= className %>.findOneAndUpdate({}, {}, function(error, <%= modelName %>) {
+
+            expect(error).to.be.null;
+            expect(<%= modelName %>).to.not.be.undefined;
+            expect(<%= modelName %>).to.not.be.null;
+            
+            done(error, <%= modelName %>);
+        });
     });
 
     it('should be able to delete existing <%= modelName %>', function(done) {
-        //TODO write spec
-        done()
+        <%= className %>.remove({}, function(error, <%= modelName %>) {
+
+            expect(error).to.be.null;
+            expect(<%= modelName %>).to.not.be.undefined;
+            expect(<%= modelName %>).to.not.be.null;
+            
+            done(error, <%= modelName %>);
+        });
     });
 
-     after(function(done) {
+    after(function(done) {
         //TODO write spec cleanup
         done();
     });
