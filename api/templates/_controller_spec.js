@@ -15,33 +15,33 @@ var <%=className%>Controller = require(path.join(__dirname, '..', '..', 'app', '
 describe('<%= className %> Controller', function() {
     before(function(done) {
         //TODO write spec setup
-        done()
+        done();
     });
 
     it('should be able to find existing <%= plural %> on <%= className%>Controller#index', function(done) {
         //TODO write spec
-        done()
+        done();
     });
 
     it('should be able to create new <%=singular %> on <%= className%>Controller#create', function(done) {
         //TODO write spec
-        done()
+        done();
     });
 
 	it('should be able to find existing <%= singular %> on <%= className%>Controller#show', function(done) {
         //TODO write spec
-        done()
+        done();
     });
     
 
     it('should be able to update existing <%= singular %> on <%= className%>Controller#update', function(done) {
         //TODO write spec
-        done()
+        done();
     });
 
     it('should be able to delete existing <%= singular %> on <%= className%>Controller#destroy', function(done) {
         //TODO write spec
-        done()
+        done();
     });
 
     after(function(done) {
