@@ -1,6 +1,6 @@
 {
     "name": "generator-mvp",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Set of generators to kick start nodejs application with mongoose, expressjs and others",
     "license": "MIT",
     "main": "app/index.js",
@@ -47,8 +47,6 @@
         "inflection": "^1.7.0"
     },
     "devDependencies": {
-        "inflection": "^1.7.0",
-        "lodash": "^3.6.0",
         "mocha": "^2.2.1",
         "rimraf": "^2.3.2"
     }

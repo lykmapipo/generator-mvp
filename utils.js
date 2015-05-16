@@ -9,6 +9,10 @@ var inflection = require('inflection');
  * @type {Object}
  */
 module.exports = {
+    /**
+     * @description prepare model schema fields
+     * @return {Object} a hash contain all schema fields definitions
+     */
     prepareSchemaFields: function() {
         var fields = {};
         var attributes = this.modelFields;
@@ -43,6 +47,11 @@ module.exports = {
         this.fields = fields;
     },
 
+
+    /**
+     * @description convert given model schema field to HTML5 input types
+     * @return {Object}
+     */
     schemaFieldsToFormFields: function() {
         var generator = this;
         var formFields = [];
