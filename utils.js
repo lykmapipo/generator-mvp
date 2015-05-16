@@ -37,7 +37,10 @@ module.exports = {
                     ref: "'" + attributeMeta.shift() + "'"
                 };
 
-            } else {
+            }
+
+            //Mixed, Boolean, Date,Number & String no special ops
+            else {
                 fields[attributeName] = {
                     type: attributeType
                 }
@@ -45,6 +48,29 @@ module.exports = {
         });
 
         this.fields = fields;
+    },
+
+
+    prepareFakerSeedFields: function() {
+        var fields = {};
+        var attributes = this.modelFields;
+
+        //prepare model fields
+        attributes.forEach(function(attribute) {
+
+            var attributeMeta = attribute.split(':');
+
+            var attributeName = attributeMeta.shift();
+            var attributeType =
+                inflection.classify(attributeMeta.shift());
+
+
+            fields[attributeName] = {
+                type: attributeType
+            };
+        });
+
+        this.seedFields = fields;
     },
 
 
@@ -121,5 +147,24 @@ module.exports = {
         });
 
         this.attributes = formFields;
+    },
+
+    //check if schema fields contain mixed type
+    hasMixedDataTypes: function() {
+        var result = _.where(this.fields, {
+            type: 'Mixed'
+        });
+
+
+        this.hasMixed = !_.isEmpty(result);
+    },
+
+    //check if schema fields contain ref
+    hasRefDataTypes: function() {
+        var result = _.where(this.fields, {
+            type: 'ObjectId'
+        });
+
+        this.hasRefs = !_.isEmpty(result);
     }
 }

@@ -9,8 +9,8 @@
 //dependencies
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
-var Mixed = Schema.Types.Mixed;
+<%if(hasRefs){%>var ObjectId = Schema.Types.ObjectId;<%}%>
+<%if(hasMixed){%>var Mixed = Schema.Types.Mixed;<%}%>
 
 //<%= className %> Schema
 var <%= className %>Schema = new Schema({

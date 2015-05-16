@@ -12,56 +12,74 @@ var faker = require('faker');
 var expect = require('chai').expect;
 var <%= className %> = mongoose.model('<%= className %>');
 
+//seed
+var _<%= modelName %>_ = <%= seed %>;
+
+
 describe('<%= className %> Model', function() {
     before(function(done) {
-        var <%= modelName %> = <%= seed %>;
-        done();
+        <%= className %>.create(_<%= modelName %>_, function(error, <%= modelName %>) {
+            done(error, <%= modelName %>);
+        });
     });
 
+    
     it('should be able to create new <%= modelName %>', function(done) {
-        <%= className %>.create({}, function(error, <%= modelName %>) {
+        var __<%= modelName %>__ = <%= seed %>;
+
+        <%= className %>.create(__<%= modelName %>__, function(error, <%= modelName %>) {
             
             expect(error).to.be.null;
             expect(<%= modelName %>).to.not.be.undefined;
             expect(<%= modelName %>).to.not.be.null;
+            //TODO more assertions
 
             done(error, <%= modelName %>);
         });
     });
 
+    
     it('should be able to find existing <%= modelName %>', function(done) {
-        <%= className %>.findOne({}, function(error, <%= modelName %>) {
+        <%= className %>.findOne(_<%= modelName %>_, function(error, <%= modelName %>) {
 
             expect(error).to.be.null;
             expect(<%= modelName %>).to.not.be.undefined;
             expect(<%= modelName %>).to.not.be.null;
+            //TODO more assertions
             
             done(error, <%= modelName %>);
         });
     });
 
+    
     it('should be able to update existing <%= modelName %>', function(done) {
-        <%= className %>.findOneAndUpdate({}, {}, function(error, <%= modelName %>) {
+        var __<%= modelName %>__ = <%= seed %>;
+
+        <%= className %>.findOneAndUpdate(_<%= modelName %>_, __<%= modelName %>__, function(error, <%= modelName %>) {
 
             expect(error).to.be.null;
             expect(<%= modelName %>).to.not.be.undefined;
             expect(<%= modelName %>).to.not.be.null;
+            //TODO more assertions
             
             done(error, <%= modelName %>);
         });
     });
 
+    
     it('should be able to delete existing <%= modelName %>', function(done) {
-        <%= className %>.remove({}, function(error, <%= modelName %>) {
+        <%= className %>.findOneAndRemove(_<%= modelName %>_, function(error, <%= modelName %>) {
 
             expect(error).to.be.null;
             expect(<%= modelName %>).to.not.be.undefined;
             expect(<%= modelName %>).to.not.be.null;
+            //TODO more assertions
             
             done(error, <%= modelName %>);
         });
     });
 
+    
     after(function(done) {
         //TODO write spec cleanup
         done();

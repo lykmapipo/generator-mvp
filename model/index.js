@@ -37,8 +37,15 @@ module.exports = yeoman.generators.Base.extend({
 
     prepareFakerSeed: function() {
         //prepare faker model seed
+        Utils.prepareFakerSeedFields.call(this);
+
         var template = this.read('_seed.js');
         this.seed = this.engine(template, this);
+    },
+
+    checkMixedAndRefTypesPresense: function() {
+        Utils.hasMixedDataTypes.call(this);
+        Utils.hasRefDataTypes.call(this);
     },
 
     writing: {
