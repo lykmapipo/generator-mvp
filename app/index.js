@@ -153,9 +153,15 @@ module.exports = yeoman.generators.Base.extend({
                 this.templatePath('editorconfig'),
                 this.destinationPath('.editorconfig')
             );
+
             this.fs.copy(
                 this.templatePath('jshintrc'),
                 this.destinationPath('.jshintrc')
+            );
+
+            this.fs.copy(
+                this.templatePath('test_jshintrc'),
+                this.destinationPath('test/.jshintrc')
             );
 
             if (this.frontend) {
