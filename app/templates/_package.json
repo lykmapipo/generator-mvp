@@ -3,7 +3,7 @@
     "version": "<%= applicationVersion %>",
     "description": "<%= applicationDescription %>",
     "scripts": {
-        "test": "grunt test",
+        "test": "grunt spec",
         "start": "node server.js"
     },
     "dependencies": {},

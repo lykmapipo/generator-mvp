@@ -136,7 +136,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['newer:jshint', 'express:test', 'watch']);
 
     //run specifications
-    grunt.registerTask('spec', ['mochaTest']);
+    grunt.registerTask('spec', ['newer:jshint','mochaTest']);
 
     //default run jshint and test
     grunt.registerTask('default', ['newer:jshint', 'mochaTest']);
