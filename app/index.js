@@ -230,8 +230,9 @@ module.exports = yeoman.generators.Base.extend({
                 [
                     'async', 'lodash', 'require-all', 'ejs',
                     'ejs-mate', 'mongoose', 'mongoose-paginate', 'mongoose-hidden',
-                    'mongoose-timestamp', 'mongoose-autopopulate', 'express', 'express-paginate',
-                    'serve-favicon', 'morgan', 'body-parser', 'method-override'
+                    'mongoose-timestamp', 'mongoose-autopopulate', 'express', 
+                    'express-paginate','serve-favicon', 'morgan', 
+                    'body-parser', 'method-override'
                 ], {
                     save: true
                 });
