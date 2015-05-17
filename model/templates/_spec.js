@@ -56,6 +56,8 @@ describe('<%= className %> Model', function() {
         var __<%= modelName %>__ = <%= seed %>;
 
         <%= className %>.findOneAndUpdate(_<%= modelName %>_, __<%= modelName %>__, function(error, <%= modelName %>) {
+            //update <%= modelName %> references
+            _<%= modelName %>_ = __<%= modelName %>__;
 
             expect(error).to.be.null;
             expect(<%= modelName %>).to.not.be.undefined;
