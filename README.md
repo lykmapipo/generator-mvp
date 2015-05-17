@@ -2,6 +2,7 @@
 
 Set of generators to kick start nodejs application with [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
 
+*Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
 
 ## Usage
 
@@ -108,6 +109,13 @@ $ npm install
 ```bash
 $ npm test
 ```
+
+## TODO
+- [ ] Make sure we utilize only existing npm packages
+- [ ] HTTP response status code and message
+- [ ] Adding winston logger
+- [ ] Adding server metrics
+
 
 ## License
 

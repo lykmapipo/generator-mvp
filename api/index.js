@@ -1,9 +1,11 @@
 'use strict';
 
 //dependencies
+var path = require('path');
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
 var inflection = require('inflection');
+var Utils = require(path.join(__dirname, '..', 'utils'));
 
 module.exports = yeoman.generators.Base.extend({
     initializing: function() {
@@ -19,7 +21,9 @@ module.exports = yeoman.generators.Base.extend({
             splits = _.union(splits, this.arguments);
         }
 
-        this.controllerName = splits.shift().toLowerCase();
+        this.controllerName = this.modelName = splits.shift().toLowerCase();
+        this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
+
 
         //generator options
         this.frontend = !(this.options['skip-frontend'] || false);
@@ -31,6 +35,18 @@ module.exports = yeoman.generators.Base.extend({
         this.classPlural = inflection.pluralize(this.className);
         this.plural = this.classPlural.toLowerCase();
 
+    },
+
+    prepareFields: function() {
+        Utils.prepareSchemaFields.call(this);
+    },
+
+    prepareFakerSeed: function() {
+        //prepare faker model seed
+        Utils.prepareFakerSeedFields.call(this);
+
+        var template = this.read('_seed.js');
+        this.seed = this.engine(template, this);
     },
 
     writing: {
