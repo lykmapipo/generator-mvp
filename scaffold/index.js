@@ -34,7 +34,7 @@ module.exports = yeoman.generators.Base.extend({
 
     },
 
-    prepareFormFields: function(argument) {
+    prepareFormFields: function() {
         Utils.prepareSchemaFields.call(this);
         Utils.schemaFieldsToFormFields.call(this);
     },

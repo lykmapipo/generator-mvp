@@ -18,7 +18,7 @@
     },
     "preferGlobal": true,
     "scripts": {
-        "test": "./node_modules/.bin/mocha --recursive"
+        "test": "grunt test"
     },
     "bugs": {
         "url": "https://github.com/lykmapipo/generator-mvp/issues"
@@ -47,6 +47,12 @@
         "inflection": "^1.7.0"
     },
     "devDependencies": {
+        "chai": "^2.2.0",
+        "grunt": "^0.4.5",
+        "grunt-contrib-jshint": "^0.11.2",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-mocha-test": "^0.12.7",
+        "jshint-stylish": "^1.0.1",
         "mocha": "^2.2.1",
         "rimraf": "^2.3.2"
     }

@@ -34,7 +34,9 @@ module.exports = {
             } else if (attributeType === 'ObjectId') {
                 fields[attributeName] = {
                     type: attributeType,
+                    /*jshint quotmark: double*/
                     ref: "'" + attributeMeta.shift() + "'"
+                        /*jshint quotmark: single*/
                 };
 
             }
@@ -43,7 +45,7 @@ module.exports = {
             else {
                 fields[attributeName] = {
                     type: attributeType
-                }
+                };
             }
         });
 
@@ -99,49 +101,37 @@ module.exports = {
 
             //prepare number input type
             if (attributeType === 'Number') {
-                //prepare input template
-                var template = generator.read('inputs/_number.html');
-                template = generator.engine(template, input);
 
                 formFields.push(_.extend(input, {
                     type: 'number',
-                    template: template
+                    template: generator.engine(generator.read('inputs/_number.html'), input)
                 }));
             }
 
             //prepare date input type
-            else if (attributeType == 'Date') {
-                //prepare input template
-                var template = generator.read('inputs/_date.html');
-                template = generator.engine(template, input);
+            else if (attributeType === 'Date') {
 
                 formFields.push(_.extend(input, {
                     type: 'date',
-                    template: template
+                    template: generator.engine(generator.read('inputs/_date.html'), input)
                 }));
             }
 
             //prepare boolean input type
-            else if (attributeType == 'Boolean') {
-                //prepare input template
-                var template = generator.read('inputs/_checkbox.html');
-                template = generator.engine(template, input);
+            else if (attributeType === 'Boolean') {
 
                 formFields.push(_.extend(input, {
                     type: 'checkbox',
-                    template: template
+                    template: generator.engine(generator.read('inputs/_checkbox.html'), input)
                 }));
             }
 
             //prepare text input type
             else {
-                //prepare input template
-                var template = generator.read('inputs/_text.html');
-                template = generator.engine(template, input);
 
                 formFields.push(_.extend(input, {
                     type: 'text',
-                    template: template
+                    template: generator.engine(generator.read('inputs/_text.html'), input)
                 }));
             }
         });
@@ -167,4 +157,4 @@ module.exports = {
 
         this.hasRefs = !_.isEmpty(result);
     }
-}
+};
