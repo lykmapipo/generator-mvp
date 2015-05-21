@@ -230,8 +230,8 @@ module.exports = yeoman.generators.Base.extend({
                 [
                     'async', 'lodash', 'require-all', 'ejs',
                     'ejs-mate', 'mongoose', 'mongoose-paginate', 'mongoose-hidden',
-                    'mongoose-timestamp', 'mongoose-autopopulate', 'express', 
-                    'express-paginate','serve-favicon', 'morgan', 
+                    'mongoose-timestamp', 'mongoose-autopopulate', 'express',
+                    'express-paginate', 'serve-favicon', 'morgan',
                     'body-parser', 'method-override'
                 ], {
                     save: true
@@ -245,7 +245,7 @@ module.exports = yeoman.generators.Base.extend({
                     'load-grunt-tasks', 'grunt-newer', 'grunt-mocha-test',
                     'grunt-concurrent', 'grunt-contrib-clean',
                     'grunt-contrib-copy', 'grunt-contrib-jshint',
-                    'grunt-contrib-watch'
+                    'grunt-contrib-watch', 'mock-express-response'
                 ], {
                     saveDev: true
                 });

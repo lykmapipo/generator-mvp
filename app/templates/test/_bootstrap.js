@@ -3,11 +3,12 @@
 //dependencies
 var path = require('path');
 var async = require('async');
+require(path.join(__dirname, '..', 'app', 'application'));
+var mongoose = require('mongoose');
 
 
 before(function(done) {
-    //load server
-    require(path.join(__dirname,'..','server'));
+    //TODO add more test lift up logics    
     done();
 });
 
