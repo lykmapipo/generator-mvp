@@ -98,13 +98,15 @@ $ yo mvp:scaffold User name:String dob:Date
 Fork this repo and push in your ideas. Do not forget to add a bit of test(s) of what value you adding.
 
 ## TODO
-- [ ] Config directories
-- [ ] Nice theme
-- [ ] separate front and api
+- [ ] Separate configs for different environment
+- [ ] Add nice theme on scaffolds
+- [ ] Separate front and api
 - [ ] Add front end  grunt tasks
-- [ ] Slim grunt file
-- [ ] add spec on scaffold generator
-- [ ] adding securities and https
+- [ ] Splitting grunt file
+- [ ] Add specs on scaffold generator
+- [ ] Adding securities middleware and https
+- [ ] Adding proper http status on responses
+- [ ] Clean api response content negotiation boilerplates
 
 ## Testing
 - Clone this repository
