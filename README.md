@@ -97,6 +97,15 @@ $ yo mvp:scaffold User name:String dob:Date
 ## Contributing
 Fork this repo and push in your ideas. Do not forget to add a bit of test(s) of what value you adding.
 
+## TODO
+- [ ] Config directories
+- [ ] Nice theme
+- [ ] separate front and api
+- [ ] Add front end  grunt tasks
+- [ ] Slim grunt file
+- [ ] add spec on scaffold generator
+- [ ] adding securities and https
+
 ## Testing
 - Clone this repository
 
