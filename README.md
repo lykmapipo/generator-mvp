@@ -97,16 +97,6 @@ $ yo mvp:scaffold User name:String dob:Date
 ## Contributing
 Fork this repo and push in your ideas. Do not forget to add a bit of test(s) of what value you adding.
 
-## TODO
-- [ ] Separate configs for different environment
-- [ ] Add nice theme on scaffolds
-- [ ] Separate front and api
-- [ ] Add front end  grunt tasks
-- [ ] Splitting grunt file
-- [ ] Add specs on scaffold generator
-- [ ] Adding securities middleware and https
-- [ ] Adding proper http status on responses
-- [ ] Clean api response content negotiation boilerplates
 
 ## Testing
 - Clone this repository
@@ -123,9 +113,17 @@ $ npm test
 
 ## TODO
 - [ ] Make sure we utilize only existing npm packages
-- [ ] HTTP response status code and message
 - [ ] Adding winston logger
 - [ ] Adding server metrics
+- [ ] Separate configs for different environment
+- [ ] Add nice theme on scaffolds
+- [ ] Separate front and api
+- [ ] Add front end  grunt tasks
+- [ ] Splitting grunt file
+- [ ] Add specs on scaffold generator
+- [ ] Adding securities middleware and https
+- [ ] Adding proper http status on responses
+- [ ] Clean api response content negotiation boilerplates
 
 
 ## License
