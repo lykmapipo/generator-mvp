@@ -99,6 +99,14 @@ module.exports = yeoman.generators.Base.extend({
             );
         },
 
+
+        config: function() {
+            this.mkdir('config');
+            this.mkdir('config/environments');
+
+            this.template('config/_mongoose.js', 'config/mongoose.js');
+        },
+
         views: function() {
             if (this.frontend) {
 
@@ -140,12 +148,6 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('test/controllers');
             this.mkdir('test/locals');
             this.mkdir('test/intergration');
-        },
-
-        config: function() {
-            this.mkdir('config');
-
-            this.template('config/_mongoose.js', 'config/mongoose.js');
         },
 
         projectfiles: function() {
