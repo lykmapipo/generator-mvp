@@ -112,7 +112,6 @@ $ npm test
 ```
 
 ## TODO
-- [ ] Make sure we utilize only existing npm packages
 - [ ] Adding winston logger
 - [ ] Adding server metrics
 - [ ] Separate configs for different environment
@@ -120,7 +119,6 @@ $ npm test
 - [ ] Separate front and api
 - [ ] Add front end  grunt tasks
 - [ ] Splitting grunt file
-- [ ] Add specs on scaffold generator
 - [ ] Adding securities middleware and https
 - [ ] Adding proper http status on responses
 - [ ] Clean api response content negotiation boilerplates
