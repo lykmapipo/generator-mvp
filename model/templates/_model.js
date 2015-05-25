@@ -36,9 +36,9 @@ var <%= className %>Schema = new Schema({
     <%}});%>
 });
 
-//apply plugins
-<%= className %>Schema.plugin(require('mongoose-paginate')); 
-<%= className %>Schema.plugin(require('mongoose-timestamp'));
+
+//apply <%= className %>Schema level plugins
+
 
 //exports <%= className %> model
 module.exports = mongoose.model('<%= className %>', <%= className %>Schema);

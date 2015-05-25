@@ -2,8 +2,22 @@
 
 //dependencies
 var mongoose = require('mongoose');
+var mongooseTimestamp = require('mongoose-timestamp');
+var mongoosePaginate = require('mongoose-paginate');
+var mongooseAutopopulate = require('mongoose-autopopulate');
+var mongooseHidden = require('mongoose-hidden')({
+    defaultHidden: {
+        password: true,
+        __v: true,
+        __t: true
+    }
+});
 
-//database configurations
+
+/**
+ * @description prepare mongo database configurations
+ * @type {Object}
+ */
 var config = {
     database: '<%= databaseName %>',
     host: '<%= databaseHost %>',
@@ -12,12 +26,20 @@ var config = {
     port: <%= databasePort %>
 };
 
-//generate mongoose connection uri string
+
+/**
+ * @description generate mongoose connection uri string
+ * @type {String}
+ */
 var port = config.port ? ':' + config.port : '';
 var login = (config.user.length > 0) ? config.user + ':' + config.password + '@' : '';
 var uristring = 'mongodb://' + login + config.host + port + '/' + config.database;
 
-//mongodb options
+
+/**
+ * @description mongodb options
+ * @type {Object}
+ */
 var mongoOptions = {
     db: {
         safe: true
@@ -34,12 +56,21 @@ var mongoOptions = {
     }
 };
 
-//TODO
-//apply mongoose schema wise plugins
+
+/**
+ * @description 
+ */
+mongoose.plugin(mongooseTimestamp);
+mongoose.plugin(mongoosePaginate);
+mongoose.plugin(mongooseAutopopulate);
+mongoose.plugin(mongooseHidden);
 
 
-//establish database connection
+/**
+ * @description establish database connection
+ */
 mongoose.connect(uristring, mongoOptions);
+
 
 /**
  * @description export mongoose
