@@ -22,6 +22,7 @@ module.exports = yeoman.generators.Base.extend({
         }
 
         this.controllerName = this.modelName = splits.shift().toLowerCase();
+
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
 

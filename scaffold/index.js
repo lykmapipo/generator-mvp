@@ -21,7 +21,7 @@ module.exports = yeoman.generators.Base.extend({
             splits = _.union(splits, this.arguments);
         }
 
-        this.controllerName = splits.shift().toLowerCase();
+        this.controllerName = this.modelName = splits.shift().toLowerCase();
 
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
@@ -37,6 +37,14 @@ module.exports = yeoman.generators.Base.extend({
     prepareFormFields: function() {
         Utils.prepareSchemaFields.call(this);
         Utils.schemaFieldsToFormFields.call(this);
+    },
+
+    prepareFakerSeed: function() {
+        //prepare faker model seed
+        Utils.prepareFakerSeedFields.call(this);
+
+        var template = this.read('_seed.js');
+        this.seed = this.engine(template, this);
     },
 
     prepareLinks: function() {

@@ -11,7 +11,7 @@ var scaffoldGenerator = path.resolve(path.join(__dirname, '..', 'scaffold'));
 var os = require('os');
 var destDir;
 
-describe('mvp:api generator', function() {
+describe('mvp:scaffold generator', function() {
     //spec for  model generator
     before(function(done) {
         helpers.run(scaffoldGenerator)
