@@ -130,6 +130,10 @@ $ npm test
 - [ ] Fix model seed, when object id is used remove trailing comma
 - [ ] Add middleware generator and loading
 - [ ] Add generator watermarks of generated files
+- [ ] Handle errors
+- [ ] Package installations of frontend resources and packages if `--skip-frontend` provided
+- [x] Make use of `findByIdAndUpdate` with ```javascript {upsert:true, new:true}``` in resource update
+- [x] Make API to be `JSON first` and allow developer to customize for other content type
 
 
 ## License

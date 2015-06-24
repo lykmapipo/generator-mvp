@@ -27,15 +27,6 @@ module.exports = {
                         response.json(error);
                     } else {
                         response.format({
-                            'text/html': function() {
-                                response
-                                    .render('<%= classPlural.toLowerCase() %>/index.html', {
-                                        <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
-                                        pages: pages,
-                                        count: total
-                                    });
-                            },
-
                             'application/json': function() {
                                 response.json({
                                     <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
@@ -71,11 +62,6 @@ module.exports = {
                     response.json(error);
                 } else {
                     response.format({
-                        'text/html': function() {
-                            response
-                                .redirect('/<%= classPlural.toLowerCase() %>');
-                        },
-
                         'application/json': function() {
                             response
                                 .json(<%= className.toLowerCase() %>);
@@ -107,13 +93,6 @@ module.exports = {
                     response.json(error);
                 } else {
                     response.format({
-                        'text/html': function() {
-                            response
-                                .render('<%= classPlural.toLowerCase() %>/show.html', {
-                                    <%= className.toLowerCase() %>: <%= className.toLowerCase() %>
-                                });
-                        },
-
                         'application/json': function() {
                             response.json(<%= className.toLowerCase() %>);
                         },
@@ -142,16 +121,12 @@ module.exports = {
             .findByIdAndUpdate(
                 request.params.id,
                 request.body,
+                {upsert:true,new:true},
                 function(error, <%= className.toLowerCase() %>) {
                     if (error) {
                         response.json(error);
                     } else {
                         response.format({
-                            'text/html': function() {
-                                response
-                                    .redirect('/<%= classPlural.toLowerCase() %>');
-                            },
-
                             'application/json': function() {
                                 response
                                     .json(<%= className.toLowerCase() %>);
@@ -186,11 +161,6 @@ module.exports = {
                         response.json(error);
                     } else {
                         response.format({
-                            'text/html': function() {
-                                response
-                                    .redirect('/<%= classPlural.toLowerCase() %>');
-                            },
-
                             'application/json': function() {
                                 response
                                     .json(<%= className.toLowerCase() %>);

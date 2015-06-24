@@ -191,6 +191,7 @@ module.exports = {
             .findByIdAndUpdate(
                 request.params.id,
                 request.body,
+                {upsert:true,new:true},
                 function(error, <%= className.toLowerCase() %>) {
                     if (error) {
                         response.json(error);
