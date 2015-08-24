@@ -15,11 +15,13 @@ app.set('ip', config.get('ip'));
 //lift up application server
 app
     .listen(app.get('port'), function() {
-        winston.info(
+        winston.debug(
             'Application server listening on port %d in %s environment',
             app.get('port'),
             app.get('env')
         );
+
+        winston.debug('To see your app, visit %s',config.get('baseUrl'));
     })
     .on('error', function(error) {
         winston.error(error);

@@ -16,7 +16,7 @@ module.exports = {
         return 'http://' + this.ip + ':' + this.port;
     }),
 
-    
+
     /**
      * @description application port
      * @type {Number}
@@ -58,12 +58,13 @@ module.exports = {
         }
     },
 
-    
+
     /**
      *@description logger configurations
      */
     logger: {
         dir: 'logs',
+        level: 'silly',
         file: 'logs.json'
     }
 

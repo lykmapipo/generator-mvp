@@ -2,7 +2,6 @@
 
 //dependencies
 var config = require('config');
-var path = require('path');
 var mongoose = require('mongoose');
 var mongooseTimestamp = require('mongoose-timestamp');
 var mongoosePaginate = require('mongoose-paginate');

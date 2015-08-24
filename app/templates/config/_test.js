@@ -62,6 +62,7 @@ module.exports = {
      */
     logger: {
         dir: 'logs',
+        level: 'silly',
         file: 'logs.json'
     }
 

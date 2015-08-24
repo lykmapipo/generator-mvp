@@ -112,28 +112,20 @@ $ npm test
 ```
 
 ## TODO
-- [ ] Adding winston logger
 - [ ] Make use of initializer to factor out initialization logics from configs
 - [ ] Adding server metrics
 - [ ] Add nice theme on scaffolds
 - [ ] Separate front and api
 - [ ] Add front end  grunt tasks
-- [ ] Splitting grunt file
-- [ ] Adding securities middleware and https
+- [ ] Adding https
 - [ ] Adding proper http status on responses
 - [ ] Clean api response content negotiation boilerplates
-- [ ] Use current dirname as application name
-- [ ] Prevent bower from installation if frontend skipped
 - [ ] Skip template engine installation if frontend skipped
 - [ ] Remove mongoose from site controller
 - [ ] Add model fields jsdocs
 - [ ] Fix model seed, when object id is used remove trailing comma
 - [ ] Add middleware generator and loading
-- [ ] Add generator watermarks of generated files
 - [ ] Handle errors
-- [ ] Package installations of frontend resources and packages if `--skip-frontend` provided
-- [x] Make use of `findByIdAndUpdate` with ```javascript {upsert:true, new:true}``` in resource update
-- [x] Make API to be `JSON first` and allow developer to customize for other content type
 
 
 ## License

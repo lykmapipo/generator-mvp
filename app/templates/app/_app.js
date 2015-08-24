@@ -6,7 +6,6 @@ var mkdir = require('mkdir-p');
 var path = require('path');
 var _ = require('lodash');
 var express = require('express');
-var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var expressWinston = require('express-winston');
@@ -63,6 +62,7 @@ app.set('view engine', 'html');
 
 // apllication favicon
 // un comment after adding application favicon in public directory
+// var favicon = require('serve-favicon');
 // app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 <%}%>

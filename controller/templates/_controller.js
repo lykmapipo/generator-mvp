@@ -6,7 +6,6 @@
  */
 
 //dependencies
-var mongoose = require('mongoose');
 
 module.exports = {
 <%_.forEach(actions, function(action) {%>
