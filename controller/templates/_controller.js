@@ -15,7 +15,7 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    <%= action %>: function(request, response, next) {
+    <%= action %>: function(request, response/*, next*/) {
         response.format({<%if(frontend){%>
             'text/html': function() {
                 response.render('<%= controllerName %>/<%= action %>', {
@@ -41,7 +41,7 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    <%= action %>: function(request, response, next) {
+    <%= action %>: function(request, response/*, next*/) {
         response.format({<%if(frontend){%>
             'text/html': function() {
                 response.render('<%= controllerName %>/<%= action %>', {
