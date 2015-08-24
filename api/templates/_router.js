@@ -17,8 +17,8 @@ var controller = require(path.join(__dirname, '..', 'controllers', '<%= controll
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.get('/<%= classPlural.toLowerCase() %>', function(request, response) {
-    controller.index(request, response);
+router.get('/<%= classPlural.toLowerCase() %>', function(request, response, next) {
+    controller.index(request, response, next);
 });
 
 
@@ -28,8 +28,8 @@ router.get('/<%= classPlural.toLowerCase() %>', function(request, response) {
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.post('/<%= classPlural.toLowerCase() %>', function(request, response) {
-    controller.create(request, response);
+router.post('/<%= classPlural.toLowerCase() %>', function(request, response, next) {
+    controller.create(request, response, next);
 });
 
 
@@ -39,8 +39,8 @@ router.post('/<%= classPlural.toLowerCase() %>', function(request, response) {
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.get('/<%= classPlural.toLowerCase() %>/:id', function(request, response) {
-    controller.show(request, response);
+router.get('/<%= classPlural.toLowerCase() %>/:id', function(request, response, next) {
+    controller.show(request, response, next);
 });
 
 
@@ -50,8 +50,8 @@ router.get('/<%= classPlural.toLowerCase() %>/:id', function(request, response) 
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.put('/<%= classPlural.toLowerCase() %>/:id', function(request, response) {
-    controller.update(request, response);
+router.put('/<%= classPlural.toLowerCase() %>/:id', function(request, response, next) {
+    controller.update(request, response, next);
 });
 
 
@@ -61,8 +61,8 @@ router.put('/<%= classPlural.toLowerCase() %>/:id', function(request, response) 
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.patch('/<%= classPlural.toLowerCase() %>/:id', function(request, response) {
-    controller.update(request, response);
+router.patch('/<%= classPlural.toLowerCase() %>/:id', function(request, response, next) {
+    controller.update(request, response, next);
 });
 
 
@@ -72,8 +72,8 @@ router.patch('/<%= classPlural.toLowerCase() %>/:id', function(request, response
  * @param  {HttpRequest} request  a http request
  * @param  {HttpResponse} response a http response
  */
-router.delete('/<%= classPlural.toLowerCase() %>/:id', function(request, response) {
-    controller.destroy(request, response);
+router.delete('/<%= classPlural.toLowerCase() %>/:id', function(request, response, next) {
+    controller.destroy(request, response, next);
 });
 
 

@@ -17,14 +17,14 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    index: function(request, response) {
+    index: function(request, response, next) {
         <%= className %>
             .paginate({},
                 request.query.page,
                 request.query.limit,
                 function(error, pages, <%= classPlural.toLowerCase() %>, total) {
                     if (error) {
-                        response.json(error);
+                        next(error);
                     } else {
                         response.format({
                             'application/json': function() {
@@ -55,11 +55,11 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    create: function(request, response) {
+    create: function(request, response, next) {
         <%= className %>
             .create(request.body, function(error, <%= className.toLowerCase() %>) {
                 if (error) {
-                    response.json(error);
+                    next(error);
                 } else {
                     response.format({
                         'application/json': function() {
@@ -86,11 +86,11 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    show: function(request, response) {
+    show: function(request, response, next) {
         <%= className %>
             .findById(request.params.id, function(error, <%= className.toLowerCase() %>) {
                 if (error) {
-                    response.json(error);
+                    next(error);
                 } else {
                     response.format({
                         'application/json': function() {
@@ -116,7 +116,7 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    update: function(request, response) {
+    update: function(request, response, next) {
         <%= className %>
             .findByIdAndUpdate(
                 request.params.id,
@@ -124,7 +124,7 @@ module.exports = {
                 {upsert:true,new:true},
                 function(error, <%= className.toLowerCase() %>) {
                     if (error) {
-                        response.json(error);
+                        next(error);
                     } else {
                         response.format({
                             'application/json': function() {
@@ -152,13 +152,13 @@ module.exports = {
      * @param  {HttpRequest} request  a http request
      * @param  {HttpResponse} response a http response
      */
-    destroy: function(request, response) {
+    destroy: function(request, response, next) {
         <%= className %>
             .findByIdAndRemove(
                 request.params.id,
                 function(error, <%= className.toLowerCase() %>) {
                     if (error) {
-                        response.json(error);
+                        next(error);
                     } else {
                         response.format({
                             'application/json': function() {

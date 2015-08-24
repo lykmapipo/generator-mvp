@@ -112,7 +112,6 @@ $ npm test
 ```
 
 ## TODO
-- [ ] Make use of initializer to factor out initialization logics from configs
 - [ ] Adding server metrics
 - [ ] Add nice theme on scaffolds
 - [ ] Separate front and api
@@ -120,8 +119,6 @@ $ npm test
 - [ ] Adding https
 - [ ] Adding proper http status on responses
 - [ ] Clean api response content negotiation boilerplates
-- [ ] Skip template engine installation if frontend skipped
-- [ ] Remove mongoose from site controller
 - [ ] Add model fields jsdocs
 - [ ] Fix model seed, when object id is used remove trailing comma
 - [ ] Add middleware generator and loading
