@@ -40,7 +40,7 @@ module.exports = yeoman.generators.Base.extend({
         }, {
             name: 'databaseHost',
             message: 'What is your application database host?',
-            default: 'localhost'
+            default: '127.0.0.1'
         }, {
             name: 'databaseUser',
             message: 'What is your application database username?',
@@ -102,9 +102,11 @@ module.exports = yeoman.generators.Base.extend({
 
         config: function() {
             this.mkdir('config');
-            this.mkdir('config/environments');
 
-            this.template('config/_mongoose.js', 'config/mongoose.js');
+            this.template('config/_default.js', 'config/default.js');
+            this.template('config/_development.js', 'config/development.js');
+            this.template('config/_production.js', 'config/production.js');
+            this.template('config/_test.js', 'config/test.js');
         },
 
         initializers: function() {
