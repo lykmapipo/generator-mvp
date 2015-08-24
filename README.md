@@ -4,6 +4,8 @@ Set of generators to kick start nodejs application with [mongoose](https://githu
 
 *Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
 
+*Warning:! There are major changes to v1.0.0 before using it please backup/commit your application*
+
 ## Usage
 
 - Install `yo`, `grunt-cli`, `bower`, and `generator-mvp`
@@ -122,8 +124,6 @@ $ npm test
 - [ ] Add model fields jsdocs
 - [ ] Fix model seed, when object id is used remove trailing comma
 - [ ] Add middleware generator and loading
-- [ ] Handle errors
-
 
 ## License
 
