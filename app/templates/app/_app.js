@@ -1,30 +1,60 @@
 'use strict';
 
 //dependencies
+require('config'); //load configurations
+var mkdir = require('mkdir-p');
 var path = require('path');
 var _ = require('lodash');
 var express = require('express');
-var logger = require('morgan');
+var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var expressWinston = require('express-winston');
+var cors = require('cors');
+var helmet = require('helmet');
 <%if(frontend){%>
 // un comment after adding application favicon in public directory
 // var favicon = require('serve-favicon');
 var ejsEngine = require('ejs-mate');
 <%}%>
-var methodOverride = require('method-override');
 
-//setup mongoose
-require(path.join(__dirname, '..', 'config', 'mongoose'));
+//build logs directory if does not exists
+mkdir.sync(path.join(__dirname, '..', 'logs'));
+
+//start initializers
+
+//setup winston application logger
+var winston = require(path.join(__dirname, 'initializers', 'winston'));
+
+//setup application mongoose instance
+require(path.join(__dirname, 'initializers', 'mongoose'));
+
+//finish initializers
 
 // load all models recursively
 require('require-all')({
-    dirname: __dirname + '/models',
+    dirname: path.join(__dirname, 'models'),
     filter: /(.+_model)\.js$/,
     excludeDirs: /^\.(git|svn|md)$/
 });
 
 //create an express application
 var app = express();
+
+//enable cors
+app.use(cors());
+
+//configure helmet
+// app.use(helmet.contentSecurityPolicy());
+// app.use(helmet.xssFilter());
+// app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy({
+    setTo: '<%=applicationName %> <%=applicationVersion %>'
+}));
+// app.use(helmet.ieNoOpen());
+// app.use(helmet.noSniff());
+// app.use(helmet.noCache());
+
 <%if(frontend){%>
 // view engine setup
 app.engine('html', ejsEngine);
@@ -36,8 +66,6 @@ app.set('view engine', 'html');
 // app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 <%}%>
-//request logger
-app.use(logger('dev'));
 
 //parsing body
 app.use(bodyParser.json());
@@ -62,7 +90,7 @@ app.use(require('express-paginate').middleware(10, 50));
 
 //load application locals
 require('require-all')({
-    dirname: __dirname + '/locals',
+    dirname: path.join(__dirname, 'locals'),
     filter: /(.+_locals)\.js$/,
     excludeDirs: /^\.(git|svn|md)$/,
     resolve: function(local) {
@@ -75,15 +103,27 @@ require('require-all')({
     }
 });
 
+//setup application request logger 
+app.use(expressWinston.logger({
+    winstonInstance: winston
+}));
+
 // load all routers recursively
 require('require-all')({
-    dirname: __dirname + '/routers',
+    dirname: path.join(__dirname, 'routers'),
     filter: /(.+_router)\.js$/,
     excludeDirs: /^\.(git|svn|md)$/,
     resolve: function(router) {
         app.use(router);
     }
 });
+
+//setup application request error logger
+//setup application request logger 
+app.use(expressWinston.errorLogger({
+    winstonInstance: winston
+}));
+
 
 // catch 404 and forward to error handler
 app.use(function(request, response, next) {
@@ -94,29 +134,41 @@ app.use(function(request, response, next) {
 
 // error handlers
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(error, request, response /*, next*/ ) {
+/*jshint unused:false */
+// development error handlers
+if (app.get('env') === 'development' || app.get('env') === 'test') {
+    app.use(function(error, request, response, next) {
+        //log all errors
+        winston.error(error);
+
+        //respond
         response.status(error.status || 500);
-        response.render('errors', {
-            title: 'Error',
+        response.json({
+            success: false,
             message: error.message,
             error: error
         });
     });
 }
 
+
 // production error handler
-// no stacktraces leaked to user
-app.use(function(error, request, response /*, next*/ ) {
-    response.status(error.status || 500);
-    response.render('errors', {
-        title: 'Error',
-        message: error.message,
-        error: {}
+if (app.get('env') === 'production') {
+    app.use(function(error, request, response, next) {
+        //log all errors
+        winston.error(error);
+
+        //respond
+        response.status(error.status || 500);
+        response.json({
+            success: false,
+            message: error.message,
+            error: {}
+        });
     });
-});
+}
+/*jshint unused:true */
+
 
 //export express application
 module.exports = app;

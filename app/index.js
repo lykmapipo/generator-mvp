@@ -107,6 +107,13 @@ module.exports = yeoman.generators.Base.extend({
             this.template('config/_mongoose.js', 'config/mongoose.js');
         },
 
+        initializers: function() {
+            this.mkdir('app/initializers');
+
+            this.template('initializers/_mongoose.js', 'app/initializers/mongoose.js');
+            this.template('initializers/_winston.js', 'app/initializers/winston.js');
+        },
+
         views: function() {
             if (this.frontend) {
 
@@ -226,15 +233,17 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
+        //TODO split api and others dependencies
         if (this.install) {
             //npm install app dependencies
             this.npmInstall(
                 [
-                    'async', 'lodash', 'require-all', 'ejs',
+                    'async', 'lodash', 'require-all', 'ejs', 'serve-favicon',
                     'ejs-mate', 'mongoose', 'mongoose-paginate', 'mongoose-hidden',
                     'mongoose-timestamp', 'mongoose-autopopulate', 'express',
-                    'express-paginate', 'serve-favicon', 'morgan',
-                    'body-parser', 'method-override'
+                    'express-paginate', 'serve-favicon', 'helmet',
+                    'body-parser', 'method-override', 'winston', 'express-winston',
+                    'cors', 'mkdir-p', 'config'
                 ], {
                     save: true
                 });
