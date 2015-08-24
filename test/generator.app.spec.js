@@ -54,6 +54,7 @@ describe('mvp:app generator', function() {
     it('should be able to generate application directory structure', function() {
         assert.file([
             'config',
+            'app/initializers',
             'app/models',
             'app/locals',
             'app/routers',
@@ -71,7 +72,10 @@ describe('mvp:app generator', function() {
     it('should be able to generate application configuration files', function() {
         assert.file([
             'config',
-            'config/mongoose.js',
+            'config/default.js',
+            'config/development.js',
+            'config/production.js',
+            'config/test.js',
         ]);
     });
 
