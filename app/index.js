@@ -273,9 +273,6 @@ module.exports = yeoman.generators.Base.extend({
                         save: true
                     });
             }
-
-            //install bower and npm dependencies
-            this.installDependencies();
         }
     }
 });

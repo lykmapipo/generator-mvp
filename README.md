@@ -113,12 +113,8 @@ $ npm test
 
 ## TODO
 - [ ] Adding winston logger
-- [ ] Adding helmet for security
-- [ ] Adding cors
-- [ ] Make use of node-conf
 - [ ] Make use of initializer to factor out initialization logics from configs
 - [ ] Adding server metrics
-- [ ] Separate configs for different environment
 - [ ] Add nice theme on scaffolds
 - [ ] Separate front and api
 - [ ] Add front end  grunt tasks
