@@ -11,12 +11,12 @@ module.exports = {
      * @param  {HttpResponse} response a http response
      */
     index: function(request, response) {
-        response.format({
+        response.format({<%if(frontend){%>
             'text/html': function() {
                 response.render('site/index', {
                     title: '<%= applicationName %>'
                 });
-            },
+            },<%}%>
 
             'application/json': function() {
                 response.json({

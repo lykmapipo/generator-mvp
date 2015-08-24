@@ -17,12 +17,12 @@ module.exports = {
      * @param  {HttpResponse} response a http response
      */
     <%= action %>: function(request, response) {
-        response.format({
+        response.format({<%if(frontend){%>
             'text/html': function() {
                 response.render('<%= controllerName %>/<%= action %>', {
                     title: '<%= controllerName %> <%= controllerName %>'
                 });
-            },
+            },<%}%>
 
             'application/json': function() {
                 response.json({
@@ -43,12 +43,12 @@ module.exports = {
      * @param  {HttpResponse} response a http response
      */
     <%= action %>: function(request, response) {
-        response.format({
+        response.format({<%if(frontend){%>
             'text/html': function() {
                 response.render('<%= controllerName %>/<%= action %>', {
                     title: '<%= controllerName %> <%= controllerName %>'
                 });
-            },
+            },<%}%>
 
             'application/json': function() {
                 response.json({
