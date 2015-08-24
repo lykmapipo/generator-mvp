@@ -113,6 +113,7 @@ $ npm test
 
 ## TODO
 - [ ] Adding winston logger
+- [ ] Make use of node-conf
 - [ ] Adding server metrics
 - [ ] Separate configs for different environment
 - [ ] Add nice theme on scaffolds
