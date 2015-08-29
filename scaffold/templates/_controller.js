@@ -17,9 +17,10 @@ module.exports = {
      */
     index: function(request, response, next) {
         <%= className %>
-            .paginate({},
-                request.query.page,
-                request.query.limit,
+            .paginate({},{
+                    page: request.query.page,
+                    limit: request.query.limit
+                },
                 function(error, pages, <%= classPlural.toLowerCase() %>, total) {
                     if (error) {
                         next(error);
