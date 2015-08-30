@@ -258,7 +258,8 @@ module.exports = yeoman.generators.Base.extend({
                     'load-grunt-tasks', 'grunt-newer', 'grunt-mocha-test',
                     'grunt-concurrent', 'grunt-contrib-clean',
                     'grunt-contrib-copy', 'grunt-contrib-jshint',
-                    'grunt-contrib-watch', 'mock-express-response'
+                    'grunt-contrib-watch', 'mock-express-request',
+                    'mock-express-response'
                 ], {
                     saveDev: true
                 });
