@@ -116,6 +116,14 @@ module.exports = function(grunt) {
         // mocha test task configuration
         //------------------------------------------------------------
         mochaTest: {
+            all: {
+                options: {
+                    reporter: 'spec',
+                },
+                src: [
+                    '<%= project.test %>/**/*.js'
+                ]
+            },
             controllers: {
                 options: {
                     reporter: 'spec',
@@ -130,6 +138,7 @@ module.exports = function(grunt) {
                     reporter: 'spec',
                 },
                 src: [
+                    '<%= project.test %>/bootstrap_spec.js',
                     '<%= project.test %>/intergration/**/*.js'
                 ]
             },
@@ -138,6 +147,7 @@ module.exports = function(grunt) {
                     reporter: 'spec',
                 },
                 src: [
+                    '<%= project.test %>/bootstrap_spec.js',
                     '<%= project.test %>/locals/**/*.js'
                 ]
             },
@@ -163,26 +173,27 @@ module.exports = function(grunt) {
 
     });
 
-    //run in development environment
+   //run in development environment
     grunt.registerTask('dev', ['newer:jshint', 'express:dev', 'watch']);
 
     //run in production environment
     grunt.registerTask('prod', ['newer:jshint', 'express:prod', 'watch']);
 
     //run in test environment
-    grunt.registerTask('test', ['newer:jshint', 'mochaTest', 'express:test', 'watch']);
+    grunt.registerTask('test', ['newer:jshint', 'mochaTest:all', 'express:test', 'watch']);
 
     //run specifications
-    grunt.registerTask('spec', ['newer:jshint', 'mochaTest']);
+    grunt.registerTask('spec', ['newer:jshint', 'mochaTest:all']);
 
     grunt.registerTask('controllersspec', ['newer:jshint', 'mochaTest:controllers']);
     grunt.registerTask('intergrationspec', ['newer:jshint', 'mochaTest:intergration']);
     grunt.registerTask('localsspec', ['newer:jshint', 'mochaTest:locals']);
     grunt.registerTask('modelsspec', ['newer:jshint', 'mochaTest:models']);
     grunt.registerTask('routersspec', ['newer:jshint', 'mochaTest:routers']);
+    grunt.registerTask('libsspec', ['newer:jshint', 'mochaTest:libs']);
 
     //default run jshint and test
-    grunt.registerTask('default', ['newer:jshint', 'mochaTest']);
+    grunt.registerTask('default', ['newer:jshint', 'mochaTest:all']);
 
 
 };

@@ -25,32 +25,12 @@ module.exports = {
                     if (error) {
                         next(error);
                     } else {
-                        response.format({
-                            'text/html': function() {
-                                response
-                                    .render('<%= classPlural.toLowerCase() %>/index.html', {
-                                        <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
-                                        pages: pages,
-                                        count: total
-                                    });
-                            },
-
-                            'application/json': function() {
-                                response.json({
-                                    <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
-                                    pages: pages,
-                                    count: total
-                                });
-                            },
-
-                            'default': function() {
-                                // hanlde unaccepted format
-                                response
-                                    .status(406)
-                                    .send('Not Acceptable');
-                            }
-                        });
-
+                        response
+                            .ok('<%= classPlural.toLowerCase() %>/index.html',{
+                                <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
+                                pages: pages,
+                                count: total
+                            });
                     }
                 });
     },
@@ -62,22 +42,11 @@ module.exports = {
      * @param  {HttpResponse} response a http response
      */
     new: function(request, response) {
-        response.format({
-            'text/html': function() {
-                response
-                    .render('<%= classPlural.toLowerCase() %>/new.html', {
-                        errors: null,
-                        <%= className.toLowerCase() %>: {}
-                    });
-            },
-
-            'default': function() {
-                // handle unacceptable format
-                response
-                    .status(406)
-                    .send('Not Acceptable');
-            }
-        });
+        response
+            .ok('<%= classPlural.toLowerCase() %>/new.html', {
+                errors: null,
+                <%= className.toLowerCase() %>: {}
+            });
     },
 
 
@@ -98,16 +67,9 @@ module.exports = {
                                 .redirect('/<%= classPlural.toLowerCase() %>');
                         },
 
-                        'application/json': function() {
-                            response
-                                .json(<%= className.toLowerCase() %>);
-                        },
-
                         'default': function() {
-                            //handle unaccepted format
                             response
-                                .status(406)
-                                .send('Not Acceptable');
+                                .created(<%= className.toLowerCase() %>);
                         }
                     });
                 }
@@ -126,25 +88,10 @@ module.exports = {
                 if (error) {
                     next(error);
                 } else {
-                    response.format({
-                        'text/html': function() {
-                            response
-                                .render('<%= classPlural.toLowerCase() %>/show.html', {
-                                    <%= className.toLowerCase() %>: <%= className.toLowerCase() %>
-                                });
-                        },
-
-                        'application/json': function() {
-                            response.json(<%= className.toLowerCase() %>);
-                        },
-
-                        'default': function() {
-                            //hanlde unacceptable format
-                            response
-                                .status(406)
-                                .send('Not Acceptable');
-                        }
-                    });
+                    response
+                        .ok('<%= classPlural.toLowerCase() %>/show.html', {
+                            <%= className.toLowerCase() %>: <%= className.toLowerCase() %>
+                        });
                 }
             });
     },
@@ -161,22 +108,11 @@ module.exports = {
                 if (error) {
                     next(error);
                 } else {
-                    response.format({
-                        'text/html': function() {
-                            response
-                                .render('<%= classPlural.toLowerCase() %>/edit.html', {
-                                    <%= className.toLowerCase() %>: <%= className.toLowerCase() %>,
-                                    errors: null
-                                });
-                        },
-
-                        'default': function() {
-                            //hanlde unacceptable format
-                            response
-                                .status(406)
-                                .send('Not Acceptable');
-                        }
-                    });
+                    response
+                        .ok('<%= classPlural.toLowerCase() %>/edit.html', {
+                            <%= className.toLowerCase() %>: <%= className.toLowerCase() %>,
+                            errors: null
+                        });
                 }
             });
     },
@@ -203,16 +139,9 @@ module.exports = {
                                     .redirect('/<%= classPlural.toLowerCase() %>');
                             },
 
-                            'application/json': function() {
-                                response
-                                    .json(<%= className.toLowerCase() %>);
-                            },
-
                             'default': function() {
-                                // hanlde unacceptable format
                                 response
-                                    .status(406)
-                                    .send('Not Acceptable');
+                                    .ok(<%= className.toLowerCase() %>);
                             }
                         });
 
@@ -240,16 +169,9 @@ module.exports = {
                                     .redirect('/<%= classPlural.toLowerCase() %>');
                             },
 
-                            'application/json': function() {
-                                response
-                                    .json(<%= className.toLowerCase() %>);
-                            },
-
                             'default': function() {
-                                // handle unacceptable format
                                 response
-                                    .status(406)
-                                    .send('Not Acceptable');
+                                    .ok(<%= className.toLowerCase() %>);
                             }
                         });
                     }

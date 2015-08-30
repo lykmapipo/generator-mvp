@@ -27,23 +27,12 @@ module.exports = {
                     if (error) {
                         next(error);
                     } else {
-                        response.format({
-                            'application/json': function() {
-                                response.json({
-                                    <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
-                                    pages: pages,
-                                    count: total
-                                });
-                            },
-
-                            'default': function() {
-                                // hanlde unaccepted format
-                                response
-                                    .status(406)
-                                    .send('Not Acceptable');
-                            }
-                        });
-
+                        response
+                            .ok({
+                                <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
+                                pages: pages,
+                                count: total
+                            });
                     }
                 });
     },
@@ -62,19 +51,8 @@ module.exports = {
                 if (error) {
                     next(error);
                 } else {
-                    response.format({
-                        'application/json': function() {
-                            response
-                                .json(<%= className.toLowerCase() %>);
-                        },
-
-                        'default': function() {
-                            //handle unaccepted format
-                            response
-                                .status(406)
-                                .send('Not Acceptable');
-                        }
-                    });
+                    response
+                        .created(<%= className.toLowerCase() %>);
                 }
             });
     },
@@ -93,18 +71,8 @@ module.exports = {
                 if (error) {
                     next(error);
                 } else {
-                    response.format({
-                        'application/json': function() {
-                            response.json(<%= className.toLowerCase() %>);
-                        },
-
-                        'default': function() {
-                            //hanlde unacceptable format
-                            response
-                                .status(406)
-                                .send('Not Acceptable');
-                        }
-                    });
+                    response
+                        .ok(<%= className.toLowerCase() %>);
                 }
             });
     },
@@ -127,20 +95,8 @@ module.exports = {
                     if (error) {
                         next(error);
                     } else {
-                        response.format({
-                            'application/json': function() {
-                                response
-                                    .json(<%= className.toLowerCase() %>);
-                            },
-
-                            'default': function() {
-                                // hanlde unacceptable format
-                                response
-                                    .status(406)
-                                    .send('Not Acceptable');
-                            }
-                        });
-
+                        response
+                            .ok(<%= className.toLowerCase() %>);
                     }
                 });
     },
@@ -161,19 +117,8 @@ module.exports = {
                     if (error) {
                         next(error);
                     } else {
-                        response.format({
-                            'application/json': function() {
-                                response
-                                    .json(<%= className.toLowerCase() %>);
-                            },
-
-                            'default': function() {
-                                // handle unacceptable format
-                                response
-                                    .status(406)
-                                    .send('Not Acceptable');
-                            }
-                        });
+                        response
+                            .ok(<%= className.toLowerCase() %>);
                     }
                 });
     }
