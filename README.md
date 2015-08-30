@@ -124,6 +124,8 @@ $ npm test
 - [ ] Add model fields jsdocs
 - [ ] Fix model seed, when object id is used remove trailing comma
 - [ ] Add middleware generator and loading
+- [ ] Provide a mean to upgrade previous code base
+- [ ] Add a mean to run generated codes during testing
 
 ## License
 

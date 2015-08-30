@@ -1,16 +1,13 @@
 'use strict';
 
+//set environment to test
+process.env.NODE_ENV = 'test';
+
 //dependencies
 var path = require('path');
 var async = require('async');
 require(path.join(__dirname, '..', 'app', 'application'));
 var mongoose = require('mongoose');
-
-
-before(function(done) {
-    //TODO add more test lift up logics    
-    done();
-});
 
 /**
  * @description wipe all mongoose model data and drop all indexes
@@ -31,16 +28,22 @@ function wipe(done) {
         });
 
     //run all clean ups parallel
-    async.parallel(cleanups, done);
-}
-
-//clean database
-after(function(done) {
-    wipe(function(error) {
+    async.parallel(cleanups, function(error) {
         if (error && error.message !== 'ns not found') {
             done(error);
         } else {
             done(null);
         }
     });
+}
+
+//setup test environment
+before(function(done) {
+    wipe(done);
+});
+
+
+//restore initial environment
+after(function(done) {
+    wipe(done);
 });
