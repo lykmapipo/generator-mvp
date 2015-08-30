@@ -11,6 +11,7 @@ var methodOverride = require('method-override');
 var expressWinston = require('express-winston');
 var cors = require('cors');
 var helmet = require('helmet');
+var respond = require('express-respond');
 <%if(frontend){%>
 // un comment after adding application favicon in public directory
 // var favicon = require('serve-favicon');
@@ -42,6 +43,9 @@ var app = express();
 
 //enable cors
 app.use(cors());
+
+//use express respond
+app.use(respond());
 
 //configure helmet
 // app.use(helmet.contentSecurityPolicy());

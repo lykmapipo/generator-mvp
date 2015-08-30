@@ -245,7 +245,7 @@ module.exports = yeoman.generators.Base.extend({
                     'mongoose-timestamp', 'mongoose-autopopulate', 'express',
                     'express-paginate', 'serve-favicon', 'helmet',
                     'body-parser', 'method-override', 'winston', 'express-winston',
-                    'cors', 'mkdir-p', 'config'
+                    'cors', 'mkdir-p', 'config', 'express-respond'
                 ], {
                     save: true
                 });
