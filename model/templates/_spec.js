@@ -90,7 +90,7 @@ describe('<%= className %> Model', function() {
         <%= className %>.paginate({}, {
             page: 1,
             limit: 10
-        }, function(error, pages, <%= modelNamePlural %>, total) {
+        }, function(error, <%= modelNamePlural %>, pages, total) {
 
             expect(error).to.not.exist;
             expect(pages).to.exist;

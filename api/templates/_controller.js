@@ -23,7 +23,7 @@ module.exports = {
                     page: request.query.page,
                     limit: request.query.limit
                 },
-                function(error, pages, <%= classPlural.toLowerCase() %>, total) {
+                function(error, <%= classPlural.toLowerCase() %>, pages, total) {
                     if (error) {
                         next(error);
                     } else {
