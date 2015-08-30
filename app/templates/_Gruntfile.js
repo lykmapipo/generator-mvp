@@ -121,7 +121,8 @@ module.exports = function(grunt) {
                     reporter: 'spec',
                 },
                 src: [
-                    '<%= project.test %>/**/*.js'
+                    '<%= project.test %>/bootstrap_spec.js',
+                    '<%= project.test %>/controllers/**/*.js'
                 ]
             },
             intergration: {
@@ -154,6 +155,7 @@ module.exports = function(grunt) {
                     reporter: 'spec',
                 },
                 src: [
+                    '<%= project.test %>/bootstrap_spec.js',
                     '<%= project.test %>/routers/**/*.js'
                 ]
             }
