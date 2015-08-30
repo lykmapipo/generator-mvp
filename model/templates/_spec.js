@@ -13,12 +13,15 @@ var expect = require('chai').expect;
 var <%= className %> = mongoose.model('<%= className %>');
 
 //seed
-var _<%= modelName %>_ = <%= seed %>;
+var _<%= modelName %>_;
 
 
 describe('<%= className %> Model', function() {
     before(function(done) {
-        <%= className %>.create(_<%= modelName %>_, function(error, <%= modelName %>) {
+        var __<%= modelName %>__ = <%= seed %>;
+
+        <%= className %>.create(__<%= modelName %>__, function(error, <%= modelName %>) {
+            _<%= modelName %>_ = <%= modelName %>;
             done(error, <%= modelName %>);
         });
     });
@@ -29,10 +32,10 @@ describe('<%= className %> Model', function() {
 
         <%= className %>.create(__<%= modelName %>__, function(error, <%= modelName %>) {
             
-            expect(error).to.be.null;
-            expect(<%= modelName %>).to.not.be.undefined;
-            expect(<%= modelName %>).to.not.be.null;
-            //TODO more assertions
+            expect(error).to.not.exist;
+            expect(<%= modelName %>).to.exist;
+            
+            //TODO application specific assertions
 
             done(error, <%= modelName %>);
         });
@@ -40,12 +43,12 @@ describe('<%= className %> Model', function() {
 
     
     it('should be able to find existing <%= modelName %>', function(done) {
-        <%= className %>.findOne(_<%= modelName %>_, function(error, <%= modelName %>) {
+        <%= className %>.findById(_<%= modelName %>_._id, function(error, <%= modelName %>) {
 
-            expect(error).to.be.null;
-            expect(<%= modelName %>).to.not.be.undefined;
-            expect(<%= modelName %>).to.not.be.null;
-            //TODO more assertions
+            expect(error).to.not.exist;
+            expect(<%= modelName %>).to.exist;
+            
+            //TODO application specific assertions
             
             done(error, <%= modelName %>);
         });
@@ -55,14 +58,17 @@ describe('<%= className %> Model', function() {
     it('should be able to update existing <%= modelName %>', function(done) {
         var __<%= modelName %>__ = <%= seed %>;
 
-        <%= className %>.findOneAndUpdate(_<%= modelName %>_, __<%= modelName %>__, function(error, <%= modelName %>) {
+        <%= className %>.findByIdAndUpdate(_<%= modelName %>_._id, __<%= modelName %>__,{
+            upsert: true,
+            new: true
+        }, function(error, <%= modelName %>) {
             //update <%= modelName %> references
-            _<%= modelName %>_ = __<%= modelName %>__;
+            _<%= modelName %>_ = <%= modelName %>;
 
-            expect(error).to.be.null;
-            expect(<%= modelName %>).to.not.be.undefined;
-            expect(<%= modelName %>).to.not.be.null;
-            //TODO more assertions
+            expect(error).to.not.exist;
+            expect(<%= modelName %>).to.exist;
+            
+            //TODO application specific assertions
             
             done(error, <%= modelName %>);
         });
@@ -70,16 +76,37 @@ describe('<%= className %> Model', function() {
 
     
     it('should be able to delete existing <%= modelName %>', function(done) {
-        <%= className %>.findOneAndRemove(_<%= modelName %>_, function(error, <%= modelName %>) {
+        <%= className %>.findByIdAndRemove(_<%= modelName %>_._id, function(error, <%= modelName %>) {
 
-            expect(error).to.be.null;
-            expect(<%= modelName %>).to.not.be.undefined;
-            expect(<%= modelName %>).to.not.be.null;
-            //TODO more assertions
+            expect(error).to.not.exist;
+            expect(<%= modelName %>).to.exist;
+            
+            //TODO application specific assertions
             
             done(error, <%= modelName %>);
         });
     });
+
+
+    it('should be able to list existing <%= modelNamePlural %>', function(done) {
+        <%= className %>.paginate({}, {
+            page: 1,
+            limit: 10
+        }, function(error, pages, <%= modelNamePlural %>, total) {
+
+            expect(error).to.not.exist;
+            expect(pages).to.exist;
+            expect(<%= modelNamePlural %>).to.exist;
+            expect(total).to.exist;
+            
+            //TODO application specific assertions
+            
+            done(error, <%= modelNamePlural %>);
+        });
+    });
+
+
+    //TODO alternative test specs
 
     
     after(function(done) {

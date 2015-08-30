@@ -145,6 +145,7 @@ module.exports = function(grunt) {
                     reporter: 'spec',
                 },
                 src: [
+                    '<%= project.test %>/bootstrap_spec.js',
                     '<%= project.test %>/models/**/*.js'
                 ]
             },
@@ -167,7 +168,7 @@ module.exports = function(grunt) {
     grunt.registerTask('prod', ['newer:jshint', 'express:prod', 'watch']);
 
     //run in test environment
-    grunt.registerTask('test', ['newer:jshint','mochaTest', 'express:test', 'watch']);
+    grunt.registerTask('test', ['newer:jshint', 'mochaTest', 'express:test', 'watch']);
 
     //run specifications
     grunt.registerTask('spec', ['newer:jshint', 'mochaTest']);

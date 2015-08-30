@@ -22,6 +22,7 @@ module.exports = yeoman.generators.Base.extend({
         }
 
         this.modelName = splits.shift().toLowerCase();
+        this.modelNamePlural = inflection.pluralize(this.modelName);
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
 
