@@ -11,8 +11,6 @@ var mongoose = require('mongoose');
 var faker = require('faker');
 var expect = require('chai').expect;
 var <%= className %> = mongoose.model('<%= className %>');
-
-//seed
 var _<%= modelName %>_;
 
 
