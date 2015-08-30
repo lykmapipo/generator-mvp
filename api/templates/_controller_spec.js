@@ -71,36 +71,6 @@ describe('<%= className %> Controller', function() {
         <%=className%>Controller.create(request, response);
     });
 
-    
-    it('should be able to find existing <%= plural %> on <%= className%>Controller#index', function(done) {
-       var request = new Request({
-            headers: {
-                'Accept': 'application/json'
-            },
-            query: {
-                page: 1,
-                limit: 10
-            }
-        });
-
-        var response = new Response({
-            request: request,
-            finish: function() {
-                var _data = response._getJSON();
-
-                expect(_data).to.not.be.undefined;
-                expect(_data).to.not.be.null;
-                expect(_data.<%=plural%>.length).to.be.above(0);
-
-                done();
-            }
-        });
-
-
-        <%=className%>Controller.index(request, response);
-
-    });
-
 	
     it('should be able to find existing <%= singular %> on <%= className%>Controller#show', function(done) {
         var request = new Request({
@@ -123,6 +93,7 @@ describe('<%= className %> Controller', function() {
                 expect(__<%=singular%>).to.not.be.undefined;
                 expect(__<%=singular%>._id).to.exist;
 
+                //TODO application specific assertions
 
                 done();
             }
@@ -156,6 +127,8 @@ describe('<%= className %> Controller', function() {
                 expect(__<%=singular%>).to.not.be.undefined;
                 expect(__<%=singular%>._id).to.exist;
 
+                //TODO application specific assertions
+
                 done();
             }
         });
@@ -186,12 +159,45 @@ describe('<%= className %> Controller', function() {
                 expect(__<%=singular%>).to.not.be.undefined;
                 expect(__<%=singular%>._id).to.exist;
 
+                //TODO application specific assertions
 
                 done();
             }
         });
 
         <%=className%>Controller.destroy(request, response);
+    });
+
+
+     it('should be able to list existing <%= plural %> on <%= className%>Controller#index', function(done) {
+       var request = new Request({
+            headers: {
+                'Accept': 'application/json'
+            },
+            query: {
+                page: 1,
+                limit: 10
+            }
+        });
+
+        var response = new Response({
+            request: request,
+            finish: function() {
+                var _data = response._getJSON();
+
+                expect(_data).to.not.be.undefined;
+                expect(_data).to.not.be.null;
+                expect(_data.<%=plural%>.length).to.be.above(0);
+
+                //TODO application specific assertions
+
+                done();
+            }
+        });
+
+
+        <%=className%>Controller.index(request, response);
+
     });
 
     
