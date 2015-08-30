@@ -10,6 +10,7 @@
 var path = require('path');
 var expect = require('chai').expect;
 var faker = require('faker');
+var respond = require('express-respond')();
 var Request = require('mock-express-request');
 var Response = require('mock-express-response');
 var <%=className%>Controller = require(path.join(__dirname, '..', '..', 'app', 'controllers', '<%=singular%>_controller'));
@@ -36,6 +37,9 @@ describe('<%= className %> Controller', function() {
             }
         });
 
+        //patch response with respond methods
+        respond(request,response,function(){});
+
         <%=className%>Controller.create(request, response);
     });
 
@@ -56,7 +60,7 @@ describe('<%= className %> Controller', function() {
                 var __<%= modelName %> = response._getJSON();
 
                 //TODO handle response errors
-                expect(response.statusCode).to.be.equal(200);
+                expect(response.statusCode).to.be.equal(201);
 
                 expect(__<%= modelName %>).to.not.be.null;
                 expect(__<%= modelName %>).to.not.be.undefined;
@@ -67,6 +71,9 @@ describe('<%= className %> Controller', function() {
                 done();
             }
         });
+
+        //patch response with respond methods
+        respond(request,response,function(){});
 
         <%=className%>Controller.create(request, response);
     });
@@ -91,13 +98,15 @@ describe('<%= className %> Controller', function() {
 
                 expect(__<%=singular%>).to.not.be.null;
                 expect(__<%=singular%>).to.not.be.undefined;
-                expect(__<%=singular%>._id).to.exist;
 
                 //TODO application specific assertions
 
                 done();
             }
         });
+
+        //patch response with respond methods
+        respond(request,response,function(){});
 
         <%=className%>Controller.show(request, response);
     });
@@ -133,6 +142,9 @@ describe('<%= className %> Controller', function() {
             }
         });
 
+        //patch response with respond methods
+        respond(request,response,function(){});
+
         <%=className%>Controller.update(request, response);
 
     });
@@ -165,6 +177,9 @@ describe('<%= className %> Controller', function() {
             }
         });
 
+        //patch response with respond methods
+        respond(request,response,function(){});
+
         <%=className%>Controller.destroy(request, response);
     });
 
@@ -195,6 +210,8 @@ describe('<%= className %> Controller', function() {
             }
         });
 
+        //patch response with respond methods
+        respond(request,response,function(){});
 
         <%=className%>Controller.index(request, response);
 

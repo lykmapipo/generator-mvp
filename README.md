@@ -119,13 +119,12 @@ $ npm test
 - [ ] Separate front and api
 - [ ] Add front end  grunt tasks
 - [ ] Adding https
-- [ ] Adding proper http status on responses
-- [ ] Clean api response content negotiation boilerplates
 - [ ] Add model fields jsdocs
 - [ ] Fix model seed, when object id is used remove trailing comma
 - [ ] Add middleware generator and loading
 - [ ] Provide a mean to upgrade previous code base
 - [ ] Add a mean to run generated codes during testing
+- [ ] Add a means to delete/revert generated codes
 
 ## License
 
