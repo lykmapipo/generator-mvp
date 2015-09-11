@@ -81,8 +81,22 @@ module.exports = yeoman.generators.Base.extend({
         app: function() {
             this.mkdir('app');
             this.mkdir('app/models');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('app/models/.gitkeep')
+            );
+
             this.mkdir('app/routers');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('app/routers/.gitkeep')
+            );
+
             this.mkdir('app/controllers');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('app/controllers/.gitkeep')
+            );
 
 
             this.template('_package.json', 'package.json');
@@ -102,6 +116,10 @@ module.exports = yeoman.generators.Base.extend({
 
         config: function() {
             this.mkdir('config');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('config/.gitkeep')
+            );
 
             this.template('config/_default.js', 'config/default.js');
             this.template('config/_development.js', 'config/development.js');
@@ -111,6 +129,10 @@ module.exports = yeoman.generators.Base.extend({
 
         initializers: function() {
             this.mkdir('app/initializers');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('app/initializers/.gitkeep')
+            );
 
             this.template('initializers/_mongoose.js', 'app/initializers/mongoose.js');
             this.template('initializers/_winston.js', 'app/initializers/winston.js');
@@ -144,8 +166,10 @@ module.exports = yeoman.generators.Base.extend({
         },
 
         locals: function() {
-            this.mkdir('app/locals');
-            this.template('locals/_application_locals.js', 'app/locals/application_locals.js');
+            if (this.frontend) {
+                this.mkdir('app/locals');
+                this.template('locals/_application_locals.js', 'app/locals/application_locals.js');
+            }
         },
 
         test: function() {
