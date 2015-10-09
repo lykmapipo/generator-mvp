@@ -131,19 +131,6 @@ $ npm install
 $ npm test
 ```
 
-## TODO
-- [ ] Adding server metrics
-- [ ] Add nice theme on scaffolds
-- [ ] Separate front and api
-- [ ] Add front end  grunt tasks
-- [ ] Adding https
-- [ ] Add model fields jsdocs
-- [ ] Fix model seed, when object id is used remove trailing comma
-- [ ] Add middleware generator and loading
-- [ ] Provide a mean to upgrade previous code base
-- [ ] Add a mean to run generated codes during testing
-- [ ] Add a means to delete/revert generated codes
-
 ## License
 
 The MIT License (MIT)
