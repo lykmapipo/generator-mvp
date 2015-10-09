@@ -38,9 +38,6 @@ function wipe(done) {
 }
 
 //setup test environment
-before(function(done) {
-    wipe(done);
-});
 
 
 //restore initial environment
