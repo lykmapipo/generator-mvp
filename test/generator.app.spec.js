@@ -62,11 +62,17 @@ describe('mvp:app generator', function() {
             'app/routers/.gitkeep',
             'app/controllers',
             'app/controllers/.gitkeep',
+            'app/middlewares',
+            'app/middlewares/.gitkeep',
+            'app/libs',
+            'app/libs/.gitkeep',
             'app/views',
             'test/models',
             'test/locals',
             'test/routers',
             'test/controllers',
+            'test/middlewares',
+            'test/libs',
             'test/intergration',
         ]);
     });

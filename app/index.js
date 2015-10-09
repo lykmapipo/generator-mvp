@@ -80,22 +80,40 @@ module.exports = yeoman.generators.Base.extend({
     writing: {
         app: function() {
             this.mkdir('app');
+
+            //models dir
             this.mkdir('app/models');
             this.fs.copy(
                 this.templatePath('gitkeep'),
                 this.destinationPath('app/models/.gitkeep')
             );
 
+            //routers dir
             this.mkdir('app/routers');
             this.fs.copy(
                 this.templatePath('gitkeep'),
                 this.destinationPath('app/routers/.gitkeep')
             );
 
+            //controllers dir
             this.mkdir('app/controllers');
             this.fs.copy(
                 this.templatePath('gitkeep'),
                 this.destinationPath('app/controllers/.gitkeep')
+            );
+
+            //middleware dir
+            this.mkdir('app/middlewares');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('app/middlewares/.gitkeep')
+            );
+
+            //libs dir
+            this.mkdir('app/libs');
+            this.fs.copy(
+                this.templatePath('gitkeep'),
+                this.destinationPath('app/libs/.gitkeep')
             );
 
 
@@ -179,6 +197,8 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('test/models');
             this.mkdir('test/routers');
             this.mkdir('test/controllers');
+            this.mkdir('test/middlewares');
+            this.mkdir('test/libs');
             this.mkdir('test/locals');
             this.mkdir('test/intergration');
         },

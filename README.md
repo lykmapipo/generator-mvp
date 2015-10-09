@@ -33,10 +33,12 @@ $ yo mvp
 Available generators:
 
 * [mvp](#app) (aka [mvp:app](#app))
-* [mvp:controller](#controller)
-* [mvp:model](#model)
 * [mvp:api](#api)
 * [mvp:scaffold](#scaffold)
+* [mvp:model](#model)
+* [mvp:controller](#controller)
+* [mvp:middleware](#middleware)
+
 
 And more to come based on what we daily need in our `expressjs` an `mongoose` development workflows.
 
@@ -64,6 +66,14 @@ $ yo mvp:controller index create edit
 Example of generating controller without frontend
 ```bash
 $ yo mvp:controller index create edit --skip-frontend
+``` 
+
+### Middleware
+Set up new express `middleware` with it `spec`. To generate a new express middleware invoke `yo mvp:middleware` and giving its name.
+
+Example of generating middleware
+```bash
+$ yo mvp:middleware guard
 ``` 
 
 ### Model
