@@ -38,8 +38,7 @@ Available generators:
 * [mvp:model](#model)
 * [mvp:controller](#controller)
 * [mvp:middleware](#middleware)
-* [mvp:middleware](#library)
-
+* [mvp:lib](#library)
 
 And more to come based on what we daily need in our `expressjs` an `mongoose` development workflows.
 
@@ -72,6 +71,20 @@ Example of scaffolding a simple model
 $ yo mvp:scaffold User name:String dob:Date
 ```
 
+### Model
+Set up new mongoose `Schema` with its `spec/test` boilerplate and register it to mongoose. To generate new model invoke `yo mvp:model` with model name and its attributes separated by space.
+
+Example of generating simple model
+```bash
+$ yo mvp:model User name:String dob:Date
+```
+
+Example of generating model including `refs` to other model
+```bash
+$ yo mvp:model Post content:String author:ObjectId:User 
+```
+Most of mongoose type are supported.
+
 ### Controller
 Set up new `controller`, its `actions` and an `express router`. To generate a new controller invoke `yo mvp:controller` giving its name and actions separated by space.
 
@@ -100,20 +113,6 @@ Example of generating library
 ```bash
 $ yo mvp:lib scanner
 ``` 
-
-### Model
-Set up new mongoose `Schema` with its `spec/test` boilerplate and register it to mongoose. To generate new model invoke `yo mvp:model` with model name and its attributes separated by space.
-
-Example of generating simple model
-```bash
-$ yo mvp:model User name:String dob:Date
-```
-
-Example of generating model including `refs` to other model
-```bash
-$ yo mvp:model Post content:String author:ObjectId:User 
-```
-Most of mongoose type are supported.
 
 ## Contributing
 Fork this repo and push in your ideas. Do not forget to add a bit of test(s) of what value you adding.
