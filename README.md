@@ -99,7 +99,7 @@ $ yo mvp:controller index create edit --skip-frontend
 ``` 
 
 ### Middleware
-Set up new express `middleware` with it `spec`. To generate a new express middleware invoke `yo mvp:middleware` and giving its name.
+Set up new express `middleware` with it `test/spec` boilerplate. To generate a new express middleware invoke `yo mvp:middleware` and giving its name.
 
 Example of generating middleware
 ```bash
@@ -107,7 +107,7 @@ $ yo mvp:middleware guard
 ```
 
 ### Library
-Set up new nodejs `module` with it `spec`. To generate a new nodjs module invoke `yo mvp:lib` and giving its name.
+Set up new `nodejs module` with it `test/spec` boilerplate. To generate a new nodejs module invoke `yo mvp:lib` and giving its name.
 
 Example of generating library
 ```bash
