@@ -4,7 +4,7 @@ Set of generators to kick start nodejs application with [mongoose](https://githu
 
 *Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
 
-*Warning:! There are major changes to v1.0.0 before using it please backup/commit your application*
+*Warning:! There are major changes to v1.0.0+, before using it please backup or commit your application changes*
 
 ## Usage
 
