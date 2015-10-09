@@ -39,7 +39,7 @@ $ grunt dev
 ``` 
 
 ### `grunt test`
-to run in test mode use
+To run in test mode use
 ```sh
 $ grunt test
 ```
