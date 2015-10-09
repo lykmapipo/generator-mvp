@@ -38,6 +38,7 @@ Available generators:
 * [mvp:model](#model)
 * [mvp:controller](#controller)
 * [mvp:middleware](#middleware)
+* [mvp:middleware](#library)
 
 
 And more to come based on what we daily need in our `expressjs` an `mongoose` development workflows.
@@ -53,6 +54,22 @@ $ yo mvp
 If you only want to develop API first application you may opt to disable frontend by:
 ```bash
 $ yo mvp --skip-frontend
+```
+
+### Api
+Set up new mongoose `model`, `controller`, `router` and their `spec/test` boilerplates. To generate a new api invoke `yo mvp:api` followed with model definition
+
+Example of generating simple api
+```bash
+$ yo mvp:api User name:String dob:Date
+```
+
+### Scaffold
+Set up new mongoose `model`, `controller`, `router`, their `spec/test` boilerplates and bootstrap `crud views`.
+
+Example of scaffolding a simple model
+```bash
+$ yo mvp:scaffold User name:String dob:Date
 ```
 
 ### Controller
@@ -74,6 +91,14 @@ Set up new express `middleware` with it `spec`. To generate a new express middle
 Example of generating middleware
 ```bash
 $ yo mvp:middleware guard
+```
+
+### Library
+Set up new nodejs `module` with it `spec`. To generate a new nodjs module invoke `yo mvp:lib` and giving its name.
+
+Example of generating library
+```bash
+$ yo mvp:lib scanner
 ``` 
 
 ### Model
@@ -89,22 +114,6 @@ Example of generating model including `refs` to other model
 $ yo mvp:model Post content:String author:ObjectId:User 
 ```
 Most of mongoose type are supported.
-
-### Api
-Set up new mongoose `model`, `controller`, `router` and their `spec/test` boilerplates. To generate a new api invoke `yo mvp:api` followed with model definition
-
-Example of generating simple api
-```bash
-$ yo mvp:api User name:String dob:Date
-```
-
-### Scaffold
-Set up new mongoose `model`, `controller`, `router`, their `spec/test` boilerplates and bootstrap `crud views`.
-
-Example of scaffolding a simple model
-```bash
-$ yo mvp:scaffold User name:String dob:Date
-```
 
 ## Contributing
 Fork this repo and push in your ideas. Do not forget to add a bit of test(s) of what value you adding.
