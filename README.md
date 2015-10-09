@@ -26,7 +26,37 @@ $ mkdir mvp && cd $_
 $ yo mvp
 ```
 
-- Run `grunt test` for testing and for preview
+- Run `grunt dev` to launch your application and watch for codes changes 
+
+
+## Workflow Tasks
+`generator-mvp` provide a set of `grunt tasks` for use during development and testing.
+
+### `grunt dev`
+To run in development mode use
+```sh
+$ grunt dev
+``` 
+
+### `grunt test`
+to run in test mode use
+```sh
+$ grunt test
+```
+
+### `grunt prod`
+To run in production mode use
+```sh
+$ grunt prod
+```
+
+### `grunt spec`
+To run all tests or specifications use
+```sh
+$ grunt spec
+```
+For targeted spec or test runner see project `Gruntfile`
+
 
 ## Generators
 
