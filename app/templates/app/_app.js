@@ -4,7 +4,9 @@
 require('config'); //load configurations
 var mkdir = require('mkdir-p');
 var path = require('path');
+<%if(frontend){%>
 var _ = require('lodash');
+<%}%>
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
