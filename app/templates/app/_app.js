@@ -92,6 +92,7 @@ if (app.get('env') === 'development') {
 //setup mongoose express pagination middleware
 app.use(require('express-paginate').middleware(10, 50));
 
+<%if(frontend){%>
 //load application locals
 require('require-all')({
     dirname: path.join(__dirname, 'locals'),
@@ -106,6 +107,7 @@ require('require-all')({
         }
     }
 });
+<%}%>
 
 //setup application request logger 
 app.use(expressWinston.logger({
