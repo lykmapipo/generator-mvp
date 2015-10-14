@@ -5,25 +5,15 @@
  * @name <%= scriptAppName %>.controller:<%= className %>ShowCtrl
  * @description
  * # <%= className %>ShowCtrl
- * <%= className %> list controller of the <%= scriptAppName %>
+ * <%= className %> show controller of the <%= scriptAppName %>
  */
 angular
     .module('<%= scriptAppName %>')
-    .controller('<%= className %>ShowCtrl', function($scope, $state, <%= className %>) {
+    .controller('<%= className %>ShowCtrl', function($scope, $stateParams, <%= className %>) {
+        
+        //fetch <%= singular %> from backed
+        $scope.<%= singular %> = <%= className %>.get({
+            id: $stateParams.id
+        });
 
-        //action performed by this controller
-        $scope.action = 'Create';
-
-        //instantiate new <%= singular %>
-        $scope.<%= singular %> = new <%= className %>();
-
-        //update edited <%= singular %>
-        $scope.save = function() {
-            //TODO show input prompt
-            //TODO show loading mask
-            $scope.<%= singular %>.$save().then(function() {
-                $state.go('<%= singular %>.list');
-            });
-            //TODO catch errors and notify
-        }
     });

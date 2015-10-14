@@ -19,7 +19,7 @@ angular
             //TODO handle errors 
             //TODO notify when done
             <%= singular %>.$delete().then(function() {
-                $state.go('app.forms.list');
+                $state.go('<%= plural %>.list');
             });
         }
 
