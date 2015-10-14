@@ -2,16 +2,28 @@
 
 /**
  * @ngdoc function
- * @name <%= scriptAppName %>.controller:<%= classedName %>Ctrl
+ * @name <%= scriptAppName %>.controller:<%= className %>CreateCtrl
  * @description
- * # <%= classedName %>Ctrl
- * Controller of the <%= scriptAppName %>
+ * # <%= className %>CreateCtrl
+ * <%= className %> create controller of the <%= scriptAppName %>
  */
-angular.module('<%= scriptAppName %>')
-  .controller('<%= classedName %>Ctrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular
+    .module('<%= scriptAppName %>')
+    .controller('<%= className %>CreateCtrl', function($scope, $state, <%= className %>) {
+
+        //action performed by this controller
+        $scope.action = 'Create';
+
+        //instantiate new <%= singular %>
+        $scope.<%= singular %> = new <%= className %>();
+
+        //save created <%= singular %>
+        $scope.save = function() {
+            //TODO show input prompt
+            //TODO show loading mask
+            $scope.<%= singular %>.$save().then(function() {
+                $state.go('<%= plural %>.list');
+            });
+            //TODO catch errors and notify
+        };
+    });

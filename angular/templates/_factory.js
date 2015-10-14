@@ -2,22 +2,48 @@
 
 /**
  * @ngdoc service
- * @name <%= scriptAppName %>.<%= cameledName %>
+ * @name <%= scriptAppName %>.<%= className %>
  * @description
- * # <%= cameledName %>
+ * # <%= className %>
  * Factory in the <%= scriptAppName %>.
  */
-angular.module('<%= scriptAppName %>')
-  .factory('<%= cameledName %>', function () {
-    // Service logic
-    // ...
+angular
+    .module('<%= scriptAppName %>')
+    .factory('<%= className %>', function(apiEndpoint, $http, $resource) {
 
-    var meaningOfLife = 42;
+        //create <%= singular %> resource
+        var <%= className %> = $resource(apiEndpoint + '<%= plural %>/:id', {
+            id: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            },
+        });
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+
+        /**
+         * @description find <%= plural %> with pagination
+         * @param  {Object} params [description]
+         */
+        <%= className %>.find = function(params) {
+            return $http.get(apiEndpoint + '<%= plural %>', {
+                    params: params
+                })
+                .then(function(response) {
+
+                    //map plain <%= singular %> object to resource instances
+                    var <%= plural %> = response.data.<%= plural %>.map(function(<%= singular %>) {
+                        //create <%= singular %> as a resource instance
+                        return new <%= className %>(<%= singular %>);
+                    });
+
+                    //return paginated response
+                    return {
+                        <%= plural %>: <%= plural %>,
+                        total: response.data.count
+                    };
+                });
+        };
+
+        return <%= className %>;
+    });
