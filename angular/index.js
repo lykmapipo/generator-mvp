@@ -53,6 +53,14 @@ module.exports = yeoman.generators.Base.extend({
         this.scriptAppName =
             (bowerJson.moduleName ||
                 this._.camelize(this.appname) + Utils.suffix(this));
+
+        if (typeof this.env.options.appPath === 'undefined') {
+            this.env.options.appPath = this.options.appPath || bowerJson.appPath || 'app';
+            this.options.appPath = this.env.options.appPath;
+        }
+
+        this.env.options.testPath = this.env.options.testPath || bowerJson.testPath || 'test/spec';
+
     },
 
     prepareFormFields: function() {
@@ -90,6 +98,31 @@ module.exports = yeoman.generators.Base.extend({
             this.template('views/_index.html', 'app/views/' + this.plural + '/index.html');
             this.template('views/_main.html', 'app/views/' + this.plural + '/main.html');
             this.template('views/_show.html', 'app/views/' + this.plural + '/show.html');
+        },
+        addScriptsToIndex: function(script) {
+            try {
+                var appPath = this.env.options.appPath;
+                var fullPath = path.join(appPath, 'index.html');
+
+                var scripts = [
+                    'states/' + this.singular
+                ];
+
+                _.forEach(scripts, function(script) {
+                    Utils.rewriteFile({
+                        file: fullPath,
+                        needle: '<!-- endbuild -->',
+                        splicable: [
+                            '<script src="scripts/' + script.toLowerCase().replace(/\\/g, '/') + '.js"></script>'
+                        ]
+                    });
+                });
+
+            } catch (e) {
+                this.log.error(chalk.yellow(
+                    '\nUnable to find ' + fullPath + '. Reference to ' + script + '.js ' + 'not added.\n'
+                ));
+            }
         }
     }
 });
