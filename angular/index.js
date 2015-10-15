@@ -5,6 +5,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
 var inflection = require('inflection');
+var chalk = require('chalk');
 var Utils = require(path.join(__dirname, '..', 'utils'));
 
 module.exports = yeoman.generators.Base.extend({
@@ -69,7 +70,9 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     writing: {
-        //TODO update index.html file
+        factory: function() {
+            this.template('_factory.js', 'app/scripts/services/' + this.singular + '.js');
+        },
         controllers: function() {
             this.template('controllers/_create.js', 'app/scripts/controllers/' + this.plural + '/create.js');
             this.template('controllers/_edit.js', 'app/scripts/controllers/' + this.plural + '/edit.js');
@@ -79,9 +82,6 @@ module.exports = yeoman.generators.Base.extend({
         },
         states: function() {
             this.template('_states.js', 'app/scripts/states/' + this.singular + '.js');
-        },
-        factory: function() {
-            this.template('_factory.js', 'app/scripts/services/' + this.singular + '.js');
         },
         test: function() {
             this.template('spec/controllers/_create.js', 'test/spec/controllers/' + this.plural + '/create.js');
@@ -105,6 +105,12 @@ module.exports = yeoman.generators.Base.extend({
                 var fullPath = path.join(appPath, 'index.html');
 
                 var scripts = [
+                    'services/' + this.singular,
+                    'controllers/' + this.plural + '/create',
+                    'controllers/' + this.plural + '/edit',
+                    'controllers/' + this.plural + '/index',
+                    'controllers/' + this.plural + '/main',
+                    'controllers/' + this.plural + '/show',
                     'states/' + this.singular
                 ];
 
