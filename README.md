@@ -4,7 +4,7 @@ Set of generators to kick start nodejs application with [mongoose](https://githu
 
 *Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
 
-*Warning!: `yo mvp:angular` sub-generator have to be used with [generator-angular]() not otherwise and it works only with [ui-router](https://github.com/angular-ui/ui-router)*
+*Warning!: `yo mvp:angular` sub-generator have to be used with [generator-angular](https://github.com/yeoman/generator-angular) not otherwise and it works only with [ui-router](https://github.com/angular-ui/ui-router)*
 
 *Warning!: There are major changes to v1.0.0+, before using it please backup or commit your application changes*
 
