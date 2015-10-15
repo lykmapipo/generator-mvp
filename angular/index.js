@@ -21,12 +21,12 @@ module.exports = yeoman.generators.Base.extend({
             splits = _.union(splits, this.arguments);
         }
 
-        this.controllerName = this.modelName = splits.shift().toLowerCase();
+        this.modelName = splits.shift().toLowerCase();
 
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
         //preapare common class names for endpoints generation
-        this.className = inflection.camelize(this.controllerName);
+        this.className = inflection.camelize(this.modelName);
         this.singular = this.className.toLowerCase();
 
         this.classPlural = inflection.pluralize(this.className);
