@@ -51,7 +51,8 @@ module.exports = yeoman.generators.Base.extend({
         this.appname = this._.slugify(this._.humanize(this.appname));
 
         this.scriptAppName =
-            bowerJson.moduleName || this._.camelize(this.appname) + Utils.suffix(this);
+            (bowerJson.moduleName ||
+                this._.camelize(this.appname) + Utils.suffix(this));
     },
 
     prepareFormFields: function() {

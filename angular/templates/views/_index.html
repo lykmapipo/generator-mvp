@@ -1,3 +1,4 @@
+<!-- start <%= plural %> list -->
 <p class="lead">
     <h3><%= classPlural %></h3>
     <div class="pull-right">
@@ -13,9 +14,9 @@
 <table ng-show="<%= plural %>.length" class="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Version</th>
-            <th>Id</th>
+          <% attributes.forEach(function (attribute) { %>
+            <th><%= attribute.label %></th>
+          <% }); %>
             <th>&nbsp;</th>
             <th>&nbsp;</th>
             <th>&nbsp;</th>
@@ -23,6 +24,9 @@
     </thead>
     <tbody>
         <tr ng-repeat="<%= singular %> in <%= plural %>">
+        <% attributes.forEach(function (attribute) { %>
+            <td>{{<%= attribute.accessor %>}}</td>
+        <% }); %>
             <td>{{<%= singular %>.name}}</td>
             <td>{{<%= singular %>.version}}</td>
             <td>{{<%= singular %>.xFormId}}</td>
@@ -48,3 +52,4 @@
 <div ng-hide="<%= plural %>.length">
     <h4>No <%= singular %> found</h4>
 </div>
+<!-- end <%= plural %> list -->
