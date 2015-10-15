@@ -106,6 +106,12 @@ module.exports = exports = {
                 value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>'
             };
 
+            //extend input with generator options
+            input = _.merge(input, {
+                singular: generator.singular,
+                plural: generator.plural
+            });
+
             //prepare number input type
             if (attributeType === 'Number') {
 

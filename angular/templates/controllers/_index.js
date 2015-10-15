@@ -5,7 +5,7 @@
  * @name <%= scriptAppName %>.controller:<%= className %>IndexCtrl
  * @description
  * # <%= className %>IndexCtrl
- * <%= className %> list controller of the <%= scriptAppName %>
+ * <%= className %> list controller of <%= scriptAppName %>
  */
 angular
     .module('<%= scriptAppName %>')
@@ -18,8 +18,7 @@ angular
 
 
         /**
-         * @description load <%= plural %> from remote server
-         * @return {[type]} [description]
+         * @description load <%= plural %>
          */
         $scope.find = function() {
             <%= className %>.find({
@@ -34,8 +33,7 @@ angular
 
         
         /**
-         * @description delete <%= singular %> in remote server
-         * @param  {Object} <%= singular %> [description]
+         * @description delete <%= singular %>
          */
         $scope.delete = function(<%= singular %>) {
             //TODO handle errors 

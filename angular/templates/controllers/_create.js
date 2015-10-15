@@ -5,7 +5,7 @@
  * @name <%= scriptAppName %>.controller:<%= className %>CreateCtrl
  * @description
  * # <%= className %>CreateCtrl
- * <%= className %> create controller of the <%= scriptAppName %>
+ * <%= className %> create controller of <%= scriptAppName %>
  */
 angular
     .module('<%= scriptAppName %>')
@@ -17,7 +17,9 @@ angular
         //instantiate new <%= singular %>
         $scope.<%= singular %> = new <%= className %>();
 
-        //save created <%= singular %>
+        /**
+         * @description save created <%= singular %>
+         */
         $scope.save = function() {
             //TODO show input prompt
             //TODO show loading mask
@@ -26,4 +28,5 @@ angular
             });
             //TODO catch errors and notify
         };
+        
     });

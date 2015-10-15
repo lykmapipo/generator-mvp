@@ -69,6 +69,9 @@ module.exports = yeoman.generators.Base.extend({
             this.template('controllers/_main.js', 'app/scripts/controllers/' + this.plural + '/main.js');
             this.template('controllers/_show.js', 'app/scripts/controllers/' + this.plural + '/show.js');
         },
+        states: function() {
+            this.template('_states.js', 'app/scripts/states/' + this.singular + '.js');
+        },
         factory: function() {
             this.template('_factory.js', 'app/scripts/services/' + this.singular + '.js');
         },
@@ -85,7 +88,7 @@ module.exports = yeoman.generators.Base.extend({
             this.template('views/_edit.html', 'app/views/' + this.plural + '/edit.html');
             this.template('views/_form.html', 'app/views/' + this.plural + '/_form.html');
             this.template('views/_index.html', 'app/views/' + this.plural + '/index.html');
-            this.template('views/_layout.html', 'app/views/' + this.plural + '/layout.html');
+            this.template('views/_main.html', 'app/views/' + this.plural + '/main.html');
             this.template('views/_show.html', 'app/views/' + this.plural + '/show.html');
         }
     }

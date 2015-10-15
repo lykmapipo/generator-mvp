@@ -5,13 +5,13 @@
  * @name <%= scriptAppName %>.controller:<%= className %>ShowCtrl
  * @description
  * # <%= className %>ShowCtrl
- * <%= className %> show controller of the <%= scriptAppName %>
+ * <%= className %> show controller of <%= scriptAppName %>
  */
 angular
     .module('<%= scriptAppName %>')
     .controller('<%= className %>ShowCtrl', function($scope, $stateParams, <%= className %>) {
         
-        //fetch <%= singular %> from backed
+        //load <%= singular %>
         $scope.<%= singular %> = <%= className %>.get({
             id: $stateParams.id
         });

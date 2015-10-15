@@ -4,7 +4,7 @@
  * @ngdoc function
  * @name <%= scriptAppName %>.states:<%= className %>
  * @description
- * <%= className %> states configuration of the <%= scriptAppName %> 
+ * <%= className %> states configuration of <%= scriptAppName %> 
  */
 angular
     .module('<%= scriptAppName %>')
@@ -14,7 +14,7 @@ angular
         $stateProvider
             .state('<%= plural %>', {
                 abstract: true,
-                templateUrl: 'views/<%= plural %>/layout.html',
+                templateUrl: 'views/<%= plural %>/main.html',
                 controller: '<%= className %>MainCtrl'
             })
             .state('<%= plural %>.list', {

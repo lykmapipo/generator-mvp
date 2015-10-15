@@ -5,7 +5,7 @@
  * @name <%= scriptAppName %>.<%= className %>
  * @description
  * # <%= className %>
- * Factory in the <%= scriptAppName %>.
+ * Factory in <%= scriptAppName %>
  */
 angular
     .module('<%= scriptAppName %>')

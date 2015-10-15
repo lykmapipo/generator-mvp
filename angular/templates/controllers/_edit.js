@@ -5,7 +5,7 @@
  * @name <%= scriptAppName %>.controller:<%= className %>EditCtrl
  * @description
  * # <%= className %>EditCtrl
- * <%= className %> edit controller of the <%= scriptAppName %>
+ * <%= className %> edit controller of <%= scriptAppName %>
  */
 angular
     .module('<%= scriptAppName %>')
@@ -14,14 +14,18 @@ angular
         //action performed by this controller
         $scope.action = 'Edit';
 
-        //fetch <%= singular %> from backed
-        //TODO check if state `resolve` can be used to resolve <%= singular %>
-        //before activate <%= singular %>.edit state 
+        
+        /**
+         * @description load <%= singular %>
+         */
         $scope.<%= singular %> = <%= className %>.get({
             id: $stateParams.id
         });
 
-        //update edited <%= singular %>
+
+        /**
+         * @description save edited <%= singular %>
+         */
         $scope.save = function() {
             //TODO show input prompt
             //TODO show loading mask
@@ -30,4 +34,5 @@ angular
             });
             //TODO catch errors and notify
         };
+        
     });

@@ -25,11 +25,8 @@
     <tbody>
         <tr ng-repeat="<%= singular %> in <%= plural %>">
         <% attributes.forEach(function (attribute) { %>
-            <td>{{<%= attribute.accessor %>}}</td>
+            <td>{{<%= singular %>.<%= attribute.name %>}}</td>
         <% }); %>
-            <td>{{<%= singular %>.name}}</td>
-            <td>{{<%= singular %>.version}}</td>
-            <td>{{<%= singular %>.xFormId}}</td>
             <td>
                 <a ui-sref="<%= plural %>.edit({id:<%= singular %>._id})" class="btn btn-default" title="Edit <%= singular %>">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
