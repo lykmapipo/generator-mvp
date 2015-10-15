@@ -101,6 +101,7 @@ module.exports = exports = {
 
             var input = {
                 name: attributeName,
+                placeholder: generator.className + ' ' + attributeName,
                 label: inflection.classify(attributeName),
                 accessor: '<%= ' + className + '.' + attributeName + ' %>',
                 value: '<%= ' + accessor + ' ? ' + accessor + ' : ' + '\'\'' + ' %>'
