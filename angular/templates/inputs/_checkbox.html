@@ -1,10 +1,12 @@
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" ng-model="{{<%= singular %>.<%= name %>}}" id="<%= name %>" required="required" title="<%= label %>" placeholder="<%= label %>">
-                <%= label %>
-            </label>
-        </div>
-    </div>
-</div>
+<!-- start <%= singular %> <%= name %> input -->
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	        <div class="checkbox">
+	            <label>
+	                <input type="checkbox" ng-model="{{<%= singular %>.<%= name %>}}" id="<%= name %>" required="required" title="<%= label %>" placeholder="<%= label %>">
+	                <%= label %>
+	            </label>
+	        </div>
+	    </div>
+	</div>
+	<!-- end <%= singular %> <%= name %> input -->
