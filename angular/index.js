@@ -34,54 +34,58 @@ module.exports = yeoman.generators.Base.extend({
 
     },
 
+    prepare: function() {
+        //borrowed from angular generator to compute appname and scriptAppName
+        var bowerJson = {};
+
+        try {
+            bowerJson = require(path.join(process.cwd(), 'bower.json'));
+        } catch (e) {}
+
+        if (bowerJson.name) {
+            this.appname = bowerJson.name;
+        } else {
+            this.appname = path.basename(process.cwd());
+        }
+
+        this.appname = this._.slugify(this._.humanize(this.appname));
+
+        this.scriptAppName =
+            bowerJson.moduleName || this._.camelize(this.appname) + Utils.suffix(this);
+    },
+
     prepareFormFields: function() {
         Utils.prepareSchemaFields.call(this);
         Utils.schemaFieldsToFormFields.call(this);
     },
 
-    prepareFakerSeed: function() {
-        //prepare faker model seed
-        Utils.prepareFakerSeedFields.call(this);
-
-        var template = this.read('_seed.js');
-        this.seed = this.engine(template, this);
-    },
-
-    prepareLinks: function() {
-        this.createLink = '/' + this.plural + '/new';
-        this.editLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>/edit';
-        this.viewLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>';
-        this.deleteLink = '/' + this.plural + '/<%= ' + this.singular + '._id %>?_method=DELETE';
-        this.createAction = '<%= ' + this.singular + '._id' + ' ? ' + '\'' + '/' + this.plural + '/\'' + '+ ' + this.singular + '._id' + ' +' + '\'?_method=PUT' + '\'' + ' : ' + '\'/' + this.plural + '\'' + ' %>';
-        this.tableDataLoopStart = '<% ' + this.plural + '.forEach(function (' + this.singular + ') {%>';
-        this.tableDataCheck = '<% if(' + this.plural + ' && ' + this.plural + '.length > 0) { %> ';
-    },
-
     writing: {
-        controller: function() {
-            this.template('_controller.js', 'app/controllers/' + this.controllerName + '_controller.js');
+        //TODO update index.html file
+        controllers: function() {
+            this.template('controllers/_create.js', 'app/scripts/controllers/' + this.plural + '/create.js');
+            this.template('controllers/_edit.js', 'app/scripts/controllers/' + this.plural + '/edit.js');
+            this.template('controllers/_index.js', 'app/scripts/controllers/' + this.plural + '/index.js');
+            this.template('controllers/_main.js', 'app/scripts/controllers/' + this.plural + '/main.js');
+            this.template('controllers/_show.js', 'app/scripts/controllers/' + this.plural + '/show.js');
         },
-        router: function() {
-            this.template('_router.js', 'app/routers/' + this.controllerName + '_router.js');
+        factory: function() {
+            this.template('_factory.js', 'app/scripts/services/' + this.singular + '.js');
         },
         test: function() {
-            this.template('_controller_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
-            this.template('_router_spec.js', 'test/routers/' + this.controllerName + '_router_spec.js');
-        },
-        model: function() {
-            this.composeWith('mvp:model', {
-                args: this.arguments,
-                options: this.options
-            });
+            this.template('spec/controllers/_create.js', 'test/spec/controllers/' + this.plural + '/create.js');
+            this.template('spec/controllers/_edit.js', 'test/spec/controllers/' + this.plural + '/edit.js');
+            this.template('spec/controllers/_index.js', 'test/spec/controllers/' + this.plural + '/index.js');
+            this.template('spec/controllers/_main.js', 'test/spec/controllers/' + this.plural + '/main.js');
+            this.template('spec/controllers/_show.js', 'test/spec/controllers/' + this.plural + '/show.js');
+            this.template('spec/_factory.js', 'test/spec/services/' + this.singular + '.js');
         },
         views: function() {
-
-            //writes templates
-            this.template('views/_form.html', 'app/views/' + this.plural + '/_form.html');
-            this.template('views/_new.html', 'app/views/' + this.plural + '/new.html');
+            this.template('views/_create.html', 'app/views/' + this.plural + '/create.html');
             this.template('views/_edit.html', 'app/views/' + this.plural + '/edit.html');
-            this.template('views/_show.html', 'app/views/' + this.plural + '/show.html');
+            this.template('views/_form.html', 'app/views/' + this.plural + '/_form.html');
             this.template('views/_index.html', 'app/views/' + this.plural + '/index.html');
+            this.template('views/_layout.html', 'app/views/' + this.plural + '/layout.html');
+            this.template('views/_show.html', 'app/views/' + this.plural + '/show.html');
         }
     }
 });
