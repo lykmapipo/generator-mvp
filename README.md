@@ -169,14 +169,13 @@ $ yo angular
 $ bower install --save angular-ui-router angular-resource angular-bootstrap
 ```
 
-and add all required dependencies to your application
+- Add all required dependencies to your application
 ```js
 angular
     .module('<moduleName>', [
         ...
         'ui.router',
         'ngResource',
-        'angular-loading-bar',
         'ui.bootstrap'
         ...
     ])
