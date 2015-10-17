@@ -164,9 +164,22 @@ To use `yo mvp:angular` sub-generator make sure:
 $ yo angular
 ```
 
-- Install and add all required dependencies to your application:
+- Install all required dependencies to your application:
 ```sh
 $ bower install --save angular-ui-router angular-resource angular-bootstrap
+```
+
+and add all required dependencies to your application
+```js
+angular
+    .module('<moduleName>', [
+        ...
+        'ui.router',
+        'ngResource',
+        'angular-loading-bar',
+        'ui.bootstrap'
+        ...
+    ])
 ```
 
 - Add `apiEndpoint` angular constant into your application main module that will point to the route of your api.
