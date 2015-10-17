@@ -181,7 +181,7 @@ angular
     ])
 ```
 
-- Add `apiEndpoint` angular constant into your application main module that will point to the route of your api.
+- Add `apiEndpoint` angular constant into your application main module that will point to the `root url` of your api.
 ```js
 ...
     .constant('apiEndpoint', '/')
