@@ -36,7 +36,7 @@ module.exports = {
      * @type {Object}
      */
     mongoose: {
-        database: <%= databaseName %>,
+        database: '<%= databaseName %>',
         host: process.env.OPENSHIFT_MONGODB_DB_HOST || '127.0.0.1',
         user: process.env.OPENSHIFT_MONGODB_DB_USERNAME || '',
         password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD || '',

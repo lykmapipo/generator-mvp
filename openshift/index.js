@@ -1,11 +1,12 @@
 'use strict';
 
-// dependencies
+//dependencies
 var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
 var chalk = require('chalk');
+var yosay = require('yosay');
+var path = require('path');
 
-module.exports = yeoman.generators.base.extend({
+module.exports = yeoman.generators.Base.extend({
 
     prepare: function() {
         //deduce database name from application name
@@ -34,7 +35,10 @@ module.exports = yeoman.generators.base.extend({
             );
 
             //override production configurations
-            this.template('_production.js', 'app/config/production.js');
+            this.template('_production.js', 'config/production.js');
+
+            //override server.js
+            this.template('_server.js', 'server.js');
         }
     }
 
