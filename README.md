@@ -1,10 +1,12 @@
 # generator-mvp [![Build Status](https://secure.travis-ci.org/lykmapipo/generator-mvp.png?branch=master)](https://travis-ci.org/lykmapipo/generator-mvp)
 
-Set of generators to kick start nodejs application with [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
+Set of generators to kick start nodejs application with [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/),[angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
 
 *Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
 
-*Warning:! There are major changes to v1.0.0+, before using it please backup or commit your application changes*
+*Warning!: `yo mvp:angular` sub-generator have to be used with [generator-angular](https://github.com/yeoman/generator-angular) not otherwise and it works only with [ui-router](https://github.com/angular-ui/ui-router)*
+
+*Warning!: There are major changes to v1.0.0+, before using it please backup or commit your application changes*
 
 ## Usage
 
@@ -69,6 +71,7 @@ Available generators:
 * [mvp:controller](#controller)
 * [mvp:middleware](#middleware)
 * [mvp:lib](#library)
+* [mvp:angular](#angular)
 
 And more to come based on what we daily need in our `expressjs` an `mongoose` development workflows.
 
@@ -142,6 +145,52 @@ Set up new `nodejs module` with it `test/spec` boilerplate. To generate a new no
 Example of generating library
 ```bash
 $ yo mvp:lib scanner
+``` 
+
+### Angular
+Set up `angular frontend` for the provided model definition. 
+
+It will generate the following: 
+
+- model `angular factory`
+- `angular controllers` required to manage model
+- `ui-router` states configuration to manage model
+- html `crud views` to manage model
+
+To use `yo mvp:angular` sub-generator make sure:
+
+- You have generate your front-end application using [generator-angular](https://github.com/yeoman/generator-angular)
+```sh
+$ yo angular
+```
+
+- Install all required dependencies to your application:
+```sh
+$ bower install --save angular-ui-router angular-resource angular-bootstrap
+```
+
+- Add all required dependencies to your application
+```js
+angular
+    .module('<moduleName>', [
+        ...
+        'ui.router',
+        'ngResource',
+        'ui.bootstrap'
+        ...
+    ])
+```
+
+- Add `apiEndpoint` angular constant into your application main module that will point to the `root url` of your api.
+```js
+...
+    .constant('apiEndpoint', '/')
+...
+```
+
+Then, you can continue using it as bellow:
+```bash
+$ yo mvp:angular User name:String dob:Date
 ``` 
 
 ## Contributing

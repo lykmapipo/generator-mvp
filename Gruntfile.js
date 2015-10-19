@@ -26,11 +26,14 @@ module.exports = function(grunt) {
             all: [
                 'Gruntfile.js',
                 'utils.js',
+                'angular/index.js',
                 'api/index.js',
                 'app/index.js',
                 'controller/index.js',
-                'scaffold/index.js',
+                'lib/index.js',
+                'middleware/index.js',
                 'model/index.js',
+                'scaffold/index.js',
                 'test/**/*.js'
             ]
         },
