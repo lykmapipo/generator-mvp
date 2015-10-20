@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#set nodejs environment to production
+export NODE_ENV=production

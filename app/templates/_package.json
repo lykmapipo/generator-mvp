@@ -1,10 +1,11 @@
 {
-    "name": "<%= _.slugify(applicationName) %>",
+    "name": "<%= applicationName %>",
     "version": "<%= applicationVersion %>",
     "description": "<%= applicationDescription %>",
+    "main": "server.js",
     "scripts": {
-        "test": "grunt spec",
-        "start": "node server.js"
+        "test": "NODE_ENV=test grunt spec",
+        "start": "NODE_ENV=production node server.js"
     },
     "dependencies": {},
     "devDependencies": {}
