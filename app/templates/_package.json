@@ -1,7 +1,8 @@
 {
-    "name": "<%= _.slugify(applicationName) %>",
+    "name": "<%= applicationName %>",
     "version": "<%= applicationVersion %>",
     "description": "<%= applicationDescription %>",
+    "main": "server.js",
     "scripts": {
         "test": "grunt spec",
         "start": "pm2 start production.js",
