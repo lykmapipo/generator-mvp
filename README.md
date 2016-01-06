@@ -1,6 +1,6 @@
 # generator-mvp [![Build Status](https://secure.travis-ci.org/lykmapipo/generator-mvp.png?branch=master)](https://travis-ci.org/lykmapipo/generator-mvp)
 
-Set of generators to kick start nodejs application with [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/),[angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
+Set of generators to kick start nodejs application with [pm2](https://github.com/Unitech/pm2), [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/),[angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
 
 *Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
 
@@ -209,6 +209,9 @@ $ npm install
 ```bash
 $ npm test
 ```
+
+## References
+- [PM2 microservices applications](https://keymetrics.io/2015/05/06/microservices-architecture-applications-via-pm2/)
 
 ## License
 

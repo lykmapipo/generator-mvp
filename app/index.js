@@ -116,8 +116,10 @@ module.exports = yeoman.generators.Base.extend({
                 this.destinationPath('app/libs/.gitkeep')
             );
 
-
             this.template('_package.json', 'package.json');
+
+            //writing pm2 file
+            this.template('_production.json', 'production.json');
 
             if (this.frontend) {
                 this.template('_bower.json', 'bower.json');

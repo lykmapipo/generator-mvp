@@ -1,0 +1,34 @@
+//see http://pm2.keymetrics.io/docs/usage/application-declaration/
+//for more details about configuration
+{
+    "apps": [{
+
+        // name your app will have in PM2
+        "name": "<%= _.slugify(applicationName) %>",
+
+        // path of your app
+        "script": "server.js",
+
+        // arguments given to your app when it is launched
+        "args": [],
+
+        // arguments given to node when it is launched
+        "node_args": [],
+
+        //run in cluster mode
+        "exec_mode": "cluster",
+
+        //run as many instances as number of cpus
+        "instances": 0,
+
+        //enables the watch feature, defaults to "false". 
+        //if true, it will restart your app everytime a file change is detected 
+        //on the folder or subfolder of your app.
+        "watch": true,
+
+        // env variables which will appear in your app
+        "env": {
+            "NODE_ENV": "production"
+        }
+    }]
+}

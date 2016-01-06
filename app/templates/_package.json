@@ -4,7 +4,11 @@
     "description": "<%= applicationDescription %>",
     "scripts": {
         "test": "grunt spec",
-        "start": "node server.js"
+        "start": "pm2 start production.js",
+        "stop": "pm2 stop production.js",
+        "restart": "pm2 restart production.js",
+        "reload": "pm2 reload production.js",
+        "delete": "pm2 delete production.js"
     },
     "dependencies": {},
     "devDependencies": {}

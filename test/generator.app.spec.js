@@ -38,6 +38,7 @@ describe('mvp:app generator', function() {
     it('should be able to generate application projectfiles', function() {
         assert.file([
             'package.json',
+            'production.json',
             'bower.json',
             '.editorconfig',
             '.jshintrc',

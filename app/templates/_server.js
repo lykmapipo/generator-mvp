@@ -21,9 +21,10 @@ app
             app.get('env')
         );
 
-        winston.debug('To see your app, visit %s',config.get('baseUrl'));
+        winston.debug('To see your app, visit %s', config.get('baseUrl'));
 
-        //pass control to grunt
+        //pass control to grunt if run in
+        //development or test environment
         if (app.get('env') === 'development' || app.get('env') === 'test') {
             console.log('....');
         }
