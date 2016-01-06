@@ -16,6 +16,12 @@ var Schema = mongoose.Schema;
 var <%= className %>Schema = new Schema({
     <%_(fields).forEach(function (definition, field){
     if(_.keys(fields).indexOf(field) < _.size(fields) - 1){%>
+    /**
+     * @name <%= field %>
+     * @description <%= field %> 
+     * @type {Object}
+     * @private
+     */
     <%= field %>: {
     <%_(definition).forEach(function (value, name){
     if(_.keys(definition).indexOf(name) < _.size(definition) - 1){%>
@@ -25,6 +31,12 @@ var <%= className %>Schema = new Schema({
     <%}});%>
     },
     <%}else{%>
+    /**
+     * @name <%= field %>
+     * @description <%= field %> 
+     * @type {Object}
+     * @private
+     */
     <%= field %>: {
     <%_(definition).forEach(function (value, name){
     if(_.keys(definition).indexOf(name) < _.size(definition) - 1){%>
