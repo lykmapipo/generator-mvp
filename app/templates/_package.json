@@ -2,7 +2,28 @@
     "name": "<%= applicationName %>",
     "version": "<%= applicationVersion %>",
     "description": "<%= applicationDescription %>",
+    "keywords": [],
+    "homepage": "",
+    "bugs": {
+        "url": "<%= gitHost %>/<%= gitName %>/<%= applicationName %>/issues",
+        "email": "<%= applicationName %>@<%= applicationName %>.com"
+    },
+    "licence": "UNLICENCED",
+    "author": {
+        "name": "<%= gitName %>",
+        "email": "<%= applicationName %>@<%= applicationName %>.com",
+        "url": "<%= gitHost %>/<%= gitName %>/<%= applicationName %>/"
+    },
+    "contributors": [{
+        "name": "<%= gitName %>",
+        "email": "<%= applicationName %>@<%= applicationName %>.com",
+        "url": "<%= gitHost %>/<%= gitName %>/"
+    }],
     "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "<%= gitHost %>/<%= gitName %>/<%= applicationName %>/"
+    },
     "scripts": {
         "test": "grunt spec",
         "start": "pm2 start production.js",
@@ -12,5 +33,9 @@
         "delete": "pm2 delete production.js"
     },
     "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {},
+    "engines": {
+        "node": ">=0.10.3"
+    },
+    "private": true
 }

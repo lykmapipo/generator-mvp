@@ -54,6 +54,14 @@ module.exports = yeoman.generators.Base.extend({
             name: 'databasePort',
             message: 'What is your application database port?',
             default: 27017
+        }, {
+            name: 'gitHost',
+            message: 'What is your git host url?',
+            default: 'https://github.com'
+        }, {
+            name: 'gitName',
+            message: 'What is your git username?',
+            default: ''
         }];
 
         this.prompt(prompts, function(props) {
@@ -72,6 +80,10 @@ module.exports = yeoman.generators.Base.extend({
             //generator options
             this.frontend = !(this.options['skip-frontend'] || false);
             this.install = !(this.options['skip-install'] || false);
+
+            //version control options
+            this.gitHost = props.gitHost;
+            this.gitName = props.gitName || this.applicationName;
 
             done();
         }.bind(this));
