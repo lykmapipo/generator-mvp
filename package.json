@@ -40,20 +40,20 @@
         "connect"
     ],
     "dependencies": {
-        "chalk": "^1.0.0",
+        "chalk": "^1.1.1",
+        "inflection": "^1.8.0",
+        "lodash": "^3.10.1",
         "yeoman-generator": "^0.18.10",
-        "yosay": "^1.0.3",
-        "lodash": "^3.6.0",
-        "inflection": "^1.7.0"
+        "yosay": "^1.1.0"
     },
     "devDependencies": {
         "chai": "^2.2.0",
         "grunt": "^0.4.5",
-        "grunt-contrib-jshint": "^0.11.2",
+        "grunt-contrib-jshint": "^0.11.3",
         "grunt-contrib-watch": "^0.6.1",
         "grunt-mocha-test": "^0.12.7",
         "jshint-stylish": "^1.0.1",
-        "mocha": "^2.2.1",
-        "rimraf": "^2.3.2"
+        "mocha": "^2.3.4",
+        "rimraf": "^2.4.4"
     }
 }

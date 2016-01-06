@@ -27,7 +27,7 @@ module.exports = yeoman.generators.Base.extend({
 
 
         //preapare common class names for model generation
-        this.className = inflection.camelize(this.modelName);
+        this.className = inflection.classify(this.modelName);
         this.classPlural = inflection.pluralize(this.className);
 
     },

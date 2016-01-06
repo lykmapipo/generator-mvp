@@ -22,6 +22,11 @@ app
         );
 
         winston.debug('To see your app, visit %s',config.get('baseUrl'));
+
+        //pass control to grunt
+        if (app.get('env') === 'development' || app.get('env') === 'test') {
+            console.log('....');
+        }
     })
     .on('error', function(error) {
         winston.error(error);

@@ -30,7 +30,7 @@ module.exports = yeoman.generators.Base.extend({
         this.frontend = !(this.options['skip-frontend'] || false);
 
         //preapare common class names for endpoints generation
-        this.className = inflection.camelize(this.controllerName);
+        this.className = inflection.classify(this.controllerName);
         this.singular = this.className.toLowerCase();
 
         this.classPlural = inflection.pluralize(this.className);
