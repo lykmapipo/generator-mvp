@@ -198,21 +198,61 @@ module.exports = function(grunt) {
     grunt.registerTask('prod', ['newer:jshint', 'express:prod', 'watch']);
 
     //run in test environment
-    grunt.registerTask('test', ['newer:jshint', 'mochaTest:all', 'express:test', 'watch']);
+    grunt.registerTask('test', [
+        'newer:jshint',
+        'mochaTest:all',
+        'express:test',
+        'watch'
+    ]);
 
     //run specifications
-    grunt.registerTask('spec', ['newer:jshint', 'mochaTest:all']);
+    grunt.registerTask('spec', [
+        'newer:jshint',
+        'mochaTest:all'
+    ]);
 
-    grunt.registerTask('controllersspec', ['newer:jshint', 'mochaTest:controllers']);
-    grunt.registerTask('intergrationsspec', ['newer:jshint', 'mochaTest:intergration']);
-    grunt.registerTask('localsspec', ['newer:jshint', 'mochaTest:locals']);
-    grunt.registerTask('modelsspec', ['newer:jshint', 'mochaTest:models']);
-    grunt.registerTask('routersspec', ['newer:jshint', 'mochaTest:routers']);
-    grunt.registerTask('middlewaresspec', ['newer:jshint', 'mochaTest:middlewares']);
-    grunt.registerTask('libsspec', ['newer:jshint', 'mochaTest:libs']);
+    grunt.registerTask('controllersspec', [
+        'newer:jshint',
+        'mochaTest:controllers'
+    ]);
+
+    grunt.registerTask('intergrationsspec', [
+        'newer:jshint',
+        'mochaTest:intergration'
+    ]);
+
+    grunt.registerTask('localsspec', [
+        'newer:jshint',
+        'mochaTest:locals'
+    ]);
+
+    grunt.registerTask('modelsspec', [
+        'newer:jshint',
+        'mochaTest:models'
+    ]);
+
+    grunt.registerTask('routersspec', [
+        'newer:jshint',
+        'mochaTest:routers'
+    ]);
+
+    grunt.registerTask('middlewaresspec', [
+        'newer:jshint',
+        'mochaTest:middlewares'
+    ]);
+
+    grunt.registerTask('libsspec', [
+        'newer:jshint',
+        'mochaTest:libs'
+    ]);
 
     //default run jshint and test
-    grunt.registerTask('default', ['newer:jshint', 'mochaTest:all', 'express:dev']);
+    grunt.registerTask('default', [
+        'newer:jshint',
+        'mochaTest:all',
+        'express:dev',
+        'watch'
+    ]);
 
 
 };
