@@ -16,7 +16,7 @@ module.exports = {
      * @param  {HttpResponse} response a http response
      */
     <%= action %>: function(request, response /*, next*/) {
-        response.ok('<%= plural %>/<%= action %>', {
+        response.ok({
             title: '<%= controllerName %> <%= controllerName %>'
         });
     }
@@ -27,7 +27,7 @@ module.exports = {
      * @param  {HttpResponse} response a http response
      */
     <%= action %>: function(request, response /*, next*/) {
-        response.ok('<%= plural %>/<%= action %>', {
+        response.ok({
             title: '<%= controllerName %> <%= controllerName %>'
         });
     },

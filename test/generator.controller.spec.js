@@ -2,7 +2,6 @@
 
 //dependencies
 var path = require('path');
-var inflection = require('inflection');
 var rm = require('rimraf');
 var yg = require('yeoman-generator');
 var assert = yg.assert;
@@ -31,13 +30,6 @@ describe('mvp:controller generator', function() {
             'test/controllers/todo_controller_spec.js',
             'app/routers/todo_router.js',
             'test/routers/todo_router_spec.js'
-        ]);
-    });
-
-    it('should be able to generate controller views', function() {
-        assert.file([
-            ['app', 'views', inflection.pluralize('todo'), 'index.html'].join('/'),
-            ['app', 'views', inflection.pluralize('todo'), 'edit.html'].join('/')
         ]);
     });
 

@@ -42,18 +42,6 @@ module.exports = yeoman.generators.Base.extend({
         router: function() {
             this.template('_router.js', 'app/routers/' + this.controllerName + '_router.js');
         },
-        views: function() {
-            if (this.frontend) {
-                var me = this;
-                //write view for each controller action
-                this.actions.forEach(function(controllerAction) {
-                    me.fs.copy(
-                        me.templatePath('_view.js'),
-                        me.destinationPath('app/views/' + me.plural + '/' + controllerAction + '.html')
-                    );
-                });
-            }
-        },
         test: function() {
             this.template('_controller_spec.js', 'test/controllers/' + this.controllerName + '_controller_spec.js');
             this.template('_router_spec.js', 'test/routers/' + this.controllerName + '_router_spec.js');

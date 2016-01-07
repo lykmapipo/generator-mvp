@@ -1,8 +1,6 @@
 # generator-mvp [![Build Status](https://secure.travis-ci.org/lykmapipo/generator-mvp.png?branch=master)](https://travis-ci.org/lykmapipo/generator-mvp)
 
-Set of generators to kick start nodejs application with [pm2](https://github.com/Unitech/pm2), [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/),[angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
-
-*Note: This generator make use of existing `nodejs pakages`, unless the functionality required is not yet implemented.*
+Set of generators to kick start nodejs API based application with [pm2](https://github.com/Unitech/pm2), [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/),[angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
 
 *Warning!: `yo mvp:angular` sub-generator have to be used with [generator-angular](https://github.com/yeoman/generator-angular) not otherwise and it works only with [ui-router](https://github.com/angular-ui/ui-router)*
 
@@ -10,10 +8,10 @@ Set of generators to kick start nodejs application with [pm2](https://github.com
 
 ## Usage
 
-- Install `yo`, `grunt-cli`, `bower`, and `generator-mvp`
+- Install `yo`, `grunt-cli`, and `generator-mvp`
 
 ```bash
-$ npm install -g grunt-cli bower yo generator-mvp
+$ npm install -g grunt-cli yo generator-mvp
 ```
 
 - Make a new directory, and `cd` into it:
@@ -66,7 +64,6 @@ Available generators:
 
 * [mvp](#app) (aka [mvp:app](#app))
 * [mvp:api](#api)
-* [mvp:scaffold](#scaffold)
 * [mvp:model](#model)
 * [mvp:controller](#controller)
 * [mvp:middleware](#middleware)
@@ -76,16 +73,11 @@ Available generators:
 And more to come based on what we daily need in our `expressjs` an `mongoose` development workflows.
 
 ### App
-Sets up a new  `expressjs` and `mongoose` app, generating all the boilerplate you need to get started. The app generator also optionally installs `bootstrap`,`jquery` and `font-awesome` as front-end dependencies unless prevented using `--skip-frontend` options.
+Sets up a new  `expressjs` and `mongoose` app, generating all the boilerplate you need to get started.
 
-Example of generating an application including frontend: 
+Example of generating an application: 
 ```bash
 $ yo mvp
-```
-
-If you only want to develop API first application you may opt to disable frontend by:
-```bash
-$ yo mvp --skip-frontend
 ```
 
 ### Api
@@ -93,30 +85,34 @@ Set up new mongoose `model`, `controller`, `router` and their `spec/test` boiler
 
 Example of generating simple api
 ```bash
-$ yo mvp:api User name:String dob:Date
+$ yo mvp:api user name:String dob:Date
 ```
 
-### Scaffold
-Set up new mongoose `model`, `controller`, `router`, their `spec/test` boilerplates and bootstrap `crud views`.
-
-Example of scaffolding a simple model
+Example of generating api with multi name
 ```bash
-$ yo mvp:scaffold User name:String dob:Date
+$ yo mvp:api item_category name:String dob:Date
 ```
+
 
 ### Model
 Set up new mongoose `Schema` with its `spec/test` boilerplate and register it to mongoose. To generate new model invoke `yo mvp:model` with model name and its attributes separated by space.
 
+*Note!: Only mongoose schema types are supported as attributes*
+
 Example of generating simple model
 ```bash
-$ yo mvp:model User name:String dob:Date
+$ yo mvp:model user name:String dob:Date
+```
+
+Example of generating model with multi name
+```bash
+$ yo mvp:model item_category name:String dob:Date
 ```
 
 Example of generating model including `refs` to other model
 ```bash
-$ yo mvp:model Post content:String author:ObjectId:User 
+$ yo mvp:model post content:String author:ObjectId:User 
 ```
-Most of mongoose type are supported.
 
 ### Controller
 Set up new `controller`, its `actions` and an `express router`. To generate a new controller invoke `yo mvp:controller` giving its name and actions separated by space.
@@ -124,12 +120,7 @@ Set up new `controller`, its `actions` and an `express router`. To generate a ne
 Example of generating controller including frontend
 ```bash
 $ yo mvp:controller index create edit
-``` 
-
-Example of generating controller without frontend
-```bash
-$ yo mvp:controller index create edit --skip-frontend
-``` 
+```
 
 ### Middleware
 Set up new express `middleware` with it `test/spec` boilerplate. To generate a new express middleware invoke `yo mvp:middleware` and giving its name.

@@ -42,7 +42,7 @@ module.exports = exports = {
                 fields[attributeName] = {
                     type: attributeType,
                     /*jshint quotmark: double*/
-                    ref: "'" + attributeMeta.shift() + "'"
+                    ref: "'" + inflection.classify(attributeMeta.shift()) + "'"
                         /*jshint quotmark: single*/
                 };
 
