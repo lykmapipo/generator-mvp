@@ -39,10 +39,8 @@ describe('mvp:app generator', function() {
         assert.file([
             'package.json',
             'production.json',
-            'bower.json',
             '.editorconfig',
             '.jshintrc',
-            '.bowerrc',
             '.gitignore',
             '.gitattributes',
             '.travis.yml',
@@ -58,7 +56,6 @@ describe('mvp:app generator', function() {
             'app/initializers',
             'app/models',
             'app/models/.gitkeep',
-            'app/locals',
             'app/routers',
             'app/routers/.gitkeep',
             'app/controllers',
@@ -91,24 +88,16 @@ describe('mvp:app generator', function() {
 
     it('should be able to generate application view files', function() {
         assert.file([
-            'app/views/errors.html',
-            'app/views/site.html',
-            'app/views/layout.html',
-            'app/views/_partials/_errors.html'
-        ]);
-    });
-
-    it('should be able to generate application locals files', function() {
-        assert.file([
-            'app/locals/application_locals.js'
+            'app/views/emails/confirm/html.ejs',
+            'app/views/emails/recover/html.ejs',
+            'app/views/emails/unlock/html.ejs'
         ]);
     });
 
     it('should be able to generate application site files', function() {
         assert.file([
             'app/controllers/site_controller.js',
-            'app/routers/site_router.js',
-            'app/views/site/index.html'
+            'app/routers/site_router.js'
         ]);
     });
 
