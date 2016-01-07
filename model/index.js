@@ -21,15 +21,17 @@ module.exports = yeoman.generators.Base.extend({
             splits = _.union(splits, this.arguments);
         }
 
-        this.modelName = splits.shift().toLowerCase();
+        this.modelName = splits.shift();
+        this.className = inflection.classify(this.modelName);
+        this.classCamel = inflection.camelize(this.className, true);
 
         this.modelNamePlural = inflection.pluralize(this.modelName);
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
 
         //preapare common class names for model generation
-        this.className = inflection.classify(this.modelName);
         this.classPlural = inflection.pluralize(this.className);
+        this.classCamelPlural = inflection.pluralize(this.classCamel);
 
     },
 

@@ -13,25 +13,25 @@ var faker = require('faker');
 var respond = require('express-respond')();
 var Request = require('mock-express-request');
 var Response = require('mock-express-response');
-var <%=className%>Controller = require(path.join(__dirname, '..', '..', 'app', 'controllers', '<%=singular%>_controller'));
+var <%=className%>Controller = require(path.join(__dirname, '..', '..', 'app', 'controllers', '<%= controllerName %>_controller'));
 
-var _<%= modelName %>_;
+var _<%= classCamel %>_;
 
 describe('<%= className %> Controller', function() {
     before(function(done) {
-        var __<%= modelName %>__ = <%= seed %>;
+        var __<%= classCamel %>__ = <%= seed %>;
 
         var request = new Request({
             headers: {
                 'Accept': 'application/json'
             },
-            body: __<%= modelName %>__
+            body: __<%= classCamel %>__
         });
 
         var response = new Response({
             request: request,
             finish: function() {
-                _<%= modelName %>_ = response._getJSON();
+                _<%= classCamel %>_ = response._getJSON();
                 //TODO handle response errors
                 done();
             }
@@ -44,27 +44,27 @@ describe('<%= className %> Controller', function() {
     });
 
 
-    it('should be able to create new <%=singular %> on <%= className%>Controller#create', function(done) {
-        var __<%= modelName %>__ = <%= seed %>;
+    it('should be able to create new <%=classCamel %> on <%= className%>Controller#create', function(done) {
+        var __<%= classCamel %>__ = <%= seed %>;
 
         var request = new Request({
             headers: {
                 'Accept': 'application/json'
             },
-            body: __<%= modelName %>__
+            body: __<%= classCamel %>__
         });
 
         var response = new Response({
             request: request,
             finish: function() {
-                var __<%= modelName %> = response._getJSON();
+                var __<%= classCamel %> = response._getJSON();
 
                 //TODO handle response errors
                 expect(response.statusCode).to.be.equal(201);
 
-                expect(__<%= modelName %>).to.not.be.null;
-                expect(__<%= modelName %>).to.not.be.undefined;
-                expect(__<%= modelName %>._id).to.exist;
+                expect(__<%= classCamel %>).to.not.be.null;
+                expect(__<%= classCamel %>).to.not.be.undefined;
+                expect(__<%= classCamel %>._id).to.exist;
 
                 //TODO application specific assertions
 
@@ -79,26 +79,26 @@ describe('<%= className %> Controller', function() {
     });
 
 	
-    it('should be able to find existing <%= singular %> on <%= className%>Controller#show', function(done) {
+    it('should be able to find existing <%= classCamel %> on <%= className%>Controller#show', function(done) {
         var request = new Request({
             headers: {
                 'Accept': 'application/json'
             },
             params: {
-                id: _<%=singular%>_._id
+                id: _<%=classCamel%>_._id
             }
         });
 
         var response = new Response({
             request: request,
             finish: function() {
-                var __<%=singular%> = response._getJSON();
+                var __<%=classCamel%> = response._getJSON();
 
                 expect(response.statusCode).to.be.equal(200);
 
-                expect(__<%=singular%>).to.not.be.null;
-                expect(__<%=singular%>).to.not.be.undefined;
-                expect(__<%=singular%>._id).to.exist;
+                expect(__<%=classCamel%>).to.not.be.null;
+                expect(__<%=classCamel%>).to.not.be.undefined;
+                expect(__<%=classCamel%>._id).to.exist;
 
                 //TODO application specific assertions
 
@@ -113,29 +113,29 @@ describe('<%= className %> Controller', function() {
     });
     
 
-    it('should be able to update existing <%= singular %> on <%= className%>Controller#update', function(done) {
-        var __<%=singular%>__ = <%=seed%>;
+    it('should be able to update existing <%= classCamel %> on <%= className%>Controller#update', function(done) {
+        var __<%=classCamel%>__ = <%=seed%>;
 
         var request = new Request({
             headers: {
                 'Accept': 'application/json'
             },
             params: {
-                id: _<%=singular%>_._id
+                id: _<%=classCamel%>_._id
             },
-            body: __<%=singular%>__
+            body: __<%=classCamel%>__
         });
 
         var response = new Response({
             request: request,
             finish: function() {
-                var __<%=singular%> = response._getJSON();
+                var __<%=classCamel%> = response._getJSON();
 
                 expect(response.statusCode).to.be.equal(200);
 
-                expect(__<%=singular%>).to.not.be.null;
-                expect(__<%=singular%>).to.not.be.undefined;
-                expect(__<%=singular%>._id).to.exist;
+                expect(__<%=classCamel%>).to.not.be.null;
+                expect(__<%=classCamel%>).to.not.be.undefined;
+                expect(__<%=classCamel%>._id).to.exist;
 
                 //TODO application specific assertions
 
@@ -151,26 +151,26 @@ describe('<%= className %> Controller', function() {
     });
 
     
-    it('should be able to delete existing <%= singular %> on <%= className%>Controller#destroy', function(done) {
+    it('should be able to delete existing <%= classCamel %> on <%= className%>Controller#destroy', function(done) {
         var request = new Request({
             headers: {
                 'Accept': 'application/json'
             },
             params: {
-                id: _<%=singular%>_._id
+                id: _<%=classCamel%>_._id
             }
         });
 
         var response = new Response({
             request: request,
             finish: function() {
-                var __<%=singular%> = response._getJSON();
+                var __<%=classCamel%> = response._getJSON();
 
                 expect(response.statusCode).to.be.equal(200);
 
-                expect(__<%=singular%>).to.not.be.null;
-                expect(__<%=singular%>).to.not.be.undefined;
-                expect(__<%=singular%>._id).to.exist;
+                expect(__<%=classCamel%>).to.not.be.null;
+                expect(__<%=classCamel%>).to.not.be.undefined;
+                expect(__<%=classCamel%>._id).to.exist;
 
                 //TODO application specific assertions
 

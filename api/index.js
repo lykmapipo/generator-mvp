@@ -21,7 +21,10 @@ module.exports = yeoman.generators.Base.extend({
             splits = _.union(splits, this.arguments);
         }
 
-        this.controllerName = this.modelName = splits.shift().toLowerCase();
+        this.controllerName = this.modelName = splits.shift();
+        this.className = inflection.classify(this.controllerName);
+        this.classCamel = inflection.camelize(this.className, true);
+        this.controllerName = this.modelName = this.controllerName.toLowerCase();
 
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
@@ -30,10 +33,10 @@ module.exports = yeoman.generators.Base.extend({
         this.frontend = !(this.options['skip-frontend'] || false);
 
         //preapare common class names for endpoints generation
-        this.className = inflection.classify(this.controllerName);
         this.singular = this.className.toLowerCase();
 
         this.classPlural = inflection.pluralize(this.className);
+        this.classCamelPlural = inflection.pluralize(this.classCamel);
         this.plural = this.classPlural.toLowerCase();
 
     },

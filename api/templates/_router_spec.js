@@ -12,30 +12,30 @@ var expect = require('chai').expect;
 var faker = require('faker');
 var request = require('supertest');
 var app = require(path.join(__dirname, '..', '..', 'app', 'application'));
-var <%= modelName %>;
+var <%= classCamel %>;
 
 describe('<%= className %> Router', function() {
     before(function(done) {
-        var _<%= modelName %>_ = <%= seed %>;
+        var _<%= classCamel %>_ = <%= seed %>;
 
         request(app)
             .post('/<%=plural%>')
-            .send(_<%= modelName %>_)
+            .send(_<%= classCamel %>_)
             .set('Accept', 'application/json')
             .expect(201)
             .expect('Content-Type', /json/)
             .end(function(error, response) {
-                <%= modelName %> = JSON.parse(response.text);
+                <%= classCamel %> = JSON.parse(response.text);
                 done(error, response);
             });
     });
     
-    it('should be able to create new <%= singular%> when http post on /<%=plural%>', function(done) {
-        var _<%= modelName %>_ = <%= seed %>;
+    it('should be able to create new <%= classCamel%> when http post on /<%=plural%>', function(done) {
+        var _<%= classCamel %>_ = <%= seed %>;
         
         request(app)
             .post('/<%=plural%>')
-            .send(_<%= modelName %>_)
+            .send(_<%= classCamel %>_)
             .set('Accept', 'application/json')
             .expect(201)
             .expect('Content-Type', /json/)
@@ -44,16 +44,16 @@ describe('<%= className %> Router', function() {
                 expect(error).to.not.exist;
                 expect(response).to.exist;
                 
-                //TODO more <%=singular%> response assertions
+                //TODO more <%=classCamel%> response assertions
 
                 done(error, response);
             });
     });
 
     
-    it('should be able to find <%= singular %> when http get on /<%=plural%>/:id', function(done) {
+    it('should be able to find <%= classCamel %> when http get on /<%=plural%>/:id', function(done) {
         request(app)
-            .get('/<%=plural%>/'+ <%= modelName %>._id)
+            .get('/<%=plural%>/'+ <%= classCamel %>._id)
             .set('Accept', 'application/json')
             .expect(200)
             .expect('Content-Type', /json/)
@@ -62,19 +62,19 @@ describe('<%= className %> Router', function() {
                 expect(error).to.not.exist;
                 expect(response).to.exist;
 
-                //TODO more <%=singular%> response assertions
+                //TODO more <%=classCamel%> response assertions
 
                 done(error, response);
             });
     });
 
     
-    it('should be able to update existing <%= singular %> when http put on /<%=plural%>/:id', function(done) {
-        var _<%= modelName %>_ = <%= seed %>;
+    it('should be able to update existing <%= classCamel %> when http put on /<%=plural%>/:id', function(done) {
+        var _<%= classCamel %>_ = <%= seed %>;
 
         request(app)
-            .put('/<%=plural%>/'+ <%= modelName %>._id)
-            .send(_<%= modelName %>_)
+            .put('/<%=plural%>/'+ <%= classCamel %>._id)
+            .send(_<%= classCamel %>_)
             .set('Accept', 'application/json')
             .expect(200)
             .expect('Content-Type', /json/)
@@ -83,19 +83,19 @@ describe('<%= className %> Router', function() {
                 expect(error).to.not.exist;
                 expect(response).to.exist;
 
-                //TODO more <%=singular%> response assertions
+                //TODO more <%=classCamel%> response assertions
 
                 done(error, response);
             });
     });
 
     
-    it('should be able to update existing <%= singular %> when http patch on /<%=plural%>/:id', function(done) {
-        var _<%= modelName %>_ = <%= seed %>;
+    it('should be able to update existing <%= classCamel %> when http patch on /<%=plural%>/:id', function(done) {
+        var _<%= classCamel %>_ = <%= seed %>;
 
         request(app)
-            .patch('/<%=plural%>/'+ <%= modelName %>._id)
-            .send(_<%= modelName %>_)
+            .patch('/<%=plural%>/'+ <%= classCamel %>._id)
+            .send(_<%= classCamel %>_)
             .set('Accept', 'application/json')
             .expect(200)
             .expect('Content-Type', /json/)
@@ -104,16 +104,16 @@ describe('<%= className %> Router', function() {
                 expect(error).to.not.exist;
                 expect(response).to.exist;
 
-                //TODO more <%=singular%> response assertions
+                //TODO more <%=classCamel%> response assertions
 
                 done(error, response);
             });
     });
 
     
-    it('should be able to delete existing <%= singular %> when http delete on /<%=plural%>/:id', function(done) {
+    it('should be able to delete existing <%= classCamel %> when http delete on /<%=plural%>/:id', function(done) {
        request(app)
-            .delete('/<%=plural%>/'+ <%= modelName %>._id)
+            .delete('/<%=plural%>/'+ <%= classCamel %>._id)
             .set('Accept', 'application/json')
             .expect(200)
             .expect('Content-Type', /json/)
@@ -122,7 +122,7 @@ describe('<%= className %> Router', function() {
                 expect(error).to.not.exist;
                 expect(response).to.exist;
 
-                //TODO more <%=singular%> response assertions
+                //TODO more <%=classCamel%> response assertions
 
                 done(error, response);
             });
