@@ -101,6 +101,14 @@ describe('mvp:app generator', function() {
         ]);
     });
 
+    it('should be able to generate application auth files', function() {
+        assert.file([
+            'app/libs/jwt.js',
+            'app/libs/mailer.js',
+            'app/models/party_model.js'
+        ]);
+    });
+
     it('should be able to generate test bootstrap file', function() {
         assert.file([
             'test/bootstrap_spec.js'

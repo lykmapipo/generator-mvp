@@ -2,8 +2,7 @@
 
 /**
  * Party model
- *
- * @description :: Server-side model for managing Party
+ * @description schema and model used to manage authenticated entity
  */
 
 //dependencies
