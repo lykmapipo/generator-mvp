@@ -22,6 +22,7 @@ module.exports = yeoman.generators.Base.extend({
         }
 
         this.modelName = splits.shift().toLowerCase();
+        this.subpath = '';
 
         //check for subpath
         var subpath = this.modelName.split('.');
