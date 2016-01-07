@@ -64,6 +64,60 @@ module.exports = {
         dir: 'logs',
         level: 'silly',
         file: 'logs.json'
+    },
+
+
+    /**
+     * @description json web token configuration
+     * @type {Object}
+     */
+    jwt: {
+        /**
+         * @description a secret to be used on encoding and decoding jwt
+         * @type {String}
+         */
+        secret: '78+3fsw9_4n13.hs~ns*ma42#@!`',
+
+        /**
+         * @description an algorithm to be used on encoding and decoding jwt
+         * @type {String}
+         */
+        algorithm: 'HS256',
+
+        /**
+         * @description lifespan of jwt
+         * @type {String}
+         */
+        expiresIn: '7 days',
+
+        /**
+         * @description intended audience for jwt
+         * @type {String}
+         */
+        audience: '<%= applicationName %>',
+
+        /**
+         * @description allow payload to be parsed as json
+         * @type {Boolean}
+         */
+        json: true
+    },
+
+
+    /**
+     * @description sendgrid configurations
+     * @type {Object}
+     */
+    /*jshint camelcase:false*/
+    mailer: {
+        from: '<%= applicationName %> <no-reply@<%= applicationName %>.com>',
+        sender: 'The <%= applicationName %> Team',
+        transport: {
+            auth: {
+                api_key: '<sendgrid api key>',
+            }
+        }
     }
+    /*jshint camelcase:true*/
 
 };

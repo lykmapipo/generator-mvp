@@ -2,8 +2,8 @@
     "name": "<%= applicationName %>",
     "version": "<%= applicationVersion %>",
     "description": "<%= applicationDescription %>",
-    "keywords": [],
-    "homepage": "",
+    "keywords": ["<%= applicationName %>"],
+    "homepage": "<%= gitHost %>/<%= gitName %>/<%= applicationName %>/",
     "bugs": {
         "url": "<%= gitHost %>/<%= gitName %>/<%= applicationName %>/issues",
         "email": "<%= applicationName %>@<%= applicationName %>.com"
