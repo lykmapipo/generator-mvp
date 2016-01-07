@@ -22,6 +22,14 @@ module.exports = yeoman.generators.Base.extend({
         }
 
         this.modelName = splits.shift().toLowerCase();
+
+        //check for subpath
+        var subpath = this.modelName.split('.');
+        if (subpath && subpath.length > 1) {
+            this.modelName = subpath.pop();
+            this.subpath = subpath.join('/');
+        }
+
         this.modelNamePlural = inflection.pluralize(this.modelName);
         this.modelFields = !_.isEmpty(splits) ? splits : ['name:String'];
 
@@ -51,10 +59,10 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: {
         model: function() {
-            this.template('_model.js', 'app/models/' + this.modelName + '_model.js');
+            this.template('_model.js', 'app/models/' + this.subpath + '/' + this.modelName + '_model.js');
         },
         test: function() {
-            this.template('_spec.js', 'test/models/' + this.modelName + '_model_spec.js');
+            this.template('_spec.js', 'test/models/' + this.subpath + '/' + this.modelName + '_model_spec.js');
         }
     }
 });
