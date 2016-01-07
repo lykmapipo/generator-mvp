@@ -170,6 +170,18 @@ module.exports = yeoman.generators.Base.extend({
             this.template('initializers/_winston.js', 'app/initializers/winston.js');
         },
 
+        setup: function() {
+            this.fs.copy(
+                this.templatePath('site/_party'),
+                this.destinationPath('app/models/party_model.js')
+            );
+
+            this.fs.copy(
+                this.templatePath('site/_party'),
+                this.destinationPath('app/models/party_model.js')
+            );
+        },
+
         views: function() {
             if (this.frontend) {
 
@@ -299,9 +311,13 @@ module.exports = yeoman.generators.Base.extend({
             this.npmInstall(
                 [
                     'async', 'lodash', 'require-all', 'ejs', 'serve-favicon',
-                    'ejs-mate', 'mongoose', 'mongoose-paginate', 'mongoose-hidden',
+                    'mongoose', 'mongoose-valid8', 'mongoose-searchable',
+                    'mongoose-hidden',
                     'mongoose-timestamp', 'mongoose-autopopulate', 'express',
+                    'express-mquery', 'irina', 'email-templates',
                     'express-paginate', 'serve-favicon', 'helmet',
+                    'jsonwebtoken', 'nodemailer', 'nodemailer-wellknown',
+                    'nodemailer-sendgrid-transport', 'seed-mongoose',
                     'body-parser', 'method-override', 'winston', 'express-winston',
                     'cors', 'mkdir-p', 'config', 'express-respond'
                 ], {

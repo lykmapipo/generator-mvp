@@ -4,9 +4,6 @@
 require('config'); //load configurations
 var mkdir = require('mkdir-p');
 var path = require('path');
-<%if(frontend){%>
-var _ = require('lodash');
-<%}%>
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -14,11 +11,6 @@ var expressWinston = require('express-winston');
 var cors = require('cors');
 var helmet = require('helmet');
 var respond = require('express-respond');
-<%if(frontend){%>
-// un comment after adding application favicon in public directory
-// var favicon = require('serve-favicon');
-var ejsEngine = require('ejs-mate');
-<%}%>
 
 //build logs directory if does not exists
 mkdir.sync(path.join(__dirname, '..', 'logs'));
@@ -60,18 +52,10 @@ app.use(helmet.hidePoweredBy({
 // app.use(helmet.noSniff());
 // app.use(helmet.noCache());
 
-<%if(frontend){%>
-// view engine setup
-app.engine('html', ejsEngine);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
-
 // apllication favicon
 // un comment after adding application favicon in public directory
 // var favicon = require('serve-favicon');
 // app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
-
-<%}%>
 
 //parsing body
 app.use(bodyParser.json());
@@ -80,36 +64,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(methodOverride('_method'));
 
-<%if(frontend){%>
-//setup public directories
-if (app.get('env') === 'production') {
-    app.use(express.static(path.join(__dirname, '..', 'public')));
-}
-
-if (app.get('env') === 'development') {
-    app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
-}
-<%}%>
-
 //setup mongoose express pagination middleware
-app.use(require('express-paginate').middleware(10, 50));
-
-<%if(frontend){%>
-//load application locals
-require('require-all')({
-    dirname: path.join(__dirname, 'locals'),
-    filter: /(.+_locals)\.js$/,
-    excludeDirs: /^\.(git|svn|md)$/,
-    resolve: function(local) {
-        if (_.isPlainObject(local)) {
-            _.keys(local)
-                .forEach(function(localKey) {
-                    app.locals[localKey] = local[localKey];
-                });
-        }
-    }
-});
-<%}%>
+app.use(require('express-mquery').middleware());
 
 //setup application request logger 
 app.use(expressWinston.logger({
