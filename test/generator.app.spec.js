@@ -101,8 +101,10 @@ describe('mvp:app generator', function() {
         ]);
     });
 
-    it('should be able to generate application auth files', function() {
+    it('should be able to generate application auth and libs files', function() {
         assert.file([
+            'app/libs/mongoose/list.js',
+            'app/libs/mongoose/setter.js',
             'app/libs/jwt.js',
             'app/libs/mailer.js',
             'app/models/party_model.js'
