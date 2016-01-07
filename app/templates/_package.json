@@ -26,11 +26,11 @@
     },
     "scripts": {
         "test": "grunt spec",
-        "start": "pm2 start production.js",
-        "stop": "pm2 stop production.js",
-        "restart": "pm2 restart production.js",
-        "reload": "pm2 reload production.js",
-        "delete": "pm2 delete production.js"
+        "start": "pm2 start production.json",
+        "stop": "pm2 stop production.json",
+        "restart": "pm2 restart production.json",
+        "reload": "pm2 reload production.json",
+        "delete": "pm2 delete production.json"
     },
     "dependencies": {},
     "devDependencies": {},
