@@ -28,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
         //check for subpath
         var subpath = this.controllerName.split('.');
         if (subpath && subpath.length > 1) {
-            this.controllerName = subpath.pop();
+            this.controllerName = this.modelName = subpath.pop();
 
             this.controllerPath = '';
 
