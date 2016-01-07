@@ -1,6 +1,6 @@
 # generator-mvp [![Build Status](https://secure.travis-ci.org/lykmapipo/generator-mvp.png?branch=master)](https://travis-ci.org/lykmapipo/generator-mvp)
 
-Set of generators to kick start nodejs API based application with [pm2](https://github.com/Unitech/pm2), [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/),[angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
+Set of generators to kick start nodejs API based application with [pm2](https://github.com/Unitech/pm2), [mongoose](https://github.com/Automattic/mongoose), [expressjs](https://github.com/strongloop/express/), [angular](https://github.com/angular/angular.js) and others. Based on [yeoman](https://github.com/yeoman/yeoman) and highly inspired by [rails](https://github.com/rails/rails) and other famous generators.
 
 *Warning!: `yo mvp:angular` sub-generator have to be used with [generator-angular](https://github.com/yeoman/generator-angular) not otherwise and it works only with [ui-router](https://github.com/angular-ui/ui-router)*
 
