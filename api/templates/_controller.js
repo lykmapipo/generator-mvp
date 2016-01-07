@@ -19,20 +19,11 @@ module.exports = {
      */
     index: function(request, response, next) {
         <%= className %>
-            .paginate({},{
-                    page: request.query.page,
-                    limit: request.query.limit
-                },
-                function(error, <%= classPlural.toLowerCase() %>, pages, total) {
+            .list(request, function(error, results) {
                     if (error) {
                         next(error);
                     } else {
-                        response
-                            .ok({
-                                <%= classPlural.toLowerCase() %>: <%= classPlural.toLowerCase() %>,
-                                pages: pages,
-                                count: total
-                            });
+                        response.ok(results);
                     }
                 });
     },
