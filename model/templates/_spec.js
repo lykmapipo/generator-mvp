@@ -87,7 +87,7 @@ describe('<%= className %> Model', function() {
 
 
     it('should be able to list existing <%= modelNamePlural %>', function(done) {
-        <%= className %>.paginate({}, {
+        <%= className %>.paginate({
             page: 1,
             limit: 10
         }, function(error, <%= modelNamePlural %>, pages, total) {
