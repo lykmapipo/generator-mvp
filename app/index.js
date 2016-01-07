@@ -133,10 +133,6 @@ module.exports = yeoman.generators.Base.extend({
             //writing pm2 file
             this.template('_production.json', 'production.json');
 
-            if (this.frontend) {
-                this.template('_bower.json', 'bower.json');
-            }
-
             this.template('app/_app.js', 'app/application.js');
 
             this.fs.copy(
@@ -172,48 +168,36 @@ module.exports = yeoman.generators.Base.extend({
 
         setup: function() {
             this.fs.copy(
-                this.templatePath('site/_party'),
+                this.templatePath('site/_party.js'),
                 this.destinationPath('app/models/party_model.js')
             );
 
             this.fs.copy(
-                this.templatePath('site/_party'),
-                this.destinationPath('app/models/party_model.js')
+                this.templatePath('site/_site_controller.js'),
+                this.destinationPath('app/controllers/site_controller.js')
             );
+
+            this.fs.copy(
+                this.templatePath('site/_site_router.js'),
+                this.destinationPath('app/routers/site_router.js')
+            );
+
+            //copy libs
+            this.fs.copy(
+                this.templatePath('libs'),
+                this.destinationPath('app/libs')
+            );
+
         },
 
         views: function() {
-            if (this.frontend) {
 
-                this.mkdir('app/views');
+            this.mkdir('app/views');
 
-                this.fs.copy(
-                    this.templatePath('views/_site.html'),
-                    this.destinationPath('app/views/site.html')
-                );
-
-                this.fs.copy(
-                    this.templatePath('views/_site.html'),
-                    this.destinationPath('app/views/layout.html')
-                );
-
-                this.fs.copy(
-                    this.templatePath('views/_errors.html'),
-                    this.destinationPath('app/views/errors.html')
-                );
-
-                this.fs.copy(
-                    this.templatePath('views/_partials/_errors.html'),
-                    this.destinationPath('app/views/_partials/_errors.html')
-                );
-            }
-        },
-
-        locals: function() {
-            if (this.frontend) {
-                this.mkdir('app/locals');
-                this.template('locals/_application_locals.js', 'app/locals/application_locals.js');
-            }
+            this.fs.copy(
+                this.templatePath('views/emails'),
+                this.destinationPath('app/views/emails')
+            );
         },
 
         test: function() {
@@ -245,14 +229,6 @@ module.exports = yeoman.generators.Base.extend({
                 this.destinationPath('test/.jshintrc')
             );
 
-            if (this.frontend) {
-
-                this.fs.copy(
-                    this.templatePath('bowerrc'),
-                    this.destinationPath('.bowerrc')
-                );
-            }
-
             this.fs.copy(
                 this.templatePath('editorconfig'),
                 this.destinationPath('.editorconfig')
@@ -281,31 +257,10 @@ module.exports = yeoman.generators.Base.extend({
             );
 
             this.template('_README.md', 'README.md');
-        },
-
-        site: function() {
-            if (this.frontend) {
-
-                this.template('site/_site_router.js', 'app/routers/site_router.js');
-                this.template('site/_site_controller.js', 'app/controllers/site_controller.js');
-
-                this.fs.copy(
-                    this.templatePath('site/_index.html'),
-                    this.destinationPath('app/views/site/index.html')
-                );
-            } else {
-                this.composeWith('mvp:controller', {
-                    args: ['site', 'index'],
-                    options: {
-                        'skip-frontend': !this.frontend
-                    }
-                });
-            }
         }
     },
 
     install: function() {
-        //TODO split api and others dependencies
         if (this.install) {
             //npm install app dependencies
             this.npmInstall(
@@ -337,17 +292,6 @@ module.exports = yeoman.generators.Base.extend({
                 ], {
                     saveDev: true
                 });
-
-            //install bower components if frontend enabled
-            if (this.frontend) {
-
-                this.bowerInstall(
-                    [
-                        'jquery', 'bootstrap', 'fontawesome'
-                    ], {
-                        save: true
-                    });
-            }
         }
     }
 });

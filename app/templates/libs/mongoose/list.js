@@ -5,7 +5,8 @@
 module.exports = exports = function(schema /*, options*/ ) {
 
     /**
-     * @description extend mongoose collection with static list to handle both
+     * @function
+     * @description extend mongoose collection with static list method to handle both
      *              search and pagination
      * @param  {Request}   request valid express http request
      * @param  {Function} done    a callback to invoke on success or error
@@ -16,7 +17,7 @@ module.exports = exports = function(schema /*, options*/ ) {
         var queryParams = request.query;
         var result = {};
 
-        //check if its search request
+        //handle search request
         if (queryParams.q) {
             var skip = queryParams.skip || 0;
             var limit = queryParams.limit || 10;
@@ -24,7 +25,6 @@ module.exports = exports = function(schema /*, options*/ ) {
 
             var query = this.search(queryParams.q);
             if (sort) {
-                console.log(sort);
                 query.sort(sort);
             }
 

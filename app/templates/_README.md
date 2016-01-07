@@ -1,3 +1,4 @@
-# <%= _.capitalize(applicationName) %>
+<%= applicationName %>
+======================
 
 <%= applicationDescription %>
