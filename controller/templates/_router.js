@@ -9,11 +9,7 @@
 var path = require('path');
 var express = require('express');
 var router = express.Router();
-<%if(subpath){%>
-var controller = require(path.join(__dirname, '..', <%= controllerPath %>, '<%= controllerName %>_controller'));
-<%}else{%>
 var controller = require(path.join(__dirname, '..', 'controllers', '<%= controllerName %>_controller'));
-<%}%>
 
 <%_.forEach(actions, function(action) {%>
 /**

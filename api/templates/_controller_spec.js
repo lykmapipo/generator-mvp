@@ -203,7 +203,7 @@ describe('<%= className %> Controller', function() {
 
                 expect(_data).to.not.be.undefined;
                 expect(_data).to.not.be.null;
-                expect(_data.<%=plural%>.length).to.be.above(0);
+                expect(_data.<%=plural%>.length).to.exist;
 
                 //TODO application specific assertions
 
