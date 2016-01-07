@@ -1,16 +1,16 @@
 'use strict';
 
 /**
- * Site Router
+ * Application Router
  *
- * @description :: Server-side router for managing Site.
+ * @description :: Server-side router for managing application router.
  */
 
 //dependencies
 var path = require('path');
 var express = require('express');
 var router = express.Router();
-var controller = require(path.join(__dirname, '..', 'controllers', 'site_controller'));
+var controller = require(path.join(__dirname, '..', 'controllers', 'application_controller'));
 
 //enable token authentication
 var jwtAuth = require(path.join(__dirname, '..', 'middlewares', 'jwtAuth'));

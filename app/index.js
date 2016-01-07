@@ -168,18 +168,23 @@ module.exports = yeoman.generators.Base.extend({
 
         setup: function() {
             this.fs.copy(
-                this.templatePath('site/_party.js'),
+                this.templatePath('app/_party.js'),
                 this.destinationPath('app/models/party_model.js')
             );
 
             this.fs.copy(
-                this.templatePath('site/_site_controller.js'),
-                this.destinationPath('app/controllers/site_controller.js')
+                this.templatePath('app/_app_controller.js'),
+                this.destinationPath('app/controllers/application_controller.js')
             );
 
             this.fs.copy(
-                this.templatePath('site/_site_router.js'),
-                this.destinationPath('app/routers/site_router.js')
+                this.templatePath('app/_app_router.js'),
+                this.destinationPath('app/routers/application_router.js')
+            );
+
+            this.fs.copy(
+                this.templatePath('app/_jwtAuth.js'),
+                this.destinationPath('app/middlewares/jwtAuth.js')
             );
 
             //copy libs

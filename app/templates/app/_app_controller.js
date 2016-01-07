@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * Site Controller
+ * Application Controller
  *
- * @description :: Server-side logic for managing Site.
+ * @description :: Server-side logic for managing application controller.
  */
 
 //dependencies

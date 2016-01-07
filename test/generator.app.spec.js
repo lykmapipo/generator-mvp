@@ -94,10 +94,19 @@ describe('mvp:app generator', function() {
         ]);
     });
 
-    it('should be able to generate application site files', function() {
+    it('should be able to generate application app files', function() {
         assert.file([
-            'app/controllers/site_controller.js',
-            'app/routers/site_router.js'
+            'app/controllers/application_controller.js',
+            'app/routers/application_router.js',
+            'app/middlewares/jwtAuth.js'
+        ]);
+    });
+
+
+    it('should be able to generate application initialize files', function() {
+        assert.file([
+            'app/initializers/mongoose.js',
+            'app/initializers/winston.js'
         ]);
     });
 

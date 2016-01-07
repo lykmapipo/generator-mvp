@@ -1,6 +1,7 @@
 'use strict';
 
 //dependencies
+var path = require('path');
 var config = require('config');
 var mongoose = require('mongoose');
 var mongooseList = require(path.join(__dirname, '..', 'libs', 'mongoose', 'list'));
