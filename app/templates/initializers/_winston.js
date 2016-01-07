@@ -13,7 +13,7 @@ var transports = [];
 
 //add development and test logger transports
 if (isLocal) {
-    transports = transports.push(new(winston.transports.Console)({
+    transports.push(new(winston.transports.Console)({
         timestamp: true,
         level: config.get('logger.level'),
         color: true
@@ -22,7 +22,7 @@ if (isLocal) {
 
 //add production logger transports
 if (!isLocal) {
-    transports = transports.push(new(winston.transports.File)({
+    transports.push(new(winston.transports.File)({
         timestamp: true,
         level: config.get('logger.level'),
         filename: path.join(
