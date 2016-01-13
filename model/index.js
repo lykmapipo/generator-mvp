@@ -33,6 +33,9 @@ module.exports = yeoman.generators.Base.extend({
         this.classPlural = inflection.pluralize(this.className);
         this.classCamelPlural = inflection.pluralize(this.classCamel);
 
+        //lowercase model name
+        this.modelName = this.modelName.toLowerCase();
+
     },
 
     prepareFields: function() {
