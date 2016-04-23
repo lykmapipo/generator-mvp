@@ -66,7 +66,6 @@ describe('mvp:app generator', function() {
             'app/libs/.gitkeep',
             'app/views',
             'test/models',
-            'test/locals',
             'test/routers',
             'test/controllers',
             'test/middlewares',

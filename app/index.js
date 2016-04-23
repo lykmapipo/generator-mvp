@@ -214,7 +214,6 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('test/controllers');
             this.mkdir('test/middlewares');
             this.mkdir('test/libs');
-            this.mkdir('test/locals');
             this.mkdir('test/intergration');
         },
 
