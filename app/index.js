@@ -271,7 +271,7 @@ module.exports = yeoman.generators.Base.extend({
             this.npmInstall(
                 [
                     'async', 'lodash', 'require-all', 'ejs', 'serve-favicon',
-                    'mongoose', 'mongoose-valid8', 'mongoose-searchable',
+                    'mongoose', 'mongoose-valid8', 'mongoose-fts',
                     'mongoose-hidden',
                     'mongoose-timestamp', 'mongoose-autopopulate', 'express',
                     'express-mquery', 'irina', 'email-templates',
